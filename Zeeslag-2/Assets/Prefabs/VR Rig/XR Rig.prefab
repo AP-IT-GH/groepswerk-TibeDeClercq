@@ -29,7 +29,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8442025603987742997}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1992938712
 MonoBehaviour:
@@ -77,8 +77,8 @@ Transform:
   m_Children:
   - {fileID: 1939291812484522411}
   - {fileID: 1939291811940251078}
-  - {fileID: 1939291812587750448}
   - {fileID: 1992938713}
+  - {fileID: 1939291812587750448}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -92,7 +92,7 @@ PrefabInstance:
     - target: {fileID: 998482626319866139, guid: 11f14a29386cf734595682d58d69a171, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 59baba5196484d94898ed4449c98f5a0, type: 2}
+      objectReference: {fileID: 2100000, guid: 5ba7d209f622bb44e87b47ce27ee27b7, type: 2}
     - target: {fileID: 1397491827444153212, guid: 11f14a29386cf734595682d58d69a171, type: 3}
       propertyPath: m_InteractionManager
       value: 
@@ -227,11 +227,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3282876826997937018, guid: 11f14a29386cf734595682d58d69a171, type: 3}
       propertyPath: m_LineWidth
-      value: 0.015
+      value: 0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 4259543474154184333, guid: 11f14a29386cf734595682d58d69a171, type: 3}
+      propertyPath: m_Depth
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 4259543474154639697, guid: 11f14a29386cf734595682d58d69a171, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4259543474154639697, guid: 11f14a29386cf734595682d58d69a171, type: 3}
       propertyPath: m_LocalPosition.x
@@ -277,6 +281,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Custom Camera Rig
       objectReference: {fileID: 0}
+    - target: {fileID: 4277291407340790105, guid: 11f14a29386cf734595682d58d69a171, type: 3}
+      propertyPath: m_Depth
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4277291409575067331, guid: 11f14a29386cf734595682d58d69a171, type: 3}
+      propertyPath: m_Depth
+      value: -1
+      objectReference: {fileID: 0}
     - target: {fileID: 6583811263497192436, guid: 11f14a29386cf734595682d58d69a171, type: 3}
       propertyPath: m_Parameters.widthMultiplier
       value: 0.015
@@ -284,7 +296,7 @@ PrefabInstance:
     - target: {fileID: 6692084010819204289, guid: 11f14a29386cf734595682d58d69a171, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 59baba5196484d94898ed4449c98f5a0, type: 2}
+      objectReference: {fileID: 2100000, guid: 5ba7d209f622bb44e87b47ce27ee27b7, type: 2}
     - target: {fileID: 8222001452718112451, guid: 11f14a29386cf734595682d58d69a171, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -295,6 +307,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8655805450364087466, guid: 11f14a29386cf734595682d58d69a171, type: 3}
       propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8829604110329820547, guid: 11f14a29386cf734595682d58d69a171, type: 3}
+      propertyPath: m_RenderPostProcessing
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents:
@@ -364,7 +380,7 @@ MonoBehaviour:
     m_Bits: 1
   m_VolumeTrigger: {fileID: 0}
   m_VolumeFrameworkUpdateModeOption: 2
-  m_RenderPostProcessing: 0
+  m_RenderPostProcessing: 1
   m_Antialiasing: 0
   m_AntialiasingQuality: 2
   m_StopNaN: 0
@@ -397,7 +413,7 @@ MonoBehaviour:
     m_Bits: 1
   m_VolumeTrigger: {fileID: 0}
   m_VolumeFrameworkUpdateModeOption: 2
-  m_RenderPostProcessing: 0
+  m_RenderPostProcessing: 1
   m_Antialiasing: 0
   m_AntialiasingQuality: 2
   m_StopNaN: 0
@@ -430,7 +446,7 @@ MonoBehaviour:
     m_Bits: 1
   m_VolumeTrigger: {fileID: 0}
   m_VolumeFrameworkUpdateModeOption: 2
-  m_RenderPostProcessing: 0
+  m_RenderPostProcessing: 1
   m_Antialiasing: 0
   m_AntialiasingQuality: 2
   m_StopNaN: 0
@@ -559,7 +575,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e988983f96fe1dd48800bcdfc82f23e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_LineWidth: 0.015
+  m_LineWidth: 0.01
   m_OverrideInteractorLineLength: 1
   m_LineLength: 10
   m_WidthCurve:
