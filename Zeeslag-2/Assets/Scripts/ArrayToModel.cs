@@ -6,14 +6,20 @@ public class ArrayToModel : MonoBehaviour
 {
     public char[,] array = new char[10,10];
     public GameObject cube;
+    public float space = 0;
     // Start is called before the first frame update
     void Start()
     {
-        for (int row = 0; row < array.GetLength(0); row++)
+        float _spaceRow = 0;
+        float _spaceCol = 0;
+        for (float row = 0; row < array.GetLength(0); row++)
         {
-            for (int col = 0; col < array.GetLength(1); col++)
+            _spaceCol = 0;
+            _spaceRow += space;
+            for (float col = 0; col < array.GetLength(1); col++)
             {
-                Instantiate(cube, new Vector3(row*cube.transform.localScale.x, 1, col*cube.transform.localScale.z), Quaternion.identity);
+                Instantiate(cube, new Vector3((row+_spaceRow)*cube.transform.localScale.x, 1, (col+ _spaceCol )* cube.transform.localScale.z), Quaternion.identity);
+                _spaceCol+=space;            
             }
         }
     }
