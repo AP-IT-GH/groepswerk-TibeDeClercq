@@ -152,8 +152,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51b77fe623fc357488a50c26544268aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cube: {fileID: 282776871}
+  cube: {fileID: 282776879}
   space: 0.2
+  teller: 0
 --- !u!4 &157022494
 Transform:
   m_ObjectHideFlags: 0
@@ -182,6 +183,8 @@ GameObject:
   - component: {fileID: 282776872}
   - component: {fileID: 282776877}
   - component: {fileID: 282776876}
+  - component: {fileID: 282776878}
+  - component: {fileID: 282776879}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -312,7 +315,19 @@ MonoBehaviour:
       m_Calls: []
   m_Activated:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 282776878}
+        m_TargetAssemblyTypeName: HitOrMissVisuals, Assembly-CSharp
+        m_MethodName: Activate
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_Deactivated:
     m_PersistentCalls:
       m_Calls: []
@@ -394,8 +409,36 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 126
   m_CollisionDetection: 0
+--- !u!114 &282776878
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 282776871}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27f50557123e27e4bb15dcdd7ea83132, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  field: {fileID: 0}
+  array: {fileID: 0}
+--- !u!114 &282776879
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 282776871}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8484b5202a75a5a41af9293a4f1261f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  teller: 0
+  cube: {fileID: 282776871}
 --- !u!1 &967797856
 GameObject:
   m_ObjectHideFlags: 0
