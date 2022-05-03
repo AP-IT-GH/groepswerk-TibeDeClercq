@@ -11,6 +11,8 @@ public enum GameState
 public class Zeeslag : MonoBehaviour
 {
     private bool _gameStarted;
+    private bool _player1Shot;
+    private bool _player2Shot;
 
     public Field FieldPlayer1;
     public Field FieldPlayer2;
@@ -20,8 +22,9 @@ public class Zeeslag : MonoBehaviour
     private void Start()
     {
         this._gameStarted = false;
+        this._player1Shot = false;
+        this._player2Shot = false;
     }
-
     private void FixedUpdate()
     {
         if (!this._gameStarted)
@@ -33,21 +36,54 @@ public class Zeeslag : MonoBehaviour
 
     private IEnumerator GameLogic()
     {
-        switch (this.GameState)
+        while (this._gameStarted)
         {
-            case GameState.Player1Turn:
+            while (this.GameState == GameState.Player1Turn)
+            {
                 Debug.Log("Player1Turn");
-                yield return new WaitForSeconds(2);
-                this.GameState = GameState.Player2Turn;
-                break;
-            case GameState.Player2Turn:
+                if (this._player1Shot)
+                {
+                    this._player1Shot = false;
+                    this.GameState = GameState.Player2Turn;
+                    yield return new WaitForSeconds(2);
+                }
+            }
+
+            while (this.GameState == GameState.Player2Turn)
+            {
                 Debug.Log("Player2Turn");
-                yield return new WaitForSeconds(2);
-                this.GameState = GameState.Player1Turn;
-                break;
-            default:
-                break;
+                if (this._player2Shot)
+                {
+                    this._player2Shot = false;
+                    this.GameState = GameState.Player1Turn;
+                    yield return new WaitForSeconds(2);
+                }
+            }
         }
-        yield return null;
+    }
+
+    public bool Player1Shoot(Vector2 coords)
+    {
+        if(this.GameState == GameState.Player1Turn)
+        {
+            bool result = this.FieldPlayer2.Shoot(coords);
+            if (result)
+            {
+                this._player1Shot = true;
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public bool Player2Shoot(Vector2 coords)
+    {
+        bool result = this.FieldPlayer1.Shoot(coords);
+        if (result)
+        {
+            this._player2Shot = true;
+            return true;
+        }
+        return false;
     }
 }
