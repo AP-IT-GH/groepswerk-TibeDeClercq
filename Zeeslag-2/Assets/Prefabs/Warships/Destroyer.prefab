@@ -365,6 +365,7 @@ GameObject:
   - component: {fileID: 33216202951023868}
   - component: {fileID: 23137177680154494}
   - component: {fileID: 64733126321154782}
+  - component: {fileID: 6032331381761904002}
   m_Layer: 0
   m_Name: Destroyer
   m_TagString: Untagged
@@ -379,9 +380,9 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1171684472522874}
-  m_LocalRotation: {x: 0.000000021855694, y: 0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -9.699997, y: -4, z: -4.196628}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4362998084504928}
   - {fileID: 4605580758716822}
@@ -454,6 +455,21 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300028, guid: 46cd524120389ad418423045618d2621, type: 3}
+--- !u!114 &6032331381761904002
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1171684472522874}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66bf5dfd23c066549a10884af8d4ff6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bobSpeed: 0.5
+  bobHeight: 1
+  standingOn: 0
 --- !u!1 &1220600251093792
 GameObject:
   m_ObjectHideFlags: 0
