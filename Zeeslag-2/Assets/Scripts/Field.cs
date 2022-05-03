@@ -19,9 +19,9 @@ public class Field : MonoBehaviour
 
     public List<Ship> Ships;
 
-    private void Start()
+    private void Awake()
     {
-        Debug.Log("Starting a field");
+        //Debug.Log("Starting a field");
         GenerateShips();
         CreateField();
         PrintField();
@@ -93,7 +93,7 @@ public class Field : MonoBehaviour
                 {
                     if(ship1Coord == ship2Coord)
                     {
-                        Debug.Log("Overlap!!!");
+                        //Debug.Log("Overlap!!!");
                         return true;
                     }
                 }

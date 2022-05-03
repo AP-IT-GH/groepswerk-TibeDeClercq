@@ -30,7 +30,7 @@ public class Zeeslag : MonoBehaviour
         if (!this._gameStarted)
         {
             this._gameStarted = true;
-            StartCoroutine(this.GameLogic());
+            //StartCoroutine(this.GameLogic());
         }
     }
 
