@@ -47,7 +47,7 @@ MonoBehaviour:
   priority: 0
   blendDistance: 0
   weight: 1
-  sharedProfile: {fileID: 11400000, guid: e81d4e9df54ee8e418499c8f271d28e1, type: 2}
+  sharedProfile: {fileID: 11400000, guid: 68e546761c28be144b4cd5536df35b8a, type: 2}
 --- !u!1 &8360284369324409112
 GameObject:
   m_ObjectHideFlags: 0
@@ -303,7 +303,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: baafd4138dd095c479eee5b7ea82c933, type: 2}
     - target: {fileID: 8222001452718112451, guid: 11f14a29386cf734595682d58d69a171, type: 3}
       propertyPath: m_Parameters.widthMultiplier
-      value: 0.015
+      value: 0.01
       objectReference: {fileID: 0}
     - target: {fileID: 8655805450364087466, guid: 11f14a29386cf734595682d58d69a171, type: 3}
       propertyPath: m_IsActive
@@ -501,7 +501,7 @@ LineRenderer:
   - {x: 0, y: 0, z: 1}
   m_Parameters:
     serializedVersion: 3
-    widthMultiplier: 0.015
+    widthMultiplier: 0.01
     widthCurve:
       serializedVersion: 2
       m_Curve:
