@@ -24,8 +24,7 @@ public class Zeeslag : MonoBehaviour
         this._gameStarted = false;
         this._player1Shot = false;
         this._player2Shot = false;
-}
-
+    }
     private void FixedUpdate()
     {
         if (!this._gameStarted)
