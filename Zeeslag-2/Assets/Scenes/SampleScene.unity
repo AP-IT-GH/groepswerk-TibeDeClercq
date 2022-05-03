@@ -329,8 +329,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Size: 10
-  SmallShipCount: 5
-  BigShipCount: 10
+  SmallShipCount: 2
+  BigShipCount: 4
 --- !u!4 &1140422609
 Transform:
   m_ObjectHideFlags: 0
