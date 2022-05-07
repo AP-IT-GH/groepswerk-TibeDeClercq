@@ -212,6 +212,7 @@ GameObject:
   - component: {fileID: 33486552296731778}
   - component: {fileID: 23986307016960456}
   - component: {fileID: 65086917386475724}
+  - component: {fileID: 5050543841650160624}
   m_Layer: 0
   m_Name: Medium Turret
   m_TagString: Untagged
@@ -296,6 +297,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 6.75, y: 2, z: 8}
   m_Center: {x: -0.00000023841858, y: 0.94, z: -0.5025952}
+--- !u!114 &5050543841650160624
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1194111560482506}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d47d2be5135ddf542b8285ab61d7aa10, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1257255175192470
 GameObject:
   m_ObjectHideFlags: 0
@@ -309,6 +322,7 @@ GameObject:
   - component: {fileID: 23707506778621868}
   - component: {fileID: 64097604951717208}
   - component: {fileID: 213391827622861758}
+  - component: {fileID: 6783834552964513865}
   m_Layer: 0
   m_Name: Frigate
   m_TagString: Untagged
@@ -413,6 +427,27 @@ MonoBehaviour:
   bobSpeed: 0.5
   bobHeight: 1
   standingOn: 0
+  cannons:
+  - {fileID: 2042233913972320751}
+  - {fileID: 5050543841650160624}
+  - {fileID: 6030238019213488652}
+--- !u!114 &6783834552964513865
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1257255175192470}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a320023562581c4fb129eacb9195c57, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShipCoords: []
+  PositionStart: {x: 0, y: 0}
+  PositionEnd: {x: 0, y: 0}
+  Orientation: 0
+  Size: 0
 --- !u!1 &1302286245233652
 GameObject:
   m_ObjectHideFlags: 0
@@ -425,6 +460,7 @@ GameObject:
   - component: {fileID: 33468033615280336}
   - component: {fileID: 23211351162221012}
   - component: {fileID: 65287034085015910}
+  - component: {fileID: 2042233913972320751}
   m_Layer: 0
   m_Name: Small Turret
   m_TagString: Untagged
@@ -509,6 +545,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 3.25, y: 1, z: 4}
   m_Center: {x: -0.0000010728836, y: 0.57, z: -0.23933113}
+--- !u!114 &2042233913972320751
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1302286245233652}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d47d2be5135ddf542b8285ab61d7aa10, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1449674289376582
 GameObject:
   m_ObjectHideFlags: 0
@@ -521,6 +569,7 @@ GameObject:
   - component: {fileID: 33828234783375688}
   - component: {fileID: 23447720017129680}
   - component: {fileID: 65085382081389334}
+  - component: {fileID: 6030238019213488652}
   m_Layer: 0
   m_Name: Medium Turret
   m_TagString: Untagged
@@ -605,6 +654,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 6.75, y: 2, z: 8}
   m_Center: {x: -0.00000023841858, y: 0.94, z: -0.5025952}
+--- !u!114 &6030238019213488652
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1449674289376582}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d47d2be5135ddf542b8285ab61d7aa10, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1591900129298264
 GameObject:
   m_ObjectHideFlags: 0

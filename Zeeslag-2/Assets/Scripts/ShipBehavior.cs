@@ -7,6 +7,7 @@ public class ShipBehavior : MonoBehaviour
     public float bobSpeed = 0.5f;
     public float bobHeight = 1;
     public bool standingOn = false;
+    public List<Cannon> cannons;
 
     private float startPosition;
     private float offset;

@@ -4,16 +4,28 @@ using UnityEngine;
 
 public class GenerateField : MonoBehaviour
 {
-    public Zeeslag game;
+    public Field field;
     public Transform startPosition;
     public float shipHeight = 1;
     public float spacing = 1;
+    public float offsetZ = 0;
 
     public GameObject battleShip, destroyer, frigate, cruiser, corvette;
 
     void Start()
     {
-        foreach(Ship ship in game.FieldPlayer1.Ships)
+        GenerateShips();
+        AssignRandomShip();
+    }
+
+    private void AssignRandomShip()
+    {
+        GameObject.Find("Warships").transform.GetChild(Random.Range(0, field.Ships.Count)).GetComponent<ShipBehavior>().standingOn = true;
+    }
+
+    private void GenerateShips()
+    {
+        foreach (Ship ship in field.Ships)
         {
             switch (ship.Size)
             {
@@ -34,8 +46,9 @@ public class GenerateField : MonoBehaviour
                     break;
             }
         }
-        startPosition.position = new Vector3(-(game.FieldPlayer1.Size/2) * spacing, startPosition.position.y, -(game.FieldPlayer1.Size / 2) * spacing);
+        startPosition.position = new Vector3(-(field.Size / 2) * spacing, startPosition.position.y, (-(field.Size / 2) * spacing) + offsetZ);
     }
+
     private void InstantiateShip(GameObject shipPrefab, Ship ship)
     {
         if (ship.Orientation == Orientation.Horizontal)

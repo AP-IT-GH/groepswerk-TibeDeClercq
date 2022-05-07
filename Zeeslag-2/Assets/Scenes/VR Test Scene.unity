@@ -16,10 +16,10 @@ RenderSettings:
   serializedVersion: 9
   m_Fog: 0
   m_FogColor: {r: 1, g: 1, b: 1, a: 1}
-  m_FogMode: 3
-  m_FogDensity: 0.01
+  m_FogMode: 2
+  m_FogDensity: 0.007
   m_LinearFogStart: 0
-  m_LinearFogEnd: 300
+  m_LinearFogEnd: 350
   m_AmbientSkyColor: {r: 0.212, g: 0.227, b: 0.259, a: 1}
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
@@ -271,7 +271,7 @@ Transform:
   - {fileID: 1861321926}
   - {fileID: 964086163}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &504809532
 GameObject:
@@ -301,7 +301,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &739000374
 GameObject:
@@ -443,8 +443,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 861182492}
-  m_LocalRotation: {x: 0.00051570195, y: -0.89300704, z: 0.4500409, w: 0.0011970178}
-  m_LocalPosition: {x: 59.55163, y: 393.2181, z: 420.49005}
+  m_LocalRotation: {x: 0.21609284, y: 0.0060124565, z: -0.0012774622, w: 0.9763535}
+  m_LocalPosition: {x: -8.875947, y: 193.08423, z: -358.95142}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -496,6 +496,7 @@ MonoBehaviour:
   Size: 10
   SmallShipCount: 2
   BigShipCount: 4
+  Ships: []
 --- !u!1001 &984330401
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -551,6 +552,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8114821396794379666, guid: 09419625ea90e2f478b96ae476784b2c, type: 3}
+      propertyPath: bobHeight
+      value: 0.5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 09419625ea90e2f478b96ae476784b2c, type: 3}
 --- !u!4 &984330402 stripped
@@ -569,7 +574,7 @@ GameObject:
   - component: {fileID: 996473757}
   - component: {fileID: 996473756}
   m_Layer: 0
-  m_Name: Field Generator
+  m_Name: Player Field Generator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -587,10 +592,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a56960a1bea1e974cb99da4401419897, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  game: {fileID: 442705367}
+  field: {fileID: 1861321927}
   startPosition: {fileID: 1700442226}
   shipHeight: 1
   spacing: 30
+  offsetZ: 0
   battleShip: {fileID: 1034489738}
   destroyer: {fileID: 2013059348}
   frigate: {fileID: 123853986}
@@ -608,13 +614,161 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1034489738 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1813258765252098, guid: aea52f5da97018c4aaecffcdfa9035d8, type: 3}
   m_PrefabInstance: {fileID: 196068828}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1139895943
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1139895947}
+  - component: {fileID: 1139895946}
+  - component: {fileID: 1139895945}
+  - component: {fileID: 1139895944}
+  m_Layer: 0
+  m_Name: Fog
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!135 &1139895944
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1139895943}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!23 &1139895945
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1139895943}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 2dc6ab3a7ca193f468bc3e9e0b76493c, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &1139895946
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1139895943}
+  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!4 &1139895947
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1139895943}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1000, y: 1000, z: 1000}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1209596720
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1209596722}
+  - component: {fileID: 1209596721}
+  m_Layer: 0
+  m_Name: Enemy Field Generator
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1209596721
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1209596720}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a56960a1bea1e974cb99da4401419897, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  field: {fileID: 964086164}
+  startPosition: {fileID: 2046388129}
+  shipHeight: 1
+  spacing: 30
+  offsetZ: 750
+  battleShip: {fileID: 1034489738}
+  destroyer: {fileID: 2013059348}
+  frigate: {fileID: 123853986}
+  cruiser: {fileID: 1442058849}
+  corvette: {fileID: 2006218100}
+--- !u!4 &1209596722
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1209596720}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 11
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1369914324
 GameObject:
   m_ObjectHideFlags: 0
@@ -700,6 +854,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8509270920146867934, guid: ec5d6bc6e2d4942448a8b3d9eddf3865, type: 3}
+      propertyPath: bobHeight
+      value: 0.5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ec5d6bc6e2d4942448a8b3d9eddf3865, type: 3}
 --- !u!4 &1371204547 stripped
@@ -766,6 +924,10 @@ PrefabInstance:
     - target: {fileID: 4703804435602058, guid: c3672f9b2e0555e418f7dcc46c6d0d10, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 213391827622861758, guid: c3672f9b2e0555e418f7dcc46c6d0d10, type: 3}
+      propertyPath: bobHeight
+      value: 0.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c3672f9b2e0555e418f7dcc46c6d0d10, type: 3}
@@ -876,8 +1038,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1700442226}
+  - component: {fileID: 1700442227}
   m_Layer: 0
-  m_Name: Warships
+  m_Name: Player Warships
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -895,8 +1058,22 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1700442227
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1700442225}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c09b940f5f2386459e44dded13f6ce9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  game: {fileID: 442705367}
+  isPlayer: 1
 --- !u!1 &1861321925
 GameObject:
   m_ObjectHideFlags: 0
@@ -943,6 +1120,7 @@ MonoBehaviour:
   Size: 10
   SmallShipCount: 2
   BigShipCount: 4
+  Ships: []
 --- !u!1001 &1908118001
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -953,6 +1131,10 @@ PrefabInstance:
     - target: {fileID: 8360284369324409112, guid: d2394f40fdcd779468f1231d487fd1f8, type: 3}
       propertyPath: m_Name
       value: XR Rig
+      objectReference: {fileID: 0}
+    - target: {fileID: 8360284369324409112, guid: d2394f40fdcd779468f1231d487fd1f8, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8442025603987742997, guid: d2394f40fdcd779468f1231d487fd1f8, type: 3}
       propertyPath: m_RootOrder
@@ -1010,6 +1192,51 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1171684472522874, guid: 74d0740f4abc7e54fab50d33af2582da, type: 3}
   m_PrefabInstance: {fileID: 2088093581}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &2046388128
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2046388129}
+  - component: {fileID: 2046388130}
+  m_Layer: 0
+  m_Name: Enemy Warships
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2046388129
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2046388128}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 13
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2046388130
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2046388128}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c09b940f5f2386459e44dded13f6ce9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  game: {fileID: 442705367}
+  isPlayer: 0
 --- !u!1001 &2088093581
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1064,6 +1291,10 @@ PrefabInstance:
     - target: {fileID: 4618546184181590, guid: 74d0740f4abc7e54fab50d33af2582da, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6032331381761904002, guid: 74d0740f4abc7e54fab50d33af2582da, type: 3}
+      propertyPath: bobHeight
+      value: 0.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 74d0740f4abc7e54fab50d33af2582da, type: 3}

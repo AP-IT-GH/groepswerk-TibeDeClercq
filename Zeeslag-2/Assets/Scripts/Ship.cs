@@ -8,13 +8,20 @@ public enum Orientation
     Horizontal
 }
 
-public class Ship
+public class Ship : MonoBehaviour
 {
     public List<Vector2> ShipCoords;
     public Vector2 PositionStart;
     public Vector2 PositionEnd;
     public Orientation Orientation;
     public int Size;
+
+    public ShipBehavior behavior;
+
+    public void Start()
+    {
+        behavior = transform.GetComponent<ShipBehavior>();
+    }
 
     public Ship(int shipSize, int fieldSize)
     {
