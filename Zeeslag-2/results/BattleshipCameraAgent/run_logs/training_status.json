@@ -2,22 +2,40 @@
     "BattleshipCameraAgent": {
         "checkpoints": [
             {
-                "steps": 934,
-                "file_path": "results\\BattleshipCameraAgent\\BattleshipCameraAgent\\BattleshipCameraAgent-934.onnx",
-                "reward": 0.5,
-                "creation_time": 1651981894.998677,
+                "steps": 201287,
+                "file_path": "results\\BattleshipCameraAgent\\BattleshipCameraAgent\\BattleshipCameraAgent-201287.onnx",
+                "reward": null,
+                "creation_time": 1652000801.2934957,
                 "auxillary_file_paths": [
-                    "results\\BattleshipCameraAgent\\BattleshipCameraAgent\\BattleshipCameraAgent-934.pt"
+                    "results\\BattleshipCameraAgent\\BattleshipCameraAgent\\BattleshipCameraAgent-201287.pt"
+                ]
+            },
+            {
+                "steps": 320058,
+                "file_path": "results\\BattleshipCameraAgent\\BattleshipCameraAgent\\BattleshipCameraAgent-320058.onnx",
+                "reward": null,
+                "creation_time": 1652001425.0120375,
+                "auxillary_file_paths": [
+                    "results\\BattleshipCameraAgent\\BattleshipCameraAgent\\BattleshipCameraAgent-320058.pt"
+                ]
+            },
+            {
+                "steps": 320506,
+                "file_path": "results\\BattleshipCameraAgent\\BattleshipCameraAgent\\BattleshipCameraAgent-320506.onnx",
+                "reward": null,
+                "creation_time": 1652002277.7696738,
+                "auxillary_file_paths": [
+                    "results\\BattleshipCameraAgent\\BattleshipCameraAgent\\BattleshipCameraAgent-320506.pt"
                 ]
             }
         ],
         "final_checkpoint": {
-            "steps": 934,
+            "steps": 320506,
             "file_path": "results\\BattleshipCameraAgent\\BattleshipCameraAgent.onnx",
-            "reward": 0.5,
-            "creation_time": 1651981894.998677,
+            "reward": null,
+            "creation_time": 1652002277.7696738,
             "auxillary_file_paths": [
-                "results\\BattleshipCameraAgent\\BattleshipCameraAgent\\BattleshipCameraAgent-934.pt"
+                "results\\BattleshipCameraAgent\\BattleshipCameraAgent\\BattleshipCameraAgent-320506.pt"
             ]
         }
     },

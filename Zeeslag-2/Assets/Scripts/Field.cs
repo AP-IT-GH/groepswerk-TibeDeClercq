@@ -58,7 +58,7 @@ public class Field : MonoBehaviour
 
             this.Ships.Add(ship);
 
-            Debug.Log($"SmallShip: Start: {ship.PositionStart.x},{ship.PositionStart.y} End: {ship.PositionEnd.x},{ship.PositionEnd.y}");
+            //Debug.Log($"SmallShip: Start: {ship.PositionStart.x},{ship.PositionStart.y} End: {ship.PositionEnd.x},{ship.PositionEnd.y}");
         }
     }
 
@@ -79,7 +79,7 @@ public class Field : MonoBehaviour
 
             this.Ships.Add(ship);
 
-            Debug.Log($"BigShip: Start: {ship.PositionStart.x},{ship.PositionStart.y} End: {ship.PositionEnd.x},{ship.PositionEnd.y}");
+            //Debug.Log($"BigShip: Start: {ship.PositionStart.x},{ship.PositionStart.y} End: {ship.PositionEnd.x},{ship.PositionEnd.y}");
         }
     }
 
@@ -173,7 +173,7 @@ public class Field : MonoBehaviour
             {
                 line += this.Values[x, y];
             }
-            Debug.Log(line);
+            //Debug.Log(line);
         }
     }
 

@@ -15,10 +15,11 @@ public class ObservationGrid : MonoBehaviour
     public Zeeslag game;
     public Players player = Players.Player1;
 
-    private ObservationCube[,] grid = new ObservationCube[10,10];
+    private ObservationCube[,] grid;
 
     void Start()
     {
+        grid = new ObservationCube[playerFieldToObserve.Size, playerFieldToObserve.Size];
         for (int x = 0; x < grid.GetLength(0); x++)
         {
             for (int y = 0; y < grid.GetLength(1); y++)
@@ -34,9 +35,9 @@ public class ObservationGrid : MonoBehaviour
 
     public void ResetGrid()
     {
-        foreach (GameObject _cube in start)
+        foreach (Transform child in start)
         {
-            Destroy(_cube);
+            Destroy(child.gameObject);
         }
         cube.SetActive(true);
 

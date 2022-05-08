@@ -27,6 +27,8 @@ public class Zeeslag : MonoBehaviour
     [SerializeField] ObservationGrid player2Grid;
     [SerializeField] GenerateField player1FieldGenerator;
     [SerializeField] GenerateField player2FieldGenerator;
+    [SerializeField] float player1ShootCooldown = 3;
+    [SerializeField] float player2ShootCooldown = 3;
 
     private bool _gameStarted;
     private bool _player1Shot;
@@ -110,7 +112,7 @@ public class Zeeslag : MonoBehaviour
         {
             this._player1Shot = false;
             this.Player1CanShoot = false;
-            yield return new WaitForSeconds(3);
+            yield return new WaitForSeconds(player1ShootCooldown);
             this.Player1CanShoot = true;
         }
     }
@@ -121,7 +123,7 @@ public class Zeeslag : MonoBehaviour
         {
             this._player1Shot = false;
             this.Player2CanShoot = false;
-            yield return new WaitForSeconds(3);
+            yield return new WaitForSeconds(player2ShootCooldown);
             this.Player2CanShoot = true;
         }
     }
@@ -160,13 +162,13 @@ public class Zeeslag : MonoBehaviour
     {
         if(GetHitCount(FieldPlayer1) == (FieldPlayer1.BigShipCount * 4) + (FieldPlayer1.SmallShipCount * 2))
         {
-            GameState = GameState.Completed;
-            winner = Winner.Player1;
-        }
-        else if(GetHitCount(FieldPlayer2) == (FieldPlayer1.BigShipCount * 4) + (FieldPlayer1.SmallShipCount * 2))
-        {
-            GameState = GameState.Completed;
             winner = Winner.Player2;
+            GameState = GameState.Completed;
+        }
+        else if(GetHitCount(FieldPlayer2) == (FieldPlayer2.BigShipCount * 4) + (FieldPlayer2.SmallShipCount * 2))
+        {
+            winner = Winner.Player1;
+            GameState = GameState.Completed;
         }
     }
 

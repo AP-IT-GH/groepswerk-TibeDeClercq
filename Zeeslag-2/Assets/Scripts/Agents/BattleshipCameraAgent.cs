@@ -29,7 +29,8 @@ public class BattleshipCameraAgent : Agent
 
     public override void OnActionReceived(ActionBuffers actionBuffers)
     {
-        chosenCoordinates = new Vector2(Mathf.Round(Mathf.Clamp(actionBuffers.ContinuousActions[0],0,1) * 9), Mathf.Clamp(actionBuffers.ContinuousActions[1],0,1) * 9);
+        //chosenCoordinates = new Vector2(Mathf.Round(Mathf.Clamp(actionBuffers.ContinuousActions[0],0,1) * 9), Mathf.Clamp(actionBuffers.ContinuousActions[1],0,1) * 9);
+        chosenCoordinates = new Vector2(actionBuffers.DiscreteActions[0],actionBuffers.DiscreteActions[1]);
         shotResult = Game.Player2Shoot(chosenCoordinates);
 
         if (shotResult == 'S')
@@ -37,11 +38,15 @@ public class BattleshipCameraAgent : Agent
             Debug.Log("Agent hit a ship!");
             AddReward(1.0f);
         }
+        else if(shotResult == 'W')
+        {
+            Debug.Log("Agent hit water");
+            AddReward(0.5f);
+        }
         else if (shotResult == 'H' || shotResult == 'M') // already hit there dummy try again
         {
             Debug.Log("Agent hit same target twice");
             AddReward(-1.0f);
-            EndEpisode();
         }
 
         if (Game.GameState == GameState.Completed)
@@ -51,7 +56,10 @@ public class BattleshipCameraAgent : Agent
                 Debug.Log("Agent won the game");
                 SetReward(5.0f);
             }
-            Debug.Log("Agent lost");
+            else if (Game.winner == Winner.Player1)
+            {
+                Debug.Log("Agent lost the game");
+            }
             EndEpisode();
         }
     }
