@@ -41,6 +41,7 @@ public class Zeeslag : MonoBehaviour
             while (this.GameState == GameState.Player1Turn)
             {
                 Debug.Log("Player1Turn");
+                this._player1Shot = true; //only when training agent
                 if (this._player1Shot)
                 {
                     this._player1Shot = false;
@@ -62,28 +63,59 @@ public class Zeeslag : MonoBehaviour
         }
     }
 
-    public bool Player1Shoot(Vector2 coords)
+    public ShootResult Player1Shoot(Vector2 coords)
     {
         if(this.GameState == GameState.Player1Turn)
         {
-            bool result = this.FieldPlayer2.Shoot(coords);
-            if (result)
+            ShootResult result = this.FieldPlayer2.Shoot(coords);
+            
+            this._player1Shot = true;
+            
+            switch (result)
             {
-                this._player1Shot = true;
-                return true;
+                case ShootResult.Hit:
+                    return ShootResult.Hit;
+                case ShootResult.Miss:
+                    return ShootResult.Miss;
+                case ShootResult.Double:
+                    return ShootResult.Double;
+                default:
+                    break;
             }
         }
-        return false;
+        return ShootResult.Illegal;
     }
 
-    public bool Player2Shoot(Vector2 coords)
+    public ShootResult Player2Shoot(Vector2 coords)
     {
-        bool result = this.FieldPlayer1.Shoot(coords);
-        if (result)
+        if (this.GameState == GameState.Player2Turn)
         {
+            ShootResult result = this.FieldPlayer2.Shoot(coords);
+
             this._player2Shot = true;
-            return true;
+
+            switch (result)
+            {
+                case ShootResult.Hit:
+                    return ShootResult.Hit;
+                case ShootResult.Miss:
+                    return ShootResult.Miss;
+                case ShootResult.Double:
+                    return ShootResult.Double;
+                default:
+                    break;
+            }
         }
-        return false;
+        return ShootResult.Illegal;
+    }
+
+    public void ResetGame()
+    {
+        this._gameStarted = false;
+        this._player1Shot = false;
+        this._player2Shot = false;
+
+        this.FieldPlayer1.ResetField();
+        this.FieldPlayer2.ResetField();
     }
 }

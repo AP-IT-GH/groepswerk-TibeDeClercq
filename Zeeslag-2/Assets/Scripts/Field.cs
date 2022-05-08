@@ -9,6 +9,14 @@ public enum FieldValue{
     Miss
 }
 
+public enum ShootResult
+{
+    Hit,
+    Miss,
+    Double,
+    Illegal
+}
+
 public class Field : MonoBehaviour
 {
     public int Size;
@@ -19,7 +27,7 @@ public class Field : MonoBehaviour
 
     public List<Ship> Ships;
 
-    private void Start()
+    private void Awake()
     {
         Debug.Log("Starting a field");
         GenerateShips();
@@ -162,29 +170,40 @@ public class Field : MonoBehaviour
         }
     }
 
-    public bool Shoot(Vector2 coords)
+    public ShootResult Shoot(Vector2 coords)
     {
-        bool result = false;
+        ShootResult result = ShootResult.Double;
 
         switch (this.Values[(int)coords.x, (int)coords.y])
         {
             case 'W':
                 this.Values[(int)coords.x, (int)coords.y] = 'M';
+                result = ShootResult.Miss;
                 break;
             case 'S':
                 this.Values[(int)coords.x, (int)coords.y] = 'H';
-                result = true; // Hit a ship that wasnt hit before
+                result = ShootResult.Hit; // Hit a ship that wasnt hit before
                 break;
             case 'H':
                 this.Values[(int)coords.x, (int)coords.y] = 'H';
+                result = ShootResult.Double;
                 break;
             case 'M':
                 this.Values[(int)coords.x, (int)coords.y] = 'M';
+                result = ShootResult.Double;
                 break;
             default:
                 break;
         }
 
         return result;
+    }
+
+    public void ResetField()
+    {
+        Debug.Log("Starting a field");
+        GenerateShips();
+        CreateField();
+        PrintField();
     }
 }
