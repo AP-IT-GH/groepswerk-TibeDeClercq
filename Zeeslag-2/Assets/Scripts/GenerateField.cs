@@ -18,6 +18,15 @@ public class GenerateField : MonoBehaviour
         AssignRandomShip();
     }
 
+    public void ResetField()
+    {
+        foreach(GameObject ship in startPosition)
+        {
+            Destroy(ship);
+        }
+        Start();
+    }
+
     private void AssignRandomShip()
     {
         GameObject.Find("Warships").transform.GetChild(Random.Range(0, field.Ships.Count)).GetComponent<ShipBehavior>().standingOn = true;

@@ -12,10 +12,11 @@ public enum FieldValue{
 public class Field : MonoBehaviour
 {
     public int Size;
-    public int SmallShipCount;
-    public int BigShipCount;
+    public int SmallShipCount; //size 2
+    public int BigShipCount; //size 4
 
     public char[,] Values;
+    public char[,] DiscoveredValues; //given to other player
 
     public List<Ship> Ships;
 
@@ -25,6 +26,11 @@ public class Field : MonoBehaviour
         GenerateShips();
         CreateField();
         PrintField();
+    }
+
+    public void ResetField()
+    {
+        Awake();
     }
 
     private void GenerateShips()
@@ -106,6 +112,7 @@ public class Field : MonoBehaviour
     private void CreateField()
     {
         this.Values = new char[this.Size, this.Size];
+        this.DiscoveredValues = new char[this.Size, this.Size];
 
         for (int x = 0; x < this.Size; x++)
         {
@@ -130,6 +137,14 @@ public class Field : MonoBehaviour
                     default:
                         break;
                 }
+            }
+        }
+
+        for (int x = 0; x < this.Size; x++)
+        {
+            for (int y = 0; y < this.Size; y++)
+            {
+                this.DiscoveredValues[x, y] = 'W';
             }
         }
     }
@@ -162,29 +177,28 @@ public class Field : MonoBehaviour
         }
     }
 
-    public bool Shoot(Vector2 coords)
+    public char Shoot(Vector2 coords)
     {
-        bool result = false;
-
         switch (this.Values[(int)coords.x, (int)coords.y])
         {
             case 'W':
                 this.Values[(int)coords.x, (int)coords.y] = 'M';
-                break;
+                this.DiscoveredValues[(int)coords.x, (int)coords.y] = 'M';
+                return 'W';
             case 'S':
                 this.Values[(int)coords.x, (int)coords.y] = 'H';
-                result = true; // Hit a ship that wasnt hit before
-                break;
+                this.DiscoveredValues[(int)coords.x, (int)coords.y] = 'H';
+                return 'S'; // Hit a ship that wasnt hit before
             case 'H':
                 this.Values[(int)coords.x, (int)coords.y] = 'H';
-                break;
+                this.DiscoveredValues[(int)coords.x, (int)coords.y] = 'H';
+                return 'H'; // already hit
             case 'M':
                 this.Values[(int)coords.x, (int)coords.y] = 'M';
-                break;
+                this.DiscoveredValues[(int)coords.x, (int)coords.y] = 'M';
+                return 'M';
             default:
-                break;
+                return 'E';
         }
-
-        return result;
     }
 }
