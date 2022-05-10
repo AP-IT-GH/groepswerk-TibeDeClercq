@@ -31,6 +31,7 @@ public class ObservationGrid : MonoBehaviour
         }
         cube.SetActive(false);
         start.rotation = Quaternion.Euler(rotationX, 0, 0);
+        game.GameRestarted = true;
     }
 
     public void ResetGrid()
@@ -54,12 +55,19 @@ public class ObservationGrid : MonoBehaviour
                 {
                     case 'W':
                         grid[x, y].state = CubeState.Water;
+                        grid[x, y].gameObject.GetComponent<Renderer>().material.color = Color.blue;
                         break;
                     case 'H':
                         grid[x, y].state = CubeState.Hit;
+                        grid[x, y].gameObject.GetComponent<Renderer>().material.color = Color.red;
                         break;
                     case 'M':
                         grid[x, y].state = CubeState.Miss;
+                        grid[x, y].gameObject.GetComponent<Renderer>().material.color = Color.white;
+                        break;
+                    default:
+                        grid[x, y].state = CubeState.Water;
+                        grid[x, y].gameObject.GetComponent<Renderer>().material.color = Color.blue;
                         break;
                 }
             }

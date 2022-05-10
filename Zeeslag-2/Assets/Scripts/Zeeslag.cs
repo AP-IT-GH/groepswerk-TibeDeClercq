@@ -41,6 +41,7 @@ public class Zeeslag : MonoBehaviour
 
     public GameState GameState;
     public Winner winner;
+    public bool GameRestarted = true;
 
     private void Start()
     {
@@ -55,6 +56,7 @@ public class Zeeslag : MonoBehaviour
 
     public void Restart()
     {
+        GameRestarted = false;
         StartCoroutine(StartRestart());
     }
 
@@ -64,8 +66,8 @@ public class Zeeslag : MonoBehaviour
         FieldPlayer1.ResetField();
         FieldPlayer2.ResetField();
         yield return new WaitForSeconds(0.5f);
-        player1Grid.ResetGrid();
         player2Grid.ResetGrid();
+        player1Grid.ResetGrid();
         player1FieldGenerator.ResetField();
         player2FieldGenerator.ResetField();
     }

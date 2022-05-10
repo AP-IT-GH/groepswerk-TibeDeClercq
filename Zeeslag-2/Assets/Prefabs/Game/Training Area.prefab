@@ -432,8 +432,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a5c9d521e5ef4759a8246a07d52221e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DecisionPeriod: 10
-  TakeActionsBetweenDecisions: 1
+  DecisionPeriod: 5
+  TakeActionsBetweenDecisions: 0
 --- !u!1 &4443613734416677566
 GameObject:
   m_ObjectHideFlags: 0
@@ -827,7 +827,7 @@ PrefabInstance:
       objectReference: {fileID: 4443613734416677561}
     - target: {fileID: 1471384967092075819, guid: 13c11d7c4200e024abedccb3d9396ab5, type: 3}
       propertyPath: player2ShootCooldown
-      value: 0.1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1471384967092075819, guid: 13c11d7c4200e024abedccb3d9396ab5, type: 3}
       propertyPath: player1FieldGenerator

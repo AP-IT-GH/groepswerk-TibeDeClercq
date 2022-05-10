@@ -180,7 +180,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3433659723241547685, guid: 9b6b682be93c4044b9ad4694c7610757, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9b6b682be93c4044b9ad4694c7610757, type: 3}
@@ -241,7 +241,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3433659723241547685, guid: 9b6b682be93c4044b9ad4694c7610757, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9b6b682be93c4044b9ad4694c7610757, type: 3}
@@ -302,7 +302,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3433659723241547685, guid: 9b6b682be93c4044b9ad4694c7610757, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9b6b682be93c4044b9ad4694c7610757, type: 3}
@@ -360,10 +360,6 @@ PrefabInstance:
     - target: {fileID: 3433659723241547685, guid: 9b6b682be93c4044b9ad4694c7610757, type: 3}
       propertyPath: m_Name
       value: Training Area (8)
-      objectReference: {fileID: 0}
-    - target: {fileID: 3433659723241547685, guid: 9b6b682be93c4044b9ad4694c7610757, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9b6b682be93c4044b9ad4694c7610757, type: 3}
@@ -444,8 +440,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 815796897}
-  m_LocalRotation: {x: -0.6829611, y: -0.0023775776, z: 0.0021101662, w: -0.7304478}
-  m_LocalPosition: {x: 37.0609, y: 69.35907, z: 29.31694}
+  m_LocalRotation: {x: -0.6938385, y: 0.0004293877, z: -0.0004138432, w: -0.7201305}
+  m_LocalPosition: {x: 23.265385, y: 49.676468, z: 24.163313}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -539,6 +535,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Training Area
       objectReference: {fileID: 0}
+    - target: {fileID: 4443613734295326450, guid: 9b6b682be93c4044b9ad4694c7610757, type: 3}
+      propertyPath: DecisionPeriod
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9b6b682be93c4044b9ad4694c7610757, type: 3}
 --- !u!1001 &1102968578
@@ -598,7 +598,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3433659723241547685, guid: 9b6b682be93c4044b9ad4694c7610757, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9b6b682be93c4044b9ad4694c7610757, type: 3}
@@ -659,7 +659,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3433659723241547685, guid: 9b6b682be93c4044b9ad4694c7610757, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9b6b682be93c4044b9ad4694c7610757, type: 3}
@@ -720,7 +720,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3433659723241547685, guid: 9b6b682be93c4044b9ad4694c7610757, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9b6b682be93c4044b9ad4694c7610757, type: 3}
@@ -781,7 +781,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3433659723241547685, guid: 9b6b682be93c4044b9ad4694c7610757, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9b6b682be93c4044b9ad4694c7610757, type: 3}

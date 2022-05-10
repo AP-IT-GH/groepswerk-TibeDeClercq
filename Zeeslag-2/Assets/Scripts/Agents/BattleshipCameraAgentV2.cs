@@ -4,84 +4,50 @@ using UnityEngine;
 using Unity.MLAgents;
 using Unity.MLAgents.Sensors;
 using Unity.MLAgents.Actuators;
-using System.Linq;
 
 public class BattleshipCameraAgentV2 : Agent
 {
     public Zeeslag Game;
     public Vector2 chosenCoordinates;
-    public List<float> firedXCoordinates;
-    public List<float> firedYCoordinates;
     public char shotResult;
+
+    private bool firstStart = true;
 
     public override void OnEpisodeBegin()
     {
-        firedXCoordinates.Clear();
-        firedYCoordinates.Clear();
-        firedXCoordinates = Enumerable.Repeat(-1f, 100).ToList();
-        firedYCoordinates = Enumerable.Repeat(-1f, 100).ToList();
-
-        if (Game.GameState == GameState.Completed)
+        if (firstStart)
         {
-            Game.Restart();            
-            Debug.Log("Agent Restarted Game");
+            firstStart = false;
         }
+        else
+        {
+            Game.Restart();
+            Debug.Log("Agent Restarted Game");
+        }        
     }
 
     public override void CollectObservations(VectorSensor sensor)
     {
         sensor.AddObservation(Game.Player2CanShoot);
         sensor.AddObservation(chosenCoordinates);
-        sensor.AddObservation(firedXCoordinates);
-        sensor.AddObservation(firedYCoordinates);
+        sensor.AddObservation(transform.localPosition);
         sensor.AddObservation(shotResult);
     }
 
     public override void OnActionReceived(ActionBuffers actionBuffers)
     {
-        chosenCoordinates = new Vector2(actionBuffers.DiscreteActions[0], actionBuffers.DiscreteActions[1]);
-        transform.localPosition = new Vector3(chosenCoordinates.x, transform.localPosition.y, chosenCoordinates.y);
-
-        if (actionBuffers.DiscreteActions[2] == 1)
+        if (Game.GameRestarted && Game.Player2CanShoot)
         {
-            if (Game.Player2CanShoot)
+            chosenCoordinates = new Vector2(actionBuffers.DiscreteActions[0], actionBuffers.DiscreteActions[1]);
+            transform.localPosition = new Vector3(chosenCoordinates.x, transform.localPosition.y, chosenCoordinates.y);
+
+            if (actionBuffers.DiscreteActions[2] == 1)
             {
-                AddReward(1.0f);
+                //if (Game.Player2CanShoot)
+                //{
+                    AddReward(0.1f);
+                    //Debug.Log("Agent fired in time");
 
-                bool alreadyShot = false;
-
-                for (int i = 0; i < firedXCoordinates.Count; i++)
-                {
-                    if (firedXCoordinates[i] == chosenCoordinates.x && firedYCoordinates[i] == chosenCoordinates.y)
-                    {
-                        alreadyShot = true;
-                        break;
-                    }
-                }
-
-                if (alreadyShot) //already shot there
-                {
-                    Debug.Log("Agent wanted to hit same target twice");
-                    AddReward(-1.0f);
-                }
-                else
-                {
-                    for (int i = 0; i < firedXCoordinates.Count; i++)
-                    {
-                        if (firedXCoordinates[i] == -1)
-                        {
-                            firedXCoordinates[i] = chosenCoordinates.x;
-                            break;
-                        }
-                    }
-                    for (int i = 0; i < firedYCoordinates.Count; i++)
-                    {
-                        if (firedYCoordinates[i] == -1)
-                        {
-                            firedYCoordinates[i] = chosenCoordinates.y;
-                            break;
-                        }
-                    }
                     char lastResult = shotResult;
                     shotResult = Game.Player2Shoot(chosenCoordinates);
 
@@ -98,13 +64,24 @@ public class BattleshipCameraAgentV2 : Agent
                             AddReward(1.0f);
                         }
                     }
+                    else if (shotResult == 'W')
+                    {
+                        Debug.Log("Agent hit water!");
+                        //AddReward(0.5f);
+                    }
+                    else if (shotResult == 'M' || shotResult == 'H')
+                    {
+                        Debug.Log("Agent hit same target twice");
+                        SetReward(-5f);
+                        EndEpisode();
+                    }
 
                     if (Game.GameState == GameState.Completed)
                     {
                         if (Game.winner == Winner.Player2)
                         {
                             Debug.Log("Agent won the game");
-                            SetReward(5.0f);
+                            AddReward(10.0f);
                         }
                         else if (Game.winner == Winner.Player1)
                         {
@@ -112,15 +89,13 @@ public class BattleshipCameraAgentV2 : Agent
                         }
                         EndEpisode();
                     }
+                //}
+                else
+                {
+                    //AddReward(-1.0f);
+                    //Debug.Log("Agent fired too early");
                 }
             }
-            else
-            {
-                Debug.Log("Agent fired too early");
-                AddReward(-1.0f);
-            }
-        }
-
-               
+        }   
     }
 }

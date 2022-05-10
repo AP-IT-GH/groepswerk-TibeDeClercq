@@ -158,7 +158,7 @@ Light:
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 2
+    m_Type: 0
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1
@@ -271,6 +271,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Training Area (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 4170166144518353943, guid: fa2f44c9e67d9ff4ba48ddf2f4a9a466, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fa2f44c9e67d9ff4ba48ddf2f4a9a466, type: 3}
 --- !u!1001 &270051788
@@ -327,6 +331,10 @@ PrefabInstance:
     - target: {fileID: 4170166144518353943, guid: fa2f44c9e67d9ff4ba48ddf2f4a9a466, type: 3}
       propertyPath: m_Name
       value: Training Area (8)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4170166144518353943, guid: fa2f44c9e67d9ff4ba48ddf2f4a9a466, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fa2f44c9e67d9ff4ba48ddf2f4a9a466, type: 3}
@@ -385,6 +393,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Training Area (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 4170166144518353943, guid: fa2f44c9e67d9ff4ba48ddf2f4a9a466, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fa2f44c9e67d9ff4ba48ddf2f4a9a466, type: 3}
 --- !u!1001 &1452593238
@@ -441,6 +453,10 @@ PrefabInstance:
     - target: {fileID: 4170166144518353943, guid: fa2f44c9e67d9ff4ba48ddf2f4a9a466, type: 3}
       propertyPath: m_Name
       value: Training Area (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4170166144518353943, guid: fa2f44c9e67d9ff4ba48ddf2f4a9a466, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fa2f44c9e67d9ff4ba48ddf2f4a9a466, type: 3}
@@ -499,6 +515,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Training Area (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 4170166144518353943, guid: fa2f44c9e67d9ff4ba48ddf2f4a9a466, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fa2f44c9e67d9ff4ba48ddf2f4a9a466, type: 3}
 --- !u!1001 &1543119373
@@ -555,6 +575,10 @@ PrefabInstance:
     - target: {fileID: 4170166144518353943, guid: fa2f44c9e67d9ff4ba48ddf2f4a9a466, type: 3}
       propertyPath: m_Name
       value: Training Area (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4170166144518353943, guid: fa2f44c9e67d9ff4ba48ddf2f4a9a466, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fa2f44c9e67d9ff4ba48ddf2f4a9a466, type: 3}
@@ -730,6 +754,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Training Area (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 4170166144518353943, guid: fa2f44c9e67d9ff4ba48ddf2f4a9a466, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fa2f44c9e67d9ff4ba48ddf2f4a9a466, type: 3}
 --- !u!1001 &1914943976
@@ -786,6 +814,10 @@ PrefabInstance:
     - target: {fileID: 4170166144518353943, guid: fa2f44c9e67d9ff4ba48ddf2f4a9a466, type: 3}
       propertyPath: m_Name
       value: Training Area (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4170166144518353943, guid: fa2f44c9e67d9ff4ba48ddf2f4a9a466, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fa2f44c9e67d9ff4ba48ddf2f4a9a466, type: 3}

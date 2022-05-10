@@ -12,28 +12,8 @@ public class ObservationCube : MonoBehaviour
     public CubeState state = CubeState.Water;
     public bool Selected = false;
 
-    private Renderer _renderer;
-
-    private void Start()
-    {
-        _renderer = this.gameObject.GetComponent<Renderer>();
-    }
-
     private void Update()
     {
-        switch (state)
-        {
-            case CubeState.Water:
-                _renderer.material.color = Color.blue;
-                break;
-            case CubeState.Miss:
-                _renderer.material.color = Color.white;
-                break;
-            case CubeState.Hit:
-                _renderer.material.color = Color.red;
-                break;
-        }
-
         TempSelect(); // TEMP
     }
 
