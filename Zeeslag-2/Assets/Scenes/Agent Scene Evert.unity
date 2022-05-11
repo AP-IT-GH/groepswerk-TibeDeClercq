@@ -344,6 +344,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Training Area Evert (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 5793780144850718166, guid: 923594d9f42b4c9449d76c8eb7071628, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6346957980725302320, guid: 923594d9f42b4c9449d76c8eb7071628, type: 3}
       propertyPath: m_RootOrder
       value: 7
@@ -400,6 +404,10 @@ PrefabInstance:
     - target: {fileID: 5793780144850718166, guid: 923594d9f42b4c9449d76c8eb7071628, type: 3}
       propertyPath: m_Name
       value: Training Area Evert (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5793780144850718166, guid: 923594d9f42b4c9449d76c8eb7071628, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6346957980725302320, guid: 923594d9f42b4c9449d76c8eb7071628, type: 3}
       propertyPath: m_RootOrder
@@ -458,6 +466,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Training Area Evert (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 5793780144850718166, guid: 923594d9f42b4c9449d76c8eb7071628, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6346957980725302320, guid: 923594d9f42b4c9449d76c8eb7071628, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -514,6 +526,10 @@ PrefabInstance:
     - target: {fileID: 5793780144850718166, guid: 923594d9f42b4c9449d76c8eb7071628, type: 3}
       propertyPath: m_Name
       value: Training Area Evert (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5793780144850718166, guid: 923594d9f42b4c9449d76c8eb7071628, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6346957980725302320, guid: 923594d9f42b4c9449d76c8eb7071628, type: 3}
       propertyPath: m_RootOrder
@@ -629,6 +645,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Training Area Evert (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 5793780144850718166, guid: 923594d9f42b4c9449d76c8eb7071628, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6346957980725302320, guid: 923594d9f42b4c9449d76c8eb7071628, type: 3}
       propertyPath: m_RootOrder
       value: 8
@@ -685,6 +705,10 @@ PrefabInstance:
     - target: {fileID: 5793780144850718166, guid: 923594d9f42b4c9449d76c8eb7071628, type: 3}
       propertyPath: m_Name
       value: Training Area Evert (8)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5793780144850718166, guid: 923594d9f42b4c9449d76c8eb7071628, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6346957980725302320, guid: 923594d9f42b4c9449d76c8eb7071628, type: 3}
       propertyPath: m_RootOrder
@@ -743,6 +767,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Training Area Evert (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 5793780144850718166, guid: 923594d9f42b4c9449d76c8eb7071628, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6346957980725302320, guid: 923594d9f42b4c9449d76c8eb7071628, type: 3}
       propertyPath: m_RootOrder
       value: 10
@@ -799,6 +827,10 @@ PrefabInstance:
     - target: {fileID: 5793780144850718166, guid: 923594d9f42b4c9449d76c8eb7071628, type: 3}
       propertyPath: m_Name
       value: Training Area Evert (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5793780144850718166, guid: 923594d9f42b4c9449d76c8eb7071628, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6346957980725302320, guid: 923594d9f42b4c9449d76c8eb7071628, type: 3}
       propertyPath: m_RootOrder

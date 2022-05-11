@@ -123,11 +123,31 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 149409903912456438, guid: fa2f44c9e67d9ff4ba48ddf2f4a9a466, type: 3}
       propertyPath: Size
-      value: 10
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 149409903912456438, guid: fa2f44c9e67d9ff4ba48ddf2f4a9a466, type: 3}
       propertyPath: BigShipCount
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 149409903912456438, guid: fa2f44c9e67d9ff4ba48ddf2f4a9a466, type: 3}
+      propertyPath: Size2ShipCount
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 149409903912456438, guid: fa2f44c9e67d9ff4ba48ddf2f4a9a466, type: 3}
+      propertyPath: Size3ShipCount
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 149409903912456438, guid: fa2f44c9e67d9ff4ba48ddf2f4a9a466, type: 3}
+      propertyPath: Size4ShipCount
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 149409903912456438, guid: fa2f44c9e67d9ff4ba48ddf2f4a9a466, type: 3}
+      propertyPath: Size5ShipCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 149409903912456438, guid: fa2f44c9e67d9ff4ba48ddf2f4a9a466, type: 3}
+      propertyPath: Size6ShipCount
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 149409903912456438, guid: fa2f44c9e67d9ff4ba48ddf2f4a9a466, type: 3}
       propertyPath: SmallShipCount
@@ -140,6 +160,26 @@ PrefabInstance:
     - target: {fileID: 149409904827293093, guid: fa2f44c9e67d9ff4ba48ddf2f4a9a466, type: 3}
       propertyPath: BigShipCount
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 149409904827293093, guid: fa2f44c9e67d9ff4ba48ddf2f4a9a466, type: 3}
+      propertyPath: Size2ShipCount
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 149409904827293093, guid: fa2f44c9e67d9ff4ba48ddf2f4a9a466, type: 3}
+      propertyPath: Size3ShipCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 149409904827293093, guid: fa2f44c9e67d9ff4ba48ddf2f4a9a466, type: 3}
+      propertyPath: Size4ShipCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 149409904827293093, guid: fa2f44c9e67d9ff4ba48ddf2f4a9a466, type: 3}
+      propertyPath: Size5ShipCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 149409904827293093, guid: fa2f44c9e67d9ff4ba48ddf2f4a9a466, type: 3}
+      propertyPath: Size6ShipCount
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 149409904827293093, guid: fa2f44c9e67d9ff4ba48ddf2f4a9a466, type: 3}
       propertyPath: SmallShipCount

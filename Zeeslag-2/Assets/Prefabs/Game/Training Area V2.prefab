@@ -92,6 +92,10 @@ PrefabInstance:
       propertyPath: player2ShootCooldown
       value: 0.1
       objectReference: {fileID: 0}
+    - target: {fileID: 1471384967196967748, guid: 9b6b682be93c4044b9ad4694c7610757, type: 3}
+      propertyPath: Size
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 2870349513655025219, guid: 9b6b682be93c4044b9ad4694c7610757, type: 3}
       propertyPath: m_RootOrder
       value: 0
