@@ -125,12 +125,12 @@ public class Zeeslag : MonoBehaviour
 
     private void UpdateGameState()
     {
-        if(GetHitCount(FieldPlayer1) == (FieldPlayer1.Size4ShipCount * 4) + (FieldPlayer1.Size2ShipCount * 2))
+        if(GetHitCount(FieldPlayer1) == (FieldPlayer1.Size2ShipCount * 2) + (FieldPlayer1.Size3ShipCount * 3) + (FieldPlayer1.Size4ShipCount * 4) + (FieldPlayer1.Size5ShipCount * 5) + (FieldPlayer1.Size6ShipCount * 6))
         {
             winner = Winner.Player2;
             GameState = GameState.Completed;
         }
-        else if(GetHitCount(FieldPlayer2) == (FieldPlayer2.Size4ShipCount * 4) + (FieldPlayer2.Size2ShipCount * 2))
+        else if(GetHitCount(FieldPlayer2) == (FieldPlayer2.Size2ShipCount * 2) + (FieldPlayer2.Size3ShipCount * 3) + (FieldPlayer2.Size4ShipCount * 4) + (FieldPlayer2.Size5ShipCount * 5) + (FieldPlayer2.Size6ShipCount * 6))
         {
             winner = Winner.Player1;
             GameState = GameState.Completed;
