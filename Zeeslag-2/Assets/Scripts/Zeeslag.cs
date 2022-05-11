@@ -142,7 +142,7 @@ public class Zeeslag : MonoBehaviour
 
             return result;
         }
-        return 'E'; //error player must wait, not used for agent
+        return 'W';
     }
 
     public char Player2Shoot(Vector2 coords)
@@ -157,7 +157,7 @@ public class Zeeslag : MonoBehaviour
 
             return result;
         }
-        return 'E'; //error player must wait, not used for agent
+        return 'W'; 
     }
 
     private void UpdateGameState()

@@ -16,17 +16,29 @@ public class ObservationGrid : MonoBehaviour
     public Players player = Players.Player1;
 
     private ObservationCube[,] grid;
+    private bool cubeIsPlane = false;
 
     void Start()
     {
+        cubeIsPlane = cube.GetComponent<ObservationCube>().isPlane;
+
         grid = new ObservationCube[playerFieldToObserve.Size, playerFieldToObserve.Size];
         for (int x = 0; x < grid.GetLength(0); x++)
         {
             for (int y = 0; y < grid.GetLength(1); y++)
             {
-                var newCube = Instantiate(cube, new Vector3(start.position.x + (x * (cube.transform.localScale.x + spacing)), start.position.y, start.position.z + (y * (cube.transform.localScale.z + spacing))), Quaternion.identity, start);
-                newCube.GetComponent<ObservationCube>().coordinates = new Vector2(x, y);
-                grid[x, y] = newCube.GetComponent<ObservationCube>();
+                if (cubeIsPlane)
+                {
+                    var newCube = Instantiate(cube, new Vector3(start.position.x + (x * 10 * (cube.transform.localScale.x + spacing)), cube.transform.localPosition.y, start.position.z + (y * 10 * (cube.transform.localScale.z + spacing))), Quaternion.identity, start);
+                    newCube.GetComponent<ObservationCube>().coordinates = new Vector2(x, y);
+                    grid[x, y] = newCube.GetComponent<ObservationCube>();
+                }
+                else
+                {
+                    var newCube = Instantiate(cube, new Vector3(start.position.x + (x * (cube.transform.localScale.x + spacing)), start.position.y, start.position.z + (y * (cube.transform.localScale.z + spacing))), Quaternion.identity, start);
+                    newCube.GetComponent<ObservationCube>().coordinates = new Vector2(x, y);
+                    grid[x, y] = newCube.GetComponent<ObservationCube>();
+                }                
             }
         }
         cube.SetActive(false);

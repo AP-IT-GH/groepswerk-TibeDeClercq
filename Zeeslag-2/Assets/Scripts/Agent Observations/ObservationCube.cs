@@ -7,6 +7,8 @@ public enum CubeState { Water, Miss, Hit}
 
 public class ObservationCube : MonoBehaviour
 {
+    public bool isPlane = false;
+
     public Vector2 coordinates;
     public ObservationGrid observationGrid;
     public CubeState state = CubeState.Water;
