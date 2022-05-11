@@ -123,7 +123,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 149409903912456438, guid: fa2f44c9e67d9ff4ba48ddf2f4a9a466, type: 3}
       propertyPath: Size
-      value: 6
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 149409903912456438, guid: fa2f44c9e67d9ff4ba48ddf2f4a9a466, type: 3}
       propertyPath: BigShipCount
@@ -135,19 +135,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 149409903912456438, guid: fa2f44c9e67d9ff4ba48ddf2f4a9a466, type: 3}
       propertyPath: Size3ShipCount
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 149409903912456438, guid: fa2f44c9e67d9ff4ba48ddf2f4a9a466, type: 3}
       propertyPath: Size4ShipCount
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 149409903912456438, guid: fa2f44c9e67d9ff4ba48ddf2f4a9a466, type: 3}
       propertyPath: Size5ShipCount
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 149409903912456438, guid: fa2f44c9e67d9ff4ba48ddf2f4a9a466, type: 3}
       propertyPath: Size6ShipCount
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 149409903912456438, guid: fa2f44c9e67d9ff4ba48ddf2f4a9a466, type: 3}
       propertyPath: SmallShipCount
@@ -215,19 +215,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3157943033131490626, guid: fa2f44c9e67d9ff4ba48ddf2f4a9a466, type: 3}
       propertyPath: m_BrainParameters.VectorActionSize.Array.data[0]
-      value: 3
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 3157943033131490626, guid: fa2f44c9e67d9ff4ba48ddf2f4a9a466, type: 3}
       propertyPath: m_BrainParameters.VectorActionSize.Array.data[1]
-      value: 3
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 3157943033131490626, guid: fa2f44c9e67d9ff4ba48ddf2f4a9a466, type: 3}
       propertyPath: m_BrainParameters.m_ActionSpec.BranchSizes.Array.data[0]
-      value: 3
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 3157943033131490626, guid: fa2f44c9e67d9ff4ba48ddf2f4a9a466, type: 3}
       propertyPath: m_BrainParameters.m_ActionSpec.BranchSizes.Array.data[1]
-      value: 3
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 3157943033286322443, guid: fa2f44c9e67d9ff4ba48ddf2f4a9a466, type: 3}
       propertyPath: cube

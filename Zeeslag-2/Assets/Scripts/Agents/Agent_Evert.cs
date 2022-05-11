@@ -13,9 +13,13 @@ public class Agent_Evert : Agent
 
     private bool firstStart = true;
     private List<Vector2> shotCoords;
+    private int stepsWithoutFiring = 0;
+    private int totalSteps = 0;
 
     public override void OnEpisodeBegin() //called first
     {
+        stepsWithoutFiring = 0;
+        totalSteps = 0;
         shotResult = new char();
         shotCoords = new List<Vector2>();
         transform.localPosition = new Vector3(0,transform.localPosition.y,0);
@@ -49,18 +53,13 @@ public class Agent_Evert : Agent
 
     public override void OnActionReceived(ActionBuffers actionBuffers) //called last
     {
+        totalSteps++;
+        stepsWithoutFiring++;
+
         //try to fire
         if (actionBuffers.DiscreteActions[2] == 1)
         {
-            if (Game.Player2CanShoot)
-            {
-                Debug.Log("Player fired in time");
-            }
-            else
-            {
-                Debug.Log("Player fired too late");
-            }
-
+            stepsWithoutFiring = 0;
             char lastResult = shotResult;
             shotResult = Game.Player2Shoot(chosenCoordinates);
             shotCoords.Add(chosenCoordinates);
@@ -89,7 +88,8 @@ public class Agent_Evert : Agent
         //try to move
         int x = actionBuffers.DiscreteActions[0];
         int y = actionBuffers.DiscreteActions[1];
-        transform.localPosition += new Vector3(x == 0 ? -1 : x == 2 ? 1 : 0, 0, y == 0 ? -1 : y == 2 ? 1 : 0);
+        //transform.localPosition += new Vector3(x == 0 ? -1 : x == 2 ? 1 : 0, 0, y == 0 ? -1 : y == 2 ? 1 : 0);
+        transform.localPosition = new Vector3(x, transform.localPosition.y, y);
         chosenCoordinates = new Vector2(transform.localPosition.x, transform.localPosition.z);
 
         //check if game is completed
@@ -97,13 +97,24 @@ public class Agent_Evert : Agent
         {
             if (Game.winner == Winner.Player2)
             {
+                float penalty = ((totalSteps * -0.001f) + 0.5f) * 20;
                 Debug.Log("Agent won the game");
+                Debug.Log($"Agent lost {penalty} due to it's step count");
+                AddReward(penalty);
                 AddReward(100.0f);
             }
             else if (Game.winner == Winner.Player1)
             {
                 Debug.Log("Agent lost the game");
             }
+            EndEpisode();
+        }
+
+        //if agents stop firing for a long time, end episode
+        if (stepsWithoutFiring > 5000)
+        {
+            Debug.Log("Agent stopped firing for 5000 steps");
+            AddReward(-1000f);
             EndEpisode();
         }
     }
@@ -151,10 +162,12 @@ public class Agent_Evert : Agent
     {
         if (Game.Player2CanShoot == false || shotCoords.Contains(chosenCoordinates) || Game.GameRestarted == false || transform.localPosition.x < 0 || transform.localPosition.y > Game.FieldPlayer1.Size-1 || transform.localPosition.z < 0 || transform.localPosition.z > Game.FieldPlayer1.Size-1)
         {
+            Debug.Log("Masking agent from firing");
             actionMask.SetActionEnabled(2, 1, false);
         }
         else
         {
+            Debug.Log("Agent is free to fire");
             actionMask.SetActionEnabled(2, 1, true);
         }
     }
