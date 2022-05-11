@@ -68,18 +68,22 @@ public class ObservationGrid : MonoBehaviour
                     case 'W':
                         grid[x, y].state = CubeState.Water;
                         grid[x, y].gameObject.GetComponent<Renderer>().material.color = Color.blue;
+                        grid[x, y].gameObject.tag = "W";
                         break;
                     case 'H':
                         grid[x, y].state = CubeState.Hit;
                         grid[x, y].gameObject.GetComponent<Renderer>().material.color = Color.red;
+                        grid[x, y].gameObject.tag = "H";
                         break;
                     case 'M':
                         grid[x, y].state = CubeState.Miss;
                         grid[x, y].gameObject.GetComponent<Renderer>().material.color = Color.white;
+                        grid[x, y].gameObject.tag = "M";
                         break;
                     default:
                         grid[x, y].state = CubeState.Water;
                         grid[x, y].gameObject.GetComponent<Renderer>().material.color = Color.blue;
+                        grid[x, y].gameObject.tag = "W";
                         break;
                 }
             }

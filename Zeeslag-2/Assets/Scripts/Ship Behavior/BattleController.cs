@@ -7,7 +7,7 @@ public class BattleController : MonoBehaviour
     public Zeeslag game;
     public bool isPlayer;
 
-    public List<Ship> ships;
+    public List<ShipBehavior> ships;
 
     void Start()
     {
@@ -20,7 +20,7 @@ public class BattleController : MonoBehaviour
 
         for (int i = 0; i < transform.childCount; i++)
         {
-            ships.Add(transform.GetChild(i).GetComponent<Ship>());
+            ships.Add(transform.GetChild(i).GetComponent<ShipBehavior>());
         }
     }
 }

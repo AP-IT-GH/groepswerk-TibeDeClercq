@@ -12,6 +12,7 @@ public class ShipBehavior : MonoBehaviour
     private float startPosition;
     private float offset;
     private float direction = 1;
+    //orentation, coordinates etcc
 
     void Start()
     {

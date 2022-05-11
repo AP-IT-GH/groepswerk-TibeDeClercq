@@ -379,7 +379,6 @@ GameObject:
   - component: {fileID: 23137177680154494}
   - component: {fileID: 64733126321154782}
   - component: {fileID: 6032331381761904002}
-  - component: {fileID: 9191914338926498589}
   m_Layer: 0
   m_Name: Destroyer
   m_TagString: Untagged
@@ -489,23 +488,6 @@ MonoBehaviour:
   - {fileID: 5971898308385854668}
   - {fileID: 4964254438232048669}
   - {fileID: 3208974827532888197}
---- !u!114 &9191914338926498589
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1171684472522874}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1a320023562581c4fb129eacb9195c57, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ShipCoords: []
-  PositionStart: {x: 0, y: 0}
-  PositionEnd: {x: 0, y: 0}
-  Orientation: 0
-  Size: 0
 --- !u!1 &1220600251093792
 GameObject:
   m_ObjectHideFlags: 0

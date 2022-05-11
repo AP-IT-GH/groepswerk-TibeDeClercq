@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 23248618128248286}
   - component: {fileID: 64146703819460646}
   - component: {fileID: 8509270920146867934}
-  - component: {fileID: 2349847282917393323}
   m_Layer: 0
   m_Name: Cruiser
   m_TagString: Untagged
@@ -128,23 +127,6 @@ MonoBehaviour:
   - {fileID: 3953617851590890079}
   - {fileID: 4802913588015804420}
   - {fileID: 1248855045305267706}
---- !u!114 &2349847282917393323
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1042197431107668}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1a320023562581c4fb129eacb9195c57, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ShipCoords: []
-  PositionStart: {x: 0, y: 0}
-  PositionEnd: {x: 0, y: 0}
-  Orientation: 0
-  Size: 0
 --- !u!1 &1063994187883712
 GameObject:
   m_ObjectHideFlags: 0

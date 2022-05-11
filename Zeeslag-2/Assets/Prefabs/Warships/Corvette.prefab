@@ -154,7 +154,6 @@ GameObject:
   - component: {fileID: 23370771869170978}
   - component: {fileID: 64681927510354014}
   - component: {fileID: 8114821396794379666}
-  - component: {fileID: 5004074464733870945}
   m_Layer: 0
   m_Name: Corvette
   m_TagString: Untagged
@@ -262,23 +261,6 @@ MonoBehaviour:
   cannons:
   - {fileID: 3329586700914719216}
   - {fileID: 60637024843609465}
---- !u!114 &5004074464733870945
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1307028158353980}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1a320023562581c4fb129eacb9195c57, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ShipCoords: []
-  PositionStart: {x: 0, y: 0}
-  PositionEnd: {x: 0, y: 0}
-  Orientation: 0
-  Size: 0
 --- !u!1 &1345887407032708
 GameObject:
   m_ObjectHideFlags: 0

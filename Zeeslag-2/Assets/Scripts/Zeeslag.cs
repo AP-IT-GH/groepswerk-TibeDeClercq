@@ -71,43 +71,6 @@ public class Zeeslag : MonoBehaviour
         player1FieldGenerator.ResetField();
         player2FieldGenerator.ResetField();
     }
-    //private void FixedUpdate()
-    //{
-    //    if (!this._gameStarted)
-    //    {
-    //        this._gameStarted = true;
-    //        //StartCoroutine(this.GameLogic());
-    //    }
-    //}
-
-    //private IEnumerator GameLogic()
-    //{
-    //    while (this._gameStarted)
-    //    {
-    //        while (this.GameState == GameState.Player1Turn)
-    //        {
-    //            Debug.Log("Player1Turn");
-    //            if (this._player1Shot)
-    //            {
-    //                this._player1Shot = false;
-    //                this.GameState = GameState.Player2Turn;
-    //                yield return new WaitForSeconds(2);
-    //            }
-    //        }
-
-    //        while (this.GameState == GameState.Player2Turn)
-    //        {
-    //            Debug.Log("Player2Turn");
-    //            if (this._player2Shot)
-    //            {
-    //                this._player2Shot = false;
-    //                this.GameState = GameState.Player1Turn;
-    //                yield return new WaitForSeconds(2);
-    //            }
-    //        }
-    //    }
-    //}
-
     private IEnumerator Player1Wait()
     {
         if (this._player1Shot)
@@ -162,12 +125,12 @@ public class Zeeslag : MonoBehaviour
 
     private void UpdateGameState()
     {
-        if(GetHitCount(FieldPlayer1) == (FieldPlayer1.BigShipCount * 4) + (FieldPlayer1.SmallShipCount * 2))
+        if(GetHitCount(FieldPlayer1) == (FieldPlayer1.Size4ShipCount * 4) + (FieldPlayer1.Size2ShipCount * 2))
         {
             winner = Winner.Player2;
             GameState = GameState.Completed;
         }
-        else if(GetHitCount(FieldPlayer2) == (FieldPlayer2.BigShipCount * 4) + (FieldPlayer2.SmallShipCount * 2))
+        else if(GetHitCount(FieldPlayer2) == (FieldPlayer2.Size4ShipCount * 4) + (FieldPlayer2.Size2ShipCount * 2))
         {
             winner = Winner.Player1;
             GameState = GameState.Completed;
@@ -189,31 +152,4 @@ public class Zeeslag : MonoBehaviour
         }
         return hitcount;
     }
-
-    //public bool Player1Shoot(Vector2 coords)
-    //{
-    //    Debug.Log("Player 1 Shooting");
-    //    if(this.GameState == GameState.Player1Turn)
-    //    {
-    //        bool result = this.FieldPlayer2.Shoot(coords);
-    //        if (result)
-    //        {
-    //            this._player1Shot = true;
-    //            return true;
-    //        }
-    //    }
-    //    return false;
-    //}
-
-    //public bool Player2Shoot(Vector2 coords)
-    //{
-    //    Debug.Log("Player 2 Shooting");
-    //    bool result = this.FieldPlayer1.Shoot(coords);
-    //    if (result)
-    //    {
-    //        this._player2Shot = true;
-    //        return true;
-    //    }
-    //    return false;
-    //}
 }

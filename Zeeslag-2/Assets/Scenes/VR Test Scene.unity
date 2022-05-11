@@ -309,6 +309,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6fd828243465a2242983f40e29307ef4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isPlane: 0
   coordinates: {x: 0, y: 0}
   observationGrid: {fileID: 1840674107}
   state: 0
