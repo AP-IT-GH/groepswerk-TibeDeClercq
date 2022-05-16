@@ -11,13 +11,21 @@ public class Agent_Evert : Agent
     public Vector2 chosenCoordinates;
     public char shotResult;
 
+    private int defaultFieldSize;
     private bool firstStart = true;
     private List<Vector2> shotCoords;
     private int missedCount;
     private int fieldTilesCount;
+    private int stepCount;
+
+    private void Start()
+    {
+        defaultFieldSize = Game.FieldPlayer1.Size;
+    }
 
     public override void OnEpisodeBegin() //called first
     {
+        stepCount = 0;
         fieldTilesCount = Game.FieldPlayer1.Size * Game.FieldPlayer1.Size;
         missedCount = 0;
         shotResult = new char();
@@ -31,6 +39,7 @@ public class Agent_Evert : Agent
         }
         else
         {
+            SetFieldVariables();
             Game.Restart();
             Debug.Log("Agent Restarted Game");
         }
@@ -39,7 +48,8 @@ public class Agent_Evert : Agent
     public override void CollectObservations(VectorSensor sensor) //called after episode begin
     {
         sensor.AddObservation(chosenCoordinates);
-        sensor.AddObservation(shotResult);       
+        sensor.AddObservation(shotResult);
+        sensor.AddObservation(stepCount);
     }
 
     public override void WriteDiscreteActionMask(IDiscreteActionMask actionMask) //called after collect observations
@@ -53,13 +63,16 @@ public class Agent_Evert : Agent
 
     public override void OnActionReceived(ActionBuffers actionBuffers) //called last
     {
+        Debug.Log("Action taken");
+        stepCount++;
+
         //try to fire
         if (actionBuffers.DiscreteActions[2] == 1)
         {
             shotResult = Game.Player2Shoot(chosenCoordinates);
             shotCoords.Add(chosenCoordinates);
 
-            if (shotResult == 'W') missedCount++;          
+            if (shotResult == 'W') missedCount++;
         }
 
         //try to move
@@ -74,7 +87,7 @@ public class Agent_Evert : Agent
         {
             if (Game.winner == Winner.Player2)
             {
-                Debug.Log("Agent won the game");                
+                Debug.Log("Agent won the game");
                 float waterTileCount = fieldTilesCount - Game.FieldPlayer1.GetShipPartCount();
                 Debug.Log($"Score given: {(waterTileCount - missedCount) / waterTileCount}");
                 AddReward((waterTileCount - missedCount) / waterTileCount); // 1 would be the theorethical top score: never missed
@@ -84,6 +97,33 @@ public class Agent_Evert : Agent
                 Debug.Log("Agent lost the game");
             }
             EndEpisode();
+        }
+
+        if (stepCount > 2000)
+        {
+            AddReward(-1f);
+            EndEpisode();
+        }
+    }
+
+    private void SetFieldVariables()
+    {
+        Game.FieldPlayer1.Size = (int)Academy.Instance.EnvironmentParameters.GetWithDefault("field_size", defaultFieldSize);
+        switch (Game.FieldPlayer1.Size)
+        {
+            case 5:
+                Game.FieldPlayer1.Size2ShipCount = 1;
+                Game.FieldPlayer1.Size3ShipCount = 1;
+                Game.FieldPlayer1.Size4ShipCount = 1;
+                Game.FieldPlayer1.Size5ShipCount = 0;
+                Game.FieldPlayer1.Size6ShipCount = 0;
+                break;
+            case 6:
+                Game.FieldPlayer1.Size5ShipCount = 1;
+                break;
+            case 7:
+                Game.FieldPlayer1.Size6ShipCount = 1;
+                break;
         }
     }
 

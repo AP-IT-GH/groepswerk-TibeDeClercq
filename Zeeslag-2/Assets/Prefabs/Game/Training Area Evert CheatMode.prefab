@@ -20,6 +20,14 @@ PrefabInstance:
       value: 0.05
       objectReference: {fileID: 0}
     - target: {fileID: 4786068763454825603, guid: 923594d9f42b4c9449d76c8eb7071628, type: 3}
+      propertyPath: m_Model
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4786068763454825603, guid: 923594d9f42b4c9449d76c8eb7071628, type: 3}
+      propertyPath: m_BehaviorType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4786068763454825603, guid: 923594d9f42b4c9449d76c8eb7071628, type: 3}
       propertyPath: m_BrainParameters.VectorActionSize.Array.data[0]
       value: 3
       objectReference: {fileID: 0}
@@ -109,7 +117,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7758017568073918775, guid: 923594d9f42b4c9449d76c8eb7071628, type: 3}
       propertyPath: Size
-      value: 5
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 7758017568073918775, guid: 923594d9f42b4c9449d76c8eb7071628, type: 3}
+      propertyPath: Size2ShipCount
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7758017568073918775, guid: 923594d9f42b4c9449d76c8eb7071628, type: 3}
+      propertyPath: Size3ShipCount
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7758017568073918775, guid: 923594d9f42b4c9449d76c8eb7071628, type: 3}
       propertyPath: Size4ShipCount
@@ -117,11 +133,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7758017568073918775, guid: 923594d9f42b4c9449d76c8eb7071628, type: 3}
       propertyPath: Size5ShipCount
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7758017568073918775, guid: 923594d9f42b4c9449d76c8eb7071628, type: 3}
       propertyPath: Size6ShipCount
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 923594d9f42b4c9449d76c8eb7071628, type: 3}

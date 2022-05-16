@@ -136,11 +136,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 149409903912456438, guid: fa2f44c9e67d9ff4ba48ddf2f4a9a466, type: 3}
       propertyPath: Size2ShipCount
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 149409903912456438, guid: fa2f44c9e67d9ff4ba48ddf2f4a9a466, type: 3}
       propertyPath: Size3ShipCount
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 149409903912456438, guid: fa2f44c9e67d9ff4ba48ddf2f4a9a466, type: 3}
       propertyPath: Size4ShipCount
