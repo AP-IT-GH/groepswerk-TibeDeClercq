@@ -314,6 +314,7 @@ MonoBehaviour:
   observationGrid: {fileID: 1840674107}
   state: 0
   Selected: 0
+  Renderer: {fileID: 0}
 --- !u!65 &468600183
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -560,8 +561,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 861182492}
-  m_LocalRotation: {x: 0.69922584, y: 0.0005676376, z: -0.00052061037, w: 0.7149005}
-  m_LocalPosition: {x: 509.1906, y: 12.956436, z: 511.07404}
+  m_LocalRotation: {x: -0.2393916, y: -0.02440121, z: 0.0059359795, w: -0.97059834}
+  m_LocalPosition: {x: -2.437408, y: 89.30989, z: -218.15149}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1038,6 +1039,9 @@ MonoBehaviour:
   spacing: 0
   rotationX: 0
   playerFieldToObserve: {fileID: 1861321927}
+  waterColor: {r: 0, g: 0, b: 1, a: 1}
+  hitColor: {r: 1, g: 0, b: 0, a: 1}
+  missColor: {r: 1, g: 1, b: 1, a: 1}
   game: {fileID: 442705367}
   player: 1
 --- !u!4 &1840674108
@@ -1381,6 +1385,58 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 442705367}
     - target: {fileID: 640593062529778718, guid: b51502e9a1176ea4f8a1e8f99d3092c0, type: 3}
+      propertyPath: cheatMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 640593062529778718, guid: b51502e9a1176ea4f8a1e8f99d3092c0, type: 3}
+      propertyPath: hitColor.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 640593062529778718, guid: b51502e9a1176ea4f8a1e8f99d3092c0, type: 3}
+      propertyPath: hitColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 640593062529778718, guid: b51502e9a1176ea4f8a1e8f99d3092c0, type: 3}
+      propertyPath: hitColor.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 640593062529778718, guid: b51502e9a1176ea4f8a1e8f99d3092c0, type: 3}
+      propertyPath: hitColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 640593062529778718, guid: b51502e9a1176ea4f8a1e8f99d3092c0, type: 3}
+      propertyPath: missColor.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 640593062529778718, guid: b51502e9a1176ea4f8a1e8f99d3092c0, type: 3}
+      propertyPath: missColor.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 640593062529778718, guid: b51502e9a1176ea4f8a1e8f99d3092c0, type: 3}
+      propertyPath: missColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 640593062529778718, guid: b51502e9a1176ea4f8a1e8f99d3092c0, type: 3}
+      propertyPath: missColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 640593062529778718, guid: b51502e9a1176ea4f8a1e8f99d3092c0, type: 3}
+      propertyPath: waterColor.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 640593062529778718, guid: b51502e9a1176ea4f8a1e8f99d3092c0, type: 3}
+      propertyPath: waterColor.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 640593062529778718, guid: b51502e9a1176ea4f8a1e8f99d3092c0, type: 3}
+      propertyPath: waterColor.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 640593062529778718, guid: b51502e9a1176ea4f8a1e8f99d3092c0, type: 3}
+      propertyPath: waterColor.r
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 640593062529778718, guid: b51502e9a1176ea4f8a1e8f99d3092c0, type: 3}
       propertyPath: playerFieldToObserve
       value: 
       objectReference: {fileID: 964086164}
@@ -1504,6 +1560,30 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1471384966503502184, guid: 13c11d7c4200e024abedccb3d9396ab5, type: 3}
+      propertyPath: Size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1471384966503502184, guid: 13c11d7c4200e024abedccb3d9396ab5, type: 3}
+      propertyPath: Size2ShipCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1471384966503502184, guid: 13c11d7c4200e024abedccb3d9396ab5, type: 3}
+      propertyPath: Size3ShipCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1471384966503502184, guid: 13c11d7c4200e024abedccb3d9396ab5, type: 3}
+      propertyPath: Size4ShipCount
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1471384966503502184, guid: 13c11d7c4200e024abedccb3d9396ab5, type: 3}
+      propertyPath: Size5ShipCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1471384966503502184, guid: 13c11d7c4200e024abedccb3d9396ab5, type: 3}
+      propertyPath: Size6ShipCount
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1471384967092075812, guid: 13c11d7c4200e024abedccb3d9396ab5, type: 3}
       propertyPath: m_RootOrder
       value: 9
@@ -1560,6 +1640,10 @@ PrefabInstance:
       propertyPath: player2Grid
       value: 
       objectReference: {fileID: 1840674107}
+    - target: {fileID: 1471384967092075819, guid: 13c11d7c4200e024abedccb3d9396ab5, type: 3}
+      propertyPath: player1CheatMode
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1471384967092075819, guid: 13c11d7c4200e024abedccb3d9396ab5, type: 3}
       propertyPath: player1FieldGenerator
       value: 

@@ -61,13 +61,14 @@ public class GenerateField : MonoBehaviour
 
     private void InstantiateShip(GameObject shipPrefab, Ship ship)
     {
+        GameObject newShip = Instantiate(shipPrefab, new Vector3(ship.PositionStart.x * spacing, shipHeight, ship.PositionStart.y * spacing), Quaternion.identity, startPosition);
+        ShipBehavior behavior = newShip.GetComponent<ShipBehavior>();
+        behavior.coordinates = ship.PositionStart;
+        behavior.orientation = ship.Orientation;
+
         if (ship.Orientation == Orientation.Horizontal)
         {
-            Instantiate(shipPrefab, new Vector3(ship.PositionStart.x * spacing, shipHeight, ship.PositionStart.y * spacing), Quaternion.Euler(0, 90, 0), startPosition);
-        }
-        else
-        {
-            Instantiate(shipPrefab, new Vector3(ship.PositionStart.x * spacing, shipHeight, ship.PositionStart.y * spacing), Quaternion.identity, startPosition);
+            newShip.transform.localRotation = Quaternion.Euler(0, 90, 0);            
         }
     }
 }

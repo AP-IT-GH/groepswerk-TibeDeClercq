@@ -114,6 +114,7 @@ MonoBehaviour:
   observationGrid: {fileID: 4786068763602243786}
   state: 0
   Selected: 0
+  Renderer: {fileID: 0}
 --- !u!1001 &7618063464181381569
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -121,9 +122,13 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1697868646, guid: fa2f44c9e67d9ff4ba48ddf2f4a9a466, type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 149409903912456438, guid: fa2f44c9e67d9ff4ba48ddf2f4a9a466, type: 3}
       propertyPath: Size
-      value: 10
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 149409903912456438, guid: fa2f44c9e67d9ff4ba48ddf2f4a9a466, type: 3}
       propertyPath: BigShipCount
@@ -139,15 +144,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 149409903912456438, guid: fa2f44c9e67d9ff4ba48ddf2f4a9a466, type: 3}
       propertyPath: Size4ShipCount
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 149409903912456438, guid: fa2f44c9e67d9ff4ba48ddf2f4a9a466, type: 3}
       propertyPath: Size5ShipCount
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 149409903912456438, guid: fa2f44c9e67d9ff4ba48ddf2f4a9a466, type: 3}
       propertyPath: Size6ShipCount
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 149409903912456438, guid: fa2f44c9e67d9ff4ba48ddf2f4a9a466, type: 3}
       propertyPath: SmallShipCount
@@ -185,6 +190,10 @@ PrefabInstance:
       propertyPath: SmallShipCount
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 149409905314509286, guid: fa2f44c9e67d9ff4ba48ddf2f4a9a466, type: 3}
+      propertyPath: player2CheatMode
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2205198868422374281, guid: fa2f44c9e67d9ff4ba48ddf2f4a9a466, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -193,21 +202,41 @@ PrefabInstance:
       propertyPath: TakeActionsBetweenDecisions
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3157943033026649907, guid: fa2f44c9e67d9ff4ba48ddf2f4a9a466, type: 3}
+      propertyPath: m_BackGroundColor.b
+      value: 0.07011509
+      objectReference: {fileID: 0}
+    - target: {fileID: 3157943033026649907, guid: fa2f44c9e67d9ff4ba48ddf2f4a9a466, type: 3}
+      propertyPath: m_BackGroundColor.g
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3157943033026649910, guid: fa2f44c9e67d9ff4ba48ddf2f4a9a466, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3157943033026649910, guid: fa2f44c9e67d9ff4ba48ddf2f4a9a466, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 4.5
+      value: 0.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 3157943033026649910, guid: fa2f44c9e67d9ff4ba48ddf2f4a9a466, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.33
       objectReference: {fileID: 0}
     - target: {fileID: 3157943033026649910, guid: fa2f44c9e67d9ff4ba48ddf2f4a9a466, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 4.5
+      value: 0.031
+      objectReference: {fileID: 0}
+    - target: {fileID: 3157943033131490626, guid: fa2f44c9e67d9ff4ba48ddf2f4a9a466, type: 3}
+      propertyPath: m_Model
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 3157943033131490626, guid: fa2f44c9e67d9ff4ba48ddf2f4a9a466, type: 3}
       propertyPath: m_BehaviorName
       value: AgentEvert
+      objectReference: {fileID: 0}
+    - target: {fileID: 3157943033131490626, guid: fa2f44c9e67d9ff4ba48ddf2f4a9a466, type: 3}
+      propertyPath: m_BehaviorType
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3157943033131490626, guid: fa2f44c9e67d9ff4ba48ddf2f4a9a466, type: 3}
       propertyPath: m_BrainParameters.VectorObservationSize
@@ -215,19 +244,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3157943033131490626, guid: fa2f44c9e67d9ff4ba48ddf2f4a9a466, type: 3}
       propertyPath: m_BrainParameters.VectorActionSize.Array.data[0]
-      value: 10
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3157943033131490626, guid: fa2f44c9e67d9ff4ba48ddf2f4a9a466, type: 3}
       propertyPath: m_BrainParameters.VectorActionSize.Array.data[1]
-      value: 10
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3157943033131490626, guid: fa2f44c9e67d9ff4ba48ddf2f4a9a466, type: 3}
       propertyPath: m_BrainParameters.m_ActionSpec.BranchSizes.Array.data[0]
-      value: 10
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3157943033131490626, guid: fa2f44c9e67d9ff4ba48ddf2f4a9a466, type: 3}
       propertyPath: m_BrainParameters.m_ActionSpec.BranchSizes.Array.data[1]
-      value: 10
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3157943033286322443, guid: fa2f44c9e67d9ff4ba48ddf2f4a9a466, type: 3}
       propertyPath: cube
@@ -316,6 +345,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7a954bf0a1933e4a8287d1f8d53daaf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &9205756809177652464 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1619509507103352113, guid: fa2f44c9e67d9ff4ba48ddf2f4a9a466, type: 3}
+  m_PrefabInstance: {fileID: 7618063464181381569}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &5448068195036779707
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -335,3 +369,21 @@ MonoBehaviour:
   Game: {fileID: 7758017567345313831}
   chosenCoordinates: {x: 0, y: 0}
   shotResult: 0
+--- !u!114 &4866669465201004396
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9205756809177652464}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66bf5dfd23c066549a10884af8d4ff6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bobSpeed: 0.5
+  bobHeight: 1
+  standingOn: 0
+  cannons: []
+  orientation: 0
+  coordinates: {x: 0, y: 0}

@@ -15,6 +15,7 @@ public class Ship
     public Vector2 PositionEnd;
     public Orientation Orientation;
     public int Size;
+    public bool IsRevealed = false;
 
     public Ship(int shipSize, int fieldSize)
     {

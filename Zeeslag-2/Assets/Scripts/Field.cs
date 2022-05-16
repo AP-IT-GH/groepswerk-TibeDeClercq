@@ -10,7 +10,7 @@ public enum FieldValue{
 }
 
 public class Field : MonoBehaviour
-{
+{    
     public int Size;
     public int Size2ShipCount; 
     public int Size3ShipCount;
@@ -47,6 +47,12 @@ public class Field : MonoBehaviour
         this.GenerateShips(6, Size6ShipCount);
     }
 
+    public int GetShipPartCount()
+    {
+        return Size2ShipCount * 2 + Size3ShipCount * 3 + Size4ShipCount * 4 + Size5ShipCount * 5 + Size6ShipCount * 6;
+    }
+
+
     private void GenerateShips(int shipSize, int shipcount)
     {
         for (int i = 0; i < shipcount; i++)
@@ -65,48 +71,6 @@ public class Field : MonoBehaviour
             this.Ships.Add(ship);
         }
     }
-
-    //private void GenerateSmallShips()
-    //{
-    //    for (int i = 0; i < this.Size2ShipCount; i++)
-    //    {
-    //        Ship ship = new Ship(2, this.Size);
-    //        bool inField = this.InField(ship);
-    //        bool overlap = this.Overlap(ship);
-
-    //        while (!inField || overlap)
-    //        {
-    //            ship = new Ship(2, this.Size);
-    //            inField = this.InField(ship);
-    //            overlap = this.Overlap(ship);
-    //        }
-
-    //        this.Ships.Add(ship);
-
-    //        //Debug.Log($"SmallShip: Start: {ship.PositionStart.x},{ship.PositionStart.y} End: {ship.PositionEnd.x},{ship.PositionEnd.y}");
-    //    }
-    //}
-
-    //private void GenerateBigShips()
-    //{
-    //    for (int i = 0; i < this.Size4ShipCount; i++)
-    //    {
-    //        Ship ship = new Ship(4, this.Size);
-    //        bool inField = this.InField(ship);
-    //        bool overlap = this.Overlap(ship);
-
-    //        while (!inField || overlap)
-    //        {
-    //            ship = new Ship(4, this.Size);
-    //            inField = this.InField(ship);
-    //            overlap = this.Overlap(ship);
-    //        }
-
-    //        this.Ships.Add(ship);
-
-    //        //Debug.Log($"BigShip: Start: {ship.PositionStart.x},{ship.PositionStart.y} End: {ship.PositionEnd.x},{ship.PositionEnd.y}");
-    //    }
-    //}
 
     private bool InField(Ship ship)
     {

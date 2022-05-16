@@ -13,6 +13,12 @@ public class ObservationCube : MonoBehaviour
     public ObservationGrid observationGrid;
     public CubeState state = CubeState.Water;
     public bool Selected = false;
+    public Renderer Renderer;
+
+    private void Start()
+    {
+        Renderer = gameObject.GetComponent<Renderer>();
+    }
 
     private void Update()
     {

@@ -8,10 +8,13 @@ public class ShipBehavior : MonoBehaviour
     public float bobHeight = 1;
     public bool standingOn = false;
     public List<Cannon> cannons;
+    public Orientation orientation;
+    public Vector2 coordinates;
 
     private float startPosition;
     private float offset;
     private float direction = 1;
+    
     //orentation, coordinates etcc
 
     void Start()

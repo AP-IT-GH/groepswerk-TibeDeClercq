@@ -23,12 +23,14 @@ public enum Winner
 
 public class Zeeslag : MonoBehaviour
 {
-    [SerializeField] ObservationGrid player1Grid;
-    [SerializeField] ObservationGrid player2Grid;
-    [SerializeField] GenerateField player1FieldGenerator;
-    [SerializeField] GenerateField player2FieldGenerator;
-    [SerializeField] float player1ShootCooldown = 3;
-    [SerializeField] float player2ShootCooldown = 3;
+    [SerializeField] private bool player1CheatMode = false;
+    [SerializeField] private bool player2CheatMode = false;
+    [SerializeField] private ObservationGrid player1Grid;
+    [SerializeField] private ObservationGrid player2Grid;
+    [SerializeField] private GenerateField player1FieldGenerator;
+    [SerializeField] private GenerateField player2FieldGenerator;
+    [SerializeField] private float player1ShootCooldown = 3;
+    [SerializeField] private float player2ShootCooldown = 3;
 
     private bool _gameStarted;
     private bool _player1Shot;
@@ -103,6 +105,11 @@ public class Zeeslag : MonoBehaviour
             UpdateGameState();
             StartCoroutine(Player1Wait());
 
+            if (player1CheatMode && result == 'S')
+            {
+                player1Grid.RevealShip(coords);
+            }
+
             return result;
         }
         return 'W';
@@ -118,6 +125,11 @@ public class Zeeslag : MonoBehaviour
             UpdateGameState();
             StartCoroutine(Player2Wait());
 
+            if (player2CheatMode && result == 'S')
+            {
+                player2Grid.RevealShip(coords);
+            }
+
             return result;
         }
         return 'W'; 
@@ -125,15 +137,17 @@ public class Zeeslag : MonoBehaviour
 
     private void UpdateGameState()
     {
-        if(GetHitCount(FieldPlayer1) == (FieldPlayer1.Size2ShipCount * 2) + (FieldPlayer1.Size3ShipCount * 3) + (FieldPlayer1.Size4ShipCount * 4) + (FieldPlayer1.Size5ShipCount * 5) + (FieldPlayer1.Size6ShipCount * 6))
+        if(GetHitCount(FieldPlayer1) == FieldPlayer1.GetShipPartCount())
         {
             winner = Winner.Player2;
             GameState = GameState.Completed;
+            Debug.Log("Player 2 wins the game");
         }
-        else if(GetHitCount(FieldPlayer2) == (FieldPlayer2.Size2ShipCount * 2) + (FieldPlayer2.Size3ShipCount * 3) + (FieldPlayer2.Size4ShipCount * 4) + (FieldPlayer2.Size5ShipCount * 5) + (FieldPlayer2.Size6ShipCount * 6))
+        else if(GetHitCount(FieldPlayer2) == FieldPlayer2.GetShipPartCount())
         {
             winner = Winner.Player1;
             GameState = GameState.Completed;
+            Debug.Log("Player 1 wins the game");
         }
     }
 

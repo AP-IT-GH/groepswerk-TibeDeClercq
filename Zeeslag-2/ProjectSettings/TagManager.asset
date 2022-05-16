@@ -8,6 +8,7 @@ TagManager:
   - W
   - M
   - Marker
+  - S
   layers:
   - Default
   - TransparentFX

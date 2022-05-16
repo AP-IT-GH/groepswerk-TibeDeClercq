@@ -12,6 +12,10 @@ public class ObservationGrid : MonoBehaviour
     [SerializeField] private float rotationX = 0;
     [SerializeField] private Field playerFieldToObserve;
 
+    [SerializeField] private Color waterColor = Color.blue;
+    [SerializeField] private Color hitColor = Color.red;
+    [SerializeField] private Color missColor = Color.white;
+
     public Zeeslag game;
     public Players player = Players.Player1;
 
@@ -19,6 +23,16 @@ public class ObservationGrid : MonoBehaviour
     private bool cubeIsPlane = false;
 
     void Start()
+    {
+        GenerateGrid();
+    }
+
+    private void Update()
+    {
+        UpdateGrid();
+    }
+
+    private void GenerateGrid()
     {
         cubeIsPlane = cube.GetComponent<ObservationCube>().isPlane;
 
@@ -38,13 +52,14 @@ public class ObservationGrid : MonoBehaviour
                     var newCube = Instantiate(cube, new Vector3(start.position.x + (x * (cube.transform.localScale.x + spacing)), start.position.y, start.position.z + (y * (cube.transform.localScale.z + spacing))), Quaternion.identity, start);
                     newCube.GetComponent<ObservationCube>().coordinates = new Vector2(x, y);
                     grid[x, y] = newCube.GetComponent<ObservationCube>();
-                }                
+                }
             }
         }
         cube.SetActive(false);
         start.rotation = Quaternion.Euler(rotationX, 0, 0);
         game.GameRestarted = true;
     }
+
 
     public void ResetGrid()
     {
@@ -57,7 +72,7 @@ public class ObservationGrid : MonoBehaviour
         Start();
     }
 
-    void Update()
+    private void UpdateGrid()
     {
         for (int x = 0; x < playerFieldToObserve.DiscoveredValues.GetLength(0); x++)
         {
@@ -66,27 +81,53 @@ public class ObservationGrid : MonoBehaviour
                 switch (playerFieldToObserve.DiscoveredValues[x, y])
                 {
                     case 'W':
-                        grid[x, y].state = CubeState.Water;
-                        grid[x, y].gameObject.GetComponent<Renderer>().material.color = Color.blue;
-                        grid[x, y].gameObject.tag = "W";
+                        if (grid[x, y].gameObject.tag != "S")
+                        {
+                            grid[x, y].state = CubeState.Water;
+                            grid[x, y].Renderer.material.color = waterColor;
+                            grid[x, y].gameObject.tag = "W";
+                        }                        
                         break;
                     case 'H':
                         grid[x, y].state = CubeState.Hit;
-                        grid[x, y].gameObject.GetComponent<Renderer>().material.color = Color.red;
+                        grid[x, y].Renderer.material.color = hitColor;
                         grid[x, y].gameObject.tag = "H";
                         break;
                     case 'M':
                         grid[x, y].state = CubeState.Miss;
-                        grid[x, y].gameObject.GetComponent<Renderer>().material.color = Color.white;
+                        grid[x, y].Renderer.material.color = missColor;
                         grid[x, y].gameObject.tag = "M";
                         break;
                     default:
                         grid[x, y].state = CubeState.Water;
-                        grid[x, y].gameObject.GetComponent<Renderer>().material.color = Color.blue;
+                        grid[x, y].Renderer.material.color = waterColor;
                         grid[x, y].gameObject.tag = "W";
                         break;
                 }
             }
         }
+    }
+
+    public void RevealShip(Vector2 coordinates)
+    {
+        foreach (Ship ship in playerFieldToObserve.Ships)
+        {
+            if (ship.ShipCoords.Contains(coordinates))
+            {
+                if (!ship.IsRevealed)
+                {
+                    foreach (Vector2 coordinate in ship.ShipCoords)
+                    {
+                        if (coordinates != coordinate)
+                        {
+                            grid[(int)coordinate.x, (int)coordinate.y].Renderer.material.color = Color.yellow;
+                            grid[(int)coordinate.x, (int)coordinate.y].gameObject.tag = "S";
+                        }
+                    }
+                    ship.IsRevealed = true;
+                }
+                break;
+            }
+        }        
     }
 }
