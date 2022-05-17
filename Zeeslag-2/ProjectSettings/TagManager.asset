@@ -9,6 +9,7 @@ TagManager:
   - M
   - Marker
   - S
+  - Finger
   layers:
   - Default
   - TransparentFX

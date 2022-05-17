@@ -9,57 +9,83 @@ public class HandManager : MonoBehaviour
     public GameObject rightOVRControllerPrefab;
     public GameObject leftHandAnchor;
     public GameObject rightHandAnchor;
+    public GameObject fingerCollider;
 
-    private Transform _leftRayAnchor;
-    private Transform _rightRayAnchor;
+    public GameObject leftOVRHandPrefab;
+    public GameObject rightOVRHandPrefab;
+
+    private OVRHand _leftHand;
+    private OVRHand _rightHand;
+
+    private OVRSkeleton _leftHandSkeleton;
+    private OVRSkeleton _rightHandSkeleton;
+
+    private GameObject _leftIndex;
+    private GameObject _leftThumb;
+    private GameObject _leftMiddle;
+    private GameObject _leftRing;
+    private GameObject _leftPinky;
+
+    private GameObject _rightIndex;
+    private GameObject _rightThumb;
+    private GameObject _rightMiddle;
+    private GameObject _rightRing;
+    private GameObject _rightPinky;
 
     private static bool handsActive = false;
 
     private void Start()
     {
-        _leftRayAnchor = GameObject.Find("[LeftHandAnchor] Ray Origin").transform;
-        _rightRayAnchor = GameObject.Find("[RightHandAnchor] Ray Origin").transform;
+        _leftHand = leftOVRHandPrefab.GetComponent<OVRHand>();
+        _rightHand = rightOVRHandPrefab.GetComponent<OVRHand>();
+
+        _leftHandSkeleton = leftOVRHandPrefab.GetComponent<OVRSkeleton>();
+        _rightHandSkeleton = rightOVRHandPrefab.GetComponent<OVRSkeleton>();
+
+        InstantiateColliders();
     }
 
     private void Update()
     {
-        updateAnchorPosition();
+        updateHandState();
+        TrackFingers();
     }
 
-    private void updateAnchorPosition()
+    private void InstantiateColliders()
     {
-        if (IsDisabled(leftOVRControllerPrefab) && IsDisabled(rightOVRControllerPrefab))
-        {
-            leftHandAnchor.GetComponent<XRInteractorLineVisual>().enabled = false;
-            rightHandAnchor.GetComponent<XRInteractorLineVisual>().enabled = false;
+        _leftIndex = Instantiate(fingerCollider, transform);
+        _leftThumb = Instantiate(fingerCollider, transform);
+        _leftMiddle = Instantiate(fingerCollider, transform);
+        _leftRing = Instantiate(fingerCollider, transform);
+        _leftPinky = Instantiate(fingerCollider, transform);
 
-            handsActive = true;
-        }
-        else if (!IsDisabled(leftOVRControllerPrefab) && !IsDisabled(rightOVRControllerPrefab))
-        {
-            leftHandAnchor.GetComponent<XRInteractorLineVisual>().enabled = true;
-            rightHandAnchor.GetComponent<XRInteractorLineVisual>().enabled = true;
-
-            _leftRayAnchor.localEulerAngles = Vector3.zero;
-            _rightRayAnchor.localEulerAngles = Vector3.zero;
-
-            _leftRayAnchor.localPosition = new Vector3(0, 0, 0.05220008f);
-            _rightRayAnchor.localPosition = new Vector3(0, 0, 0.05220008f);
-
-            handsActive = false;
-        }
+        _rightIndex = Instantiate(fingerCollider, transform);
+        _rightThumb = Instantiate(fingerCollider, transform);
+        _rightMiddle = Instantiate(fingerCollider, transform);
+        _rightRing = Instantiate(fingerCollider, transform);
+        _rightPinky = Instantiate(fingerCollider, transform);
     }
 
-    private bool IsDisabled(GameObject controller)
+    private void updateHandState()
     {
-        for (int i = 0; i < controller.transform.childCount; i++)
+        handsActive = _leftHand.IsTracked || _rightHand.IsTracked;
+    }
+
+    private void TrackFingers()
+    {
+        if (handsActive)
         {
-            if (controller.transform.GetChild(i).gameObject.activeSelf)
-            {
-                Debug.Log("Controllers active");
-                return false;                
-            }
+            _leftThumb.transform.position = _leftHandSkeleton.Bones[19].Transform.position;
+            _leftIndex.transform.position = _leftHandSkeleton.Bones[20].Transform.position;
+            _leftMiddle.transform.position = _leftHandSkeleton.Bones[21].Transform.position;
+            _leftRing.transform.position = _leftHandSkeleton.Bones[22].Transform.position;
+            _leftPinky.transform.position = _leftHandSkeleton.Bones[23].Transform.position;
+
+            _rightThumb.transform.position = _rightHandSkeleton.Bones[19].Transform.position;
+            _rightIndex.transform.position = _rightHandSkeleton.Bones[20].Transform.position;
+            _rightMiddle.transform.position = _rightHandSkeleton.Bones[21].Transform.position;
+            _rightRing.transform.position = _rightHandSkeleton.Bones[22].Transform.position;
+            _rightPinky.transform.position = _rightHandSkeleton.Bones[23].Transform.position;
         }
-        return true;
     }
 }

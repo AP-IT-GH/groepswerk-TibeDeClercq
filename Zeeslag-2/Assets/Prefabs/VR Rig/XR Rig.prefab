@@ -48,6 +48,50 @@ MonoBehaviour:
   blendDistance: 0
   weight: 1
   sharedProfile: {fileID: 11400000, guid: 68e546761c28be144b4cd5536df35b8a, type: 2}
+--- !u!1 &1182214846134808986
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 831420974011569361}
+  - component: {fileID: 3664895597288171206}
+  m_Layer: 0
+  m_Name: FingerCollider
+  m_TagString: Finger
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &831420974011569361
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1182214846134808986}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
+  m_Children: []
+  m_Father: {fileID: 1939291811940251078}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!135 &3664895597288171206
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1182214846134808986}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &8360284369324409112
 GameObject:
   m_ObjectHideFlags: 0
@@ -350,6 +394,11 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 4259543474154873129, guid: 11f14a29386cf734595682d58d69a171, type: 3}
   m_PrefabInstance: {fileID: 2446949487727334753}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &3296726590449205562 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 879640939855909979, guid: 11f14a29386cf734595682d58d69a171, type: 3}
+  m_PrefabInstance: {fileID: 2446949487727334753}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1939291812584760061 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4259543474178619292, guid: 11f14a29386cf734595682d58d69a171, type: 3}
@@ -358,6 +407,11 @@ GameObject:
 --- !u!1 &1939291812587528924 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4259543474154878909, guid: 11f14a29386cf734595682d58d69a171, type: 3}
+  m_PrefabInstance: {fileID: 2446949487727334753}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &8990327270531771616 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6715219563409209729, guid: 11f14a29386cf734595682d58d69a171, type: 3}
   m_PrefabInstance: {fileID: 2446949487727334753}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1939291811043385570 stripped
@@ -756,6 +810,9 @@ MonoBehaviour:
   rightOVRControllerPrefab: {fileID: 1939291811043385570}
   leftHandAnchor: {fileID: 1939291812587533384}
   rightHandAnchor: {fileID: 1939291812587528924}
+  fingerCollider: {fileID: 1182214846134808986}
+  leftOVRHandPrefab: {fileID: 3296726590449205562}
+  rightOVRHandPrefab: {fileID: 8990327270531771616}
 --- !u!1001 &7941852925632827499
 PrefabInstance:
   m_ObjectHideFlags: 0

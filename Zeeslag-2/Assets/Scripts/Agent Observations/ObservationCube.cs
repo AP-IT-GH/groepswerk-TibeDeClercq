@@ -53,4 +53,12 @@ public class ObservationCube : MonoBehaviour
                 break;
         }
     }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "Finger")
+        {
+            Select();
+        }
+    }
 }
