@@ -13,7 +13,8 @@ public class HitOrMissVisuals : MonoBehaviour
     }
     public void Activate()
     {
-        if(this.array.teller == 'H')
+        //Debug.Log("test");
+        if(this.array.teller == 'S')
         {
             this.gameObject.GetComponent<Renderer>().material.color = new Color(0, 255, 0);
         }
