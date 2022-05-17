@@ -2,22 +2,22 @@
     "AgentEvert": {
         "checkpoints": [
             {
-                "steps": 164722,
-                "file_path": "results\\AgentEvert\\AgentEvert\\AgentEvert-164722.onnx",
-                "reward": 92.22222222222223,
-                "creation_time": 1652281369.8686354,
+                "steps": 386117,
+                "file_path": "results\\AgentEvert\\AgentEvert\\AgentEvert-386117.onnx",
+                "reward": 76.28571428571429,
+                "creation_time": 1652344954.501321,
                 "auxillary_file_paths": [
-                    "results\\AgentEvert\\AgentEvert\\AgentEvert-164722.pt"
+                    "results\\AgentEvert\\AgentEvert\\AgentEvert-386117.pt"
                 ]
             }
         ],
         "final_checkpoint": {
-            "steps": 164722,
+            "steps": 386117,
             "file_path": "results\\AgentEvert\\AgentEvert.onnx",
-            "reward": 92.22222222222223,
-            "creation_time": 1652281369.8686354,
+            "reward": 76.28571428571429,
+            "creation_time": 1652344954.501321,
             "auxillary_file_paths": [
-                "results\\AgentEvert\\AgentEvert\\AgentEvert-164722.pt"
+                "results\\AgentEvert\\AgentEvert\\AgentEvert-386117.pt"
             ]
         }
     },

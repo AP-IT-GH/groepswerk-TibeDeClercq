@@ -49,7 +49,6 @@ public class Agent_Evert : Agent
     {
         sensor.AddObservation(chosenCoordinates);
         sensor.AddObservation(shotResult);
-        sensor.AddObservation(stepCount);
     }
 
     public override void WriteDiscreteActionMask(IDiscreteActionMask actionMask) //called after collect observations
@@ -121,7 +120,7 @@ public class Agent_Evert : Agent
             case 6:
                 Game.FieldPlayer1.Size5ShipCount = 1;
                 break;
-            case 7:
+            case 8:
                 Game.FieldPlayer1.Size6ShipCount = 1;
                 break;
         }
