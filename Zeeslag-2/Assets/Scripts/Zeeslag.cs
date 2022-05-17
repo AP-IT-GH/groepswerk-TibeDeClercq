@@ -129,6 +129,11 @@ public class Zeeslag : MonoBehaviour
             {
                 player2Grid.RevealShip(coords);
             }
+            if(result == 'S')
+            {
+                OVRInput.SetControllerVibration(0.5f, 0.8f, OVRInput.Controller.LTouch);
+                OVRInput.SetControllerVibration(0.5f, 0.8f, OVRInput.Controller.RTouch);
+            }
 
             return result;
         }
