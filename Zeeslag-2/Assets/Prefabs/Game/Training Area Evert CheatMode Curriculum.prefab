@@ -9,7 +9,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2469909278633196535, guid: 9383ffa359ae93d48b80024a01f3e13d, type: 3}
       propertyPath: m_Name
-      value: Training Area Evert CheatMode Curriculum
+      value: Training Area Evert CheatMode Curriculum (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2469909278633196535, guid: 9383ffa359ae93d48b80024a01f3e13d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3041523596504654353, guid: 9383ffa359ae93d48b80024a01f3e13d, type: 3}
       propertyPath: m_RootOrder
@@ -17,7 +21,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3041523596504654353, guid: 9383ffa359ae93d48b80024a01f3e13d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.71
+      value: 30.6
       objectReference: {fileID: 0}
     - target: {fileID: 3041523596504654353, guid: 9383ffa359ae93d48b80024a01f3e13d, type: 3}
       propertyPath: m_LocalPosition.y

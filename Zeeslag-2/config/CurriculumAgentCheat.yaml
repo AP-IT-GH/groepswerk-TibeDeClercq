@@ -27,14 +27,6 @@ behaviors:
 environment_parameters:
   field_size:
     curriculum:
-      - name: Size4Field
-        completion_criteria:
-          measure: reward
-          behavior: CurriculumAgent
-          signal_smoothing: true
-          min_lesson_length: 100
-          threshold: 0.6
-        value: 4.0
       - name: Size5Field
         completion_criteria:
           measure: reward

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.54914194, g: 0.8553233, b: 0.92218935, a: 1}
+  m_IndirectSpecularColor: {r: 0.54789186, g: 0.8541358, b: 0.92391616, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1039,10 +1039,10 @@ MonoBehaviour:
   spacing: 0
   rotationX: 0
   playerFieldToObserve: {fileID: 1861321927}
-  waterMaterial: {fileID: 0}
-  hitMaterial: {fileID: 0}
-  missMaterial: {fileID: 0}
-  cheatMaterial: {fileID: 0}
+  waterMaterial: {fileID: 2100000, guid: a4d705cc2d97c074ca258d413819db73, type: 2}
+  hitMaterial: {fileID: 2100000, guid: 7d346b3370519164eada2be696667dbb, type: 2}
+  missMaterial: {fileID: 2100000, guid: b25424bb3a11e1c4b9d76bffa706b66c, type: 2}
+  cheatMaterial: {fileID: 2100000, guid: 98ed10694f7689840a8bb820e3e7c766, type: 2}
   game: {fileID: 442705367}
   player: 1
 --- !u!4 &1840674108
@@ -1321,6 +1321,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1974073890, guid: b51502e9a1176ea4f8a1e8f99d3092c0, type: 3}
+      propertyPath: m_IsKinematic
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 640593062370085892, guid: b51502e9a1176ea4f8a1e8f99d3092c0, type: 3}
       propertyPath: m_Materials.Array.size
       value: 2
@@ -1333,10 +1337,6 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[1]
       value: 
       objectReference: {fileID: 2100000, guid: fb734a520ea3c0c4a913c1118631acc8, type: 2}
-    - target: {fileID: 1974073890, guid: b51502e9a1176ea4f8a1e8f99d3092c0, type: 3}
-      propertyPath: m_IsKinematic
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 640593062370086137, guid: b51502e9a1176ea4f8a1e8f99d3092c0, type: 3}
       propertyPath: m_InteractionManager
       value: 

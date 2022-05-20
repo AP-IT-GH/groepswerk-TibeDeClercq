@@ -12,7 +12,6 @@ public class Agent_Evert : Agent
     public char shotResult;
 
     private int defaultFieldSize;
-    private bool firstStart = true;
     private List<Vector2> shotCoords;
     private int missedCount;
     private int fieldTilesCount;
@@ -71,7 +70,6 @@ public class Agent_Evert : Agent
         int x = actionBuffers.DiscreteActions[0];
         int y = actionBuffers.DiscreteActions[1];
         transform.localPosition += new Vector3(x == 0 ? -1 : x == 2 ? 1 : 0, 0, y == 0 ? -1 : y == 2 ? 1 : 0); //move with steps ( +1 -1 0 )
-        //transform.localPosition = new Vector3(x, transform.localPosition.y, y); //move with coordinates / teleport
         chosenCoordinates = new Vector2(transform.localPosition.x, transform.localPosition.z);
 
         //check if game is completed
@@ -81,8 +79,7 @@ public class Agent_Evert : Agent
             {
                 Debug.Log("Agent won the game");
                 float waterTileCount = fieldTilesCount - Game.FieldPlayer1.GetShipPartCount();
-                Debug.Log($"Score given: {(waterTileCount - missedCount) / waterTileCount}");
-                AddReward((waterTileCount - missedCount) / waterTileCount); // 1 would be the theorethical top score: never missed
+                AddReward((waterTileCount - missedCount) / waterTileCount); // 1.0 would be the theorethical max score: never missed
             }
             else if (Game.winner == Winner.Player1)
             {
@@ -91,7 +88,7 @@ public class Agent_Evert : Agent
             EndEpisode();
         }
 
-        if (stepCount > 2000)
+        if (stepCount > 2000) //to prevent the agent from stopping to fire, which can happen
         {
             AddReward(-1f);
             EndEpisode();
@@ -103,6 +100,13 @@ public class Agent_Evert : Agent
         Game.FieldPlayer1.Size = (int)Academy.Instance.EnvironmentParameters.GetWithDefault("field_size", defaultFieldSize);
         switch (Game.FieldPlayer1.Size)
         {
+            case 4:
+                Game.FieldPlayer1.Size2ShipCount = 1;
+                Game.FieldPlayer1.Size3ShipCount = 1;
+                Game.FieldPlayer1.Size4ShipCount = 0;
+                Game.FieldPlayer1.Size5ShipCount = 0;
+                Game.FieldPlayer1.Size6ShipCount = 0;
+                break;
             case 5:
                 Game.FieldPlayer1.Size2ShipCount = 1;
                 Game.FieldPlayer1.Size3ShipCount = 1;
