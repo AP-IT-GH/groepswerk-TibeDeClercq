@@ -46,7 +46,10 @@ public class ObservationCube : MonoBehaviour
         switch (observationGrid.player)
         {
             case Players.Player1:
-                observationGrid.game.Player1Shoot(coordinates);
+                if (state == CubeState.Water && observationGrid.game.Player1CanShoot)
+                {
+                    observationGrid.game.Player1Shoot(coordinates);
+                }
                 break;
             case Players.Player2:
                 observationGrid.game.Player2Shoot(coordinates);
@@ -54,9 +57,9 @@ public class ObservationCube : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerStay(Collider other)
     {
-        if (collision.gameObject.tag == "Finger")
+        if (other.gameObject.tag == "Finger")
         {
             Select();
         }

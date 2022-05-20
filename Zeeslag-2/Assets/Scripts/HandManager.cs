@@ -17,6 +17,9 @@ public class HandManager : MonoBehaviour
     private OVRHand _leftHand;
     private OVRHand _rightHand;
 
+    private XRInteractorLineVisual _leftRay;
+    private XRInteractorLineVisual _rightRay;
+
     private OVRSkeleton _leftHandSkeleton;
     private OVRSkeleton _rightHandSkeleton;
 
@@ -41,6 +44,9 @@ public class HandManager : MonoBehaviour
 
         _leftHandSkeleton = leftOVRHandPrefab.GetComponent<OVRSkeleton>();
         _rightHandSkeleton = rightOVRHandPrefab.GetComponent<OVRSkeleton>();
+
+        _leftRay = leftHandAnchor.GetComponent<XRInteractorLineVisual>();
+        _rightRay = rightHandAnchor.GetComponent<XRInteractorLineVisual>();
 
         InstantiateColliders();
     }
@@ -69,6 +75,17 @@ public class HandManager : MonoBehaviour
     private void updateHandState()
     {
         handsActive = _leftHand.IsTracked || _rightHand.IsTracked;
+
+        if (handsActive)
+        {
+            _leftRay.enabled = false;
+            _rightRay.enabled = false;
+        }
+        else
+        {
+            _leftRay.enabled = true;
+            _rightRay.enabled = true;
+        }
     }
 
     private void TrackFingers()
