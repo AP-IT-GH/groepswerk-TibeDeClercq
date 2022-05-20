@@ -12,9 +12,10 @@ public class ObservationGrid : MonoBehaviour
     [SerializeField] private float rotationX = 0;
     [SerializeField] private Field playerFieldToObserve;
 
-    [SerializeField] private Color waterColor = Color.blue;
-    [SerializeField] private Color hitColor = Color.red;
-    [SerializeField] private Color missColor = Color.white;
+    [SerializeField] private Material waterMaterial;
+    [SerializeField] private Material hitMaterial;
+    [SerializeField] private Material missMaterial;
+    [SerializeField] private Material cheatMaterial;
 
     public Zeeslag game;
     public Players player = Players.Player1;
@@ -84,23 +85,23 @@ public class ObservationGrid : MonoBehaviour
                         if (grid[x, y].gameObject.tag != "S")
                         {
                             grid[x, y].state = CubeState.Water;
-                            grid[x, y].Renderer.material.color = waterColor;
+                            grid[x, y].Renderer.material = waterMaterial;
                             grid[x, y].gameObject.tag = "W";
                         }                        
                         break;
                     case 'H':
                         grid[x, y].state = CubeState.Hit;
-                        grid[x, y].Renderer.material.color = hitColor;
+                        grid[x, y].Renderer.material = hitMaterial;
                         grid[x, y].gameObject.tag = "H";
                         break;
                     case 'M':
                         grid[x, y].state = CubeState.Miss;
-                        grid[x, y].Renderer.material.color = missColor;
+                        grid[x, y].Renderer.material = missMaterial;
                         grid[x, y].gameObject.tag = "M";
                         break;
                     default:
                         grid[x, y].state = CubeState.Water;
-                        grid[x, y].Renderer.material.color = waterColor;
+                        grid[x, y].Renderer.material = waterMaterial;
                         grid[x, y].gameObject.tag = "W";
                         break;
                 }
@@ -120,7 +121,7 @@ public class ObservationGrid : MonoBehaviour
                     {
                         if (coordinates != coordinate)
                         {
-                            grid[(int)coordinate.x, (int)coordinate.y].Renderer.material.color = Color.yellow;
+                            grid[(int)coordinate.x, (int)coordinate.y].Renderer.material = cheatMaterial;
                             grid[(int)coordinate.x, (int)coordinate.y].gameObject.tag = "S";
                         }
                     }

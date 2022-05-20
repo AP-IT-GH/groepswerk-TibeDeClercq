@@ -272,9 +272,10 @@ MonoBehaviour:
   spacing: 0.01
   rotationX: -66
   playerFieldToObserve: {fileID: 0}
-  waterColor: {r: 0, g: 0, b: 1, a: 1}
-  hitColor: {r: 1, g: 0, b: 0, a: 1}
-  missColor: {r: 1, g: 1, b: 1, a: 1}
+  waterMaterial: {fileID: 2100000, guid: 923bf28c6aebc884abcf23a2a67996ba, type: 2}
+  hitMaterial: {fileID: 2100000, guid: cc56eb51385377947a503c76967bd598, type: 2}
+  missMaterial: {fileID: 2100000, guid: 9b8e1d909bea5c54ca926b1263114fa9, type: 2}
+  cheatMaterial: {fileID: 2100000, guid: 98ed10694f7689840a8bb820e3e7c766, type: 2}
   game: {fileID: 0}
   player: 0
 --- !u!1 &640593064347496564

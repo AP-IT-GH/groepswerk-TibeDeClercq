@@ -24,6 +24,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 4786068763454825603, guid: 923594d9f42b4c9449d76c8eb7071628, type: 3}
+      propertyPath: m_BehaviorName
+      value: CurriculumAgent
+      objectReference: {fileID: 0}
+    - target: {fileID: 4786068763454825603, guid: 923594d9f42b4c9449d76c8eb7071628, type: 3}
       propertyPath: m_BehaviorType
       value: 0
       objectReference: {fileID: 0}
@@ -45,7 +49,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5793780144850718166, guid: 923594d9f42b4c9449d76c8eb7071628, type: 3}
       propertyPath: m_Name
-      value: Training Area Evert CheatMode
+      value: Training Area Evert CheatMode Curriculum
       objectReference: {fileID: 0}
     - target: {fileID: 6346957980725302320, guid: 923594d9f42b4c9449d76c8eb7071628, type: 3}
       propertyPath: m_RootOrder
@@ -53,7 +57,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6346957980725302320, guid: 923594d9f42b4c9449d76c8eb7071628, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 0.71
       objectReference: {fileID: 0}
     - target: {fileID: 6346957980725302320, guid: 923594d9f42b4c9449d76c8eb7071628, type: 3}
       propertyPath: m_LocalPosition.y
@@ -100,6 +104,14 @@ PrefabInstance:
       value: S
       objectReference: {fileID: 0}
     - target: {fileID: 7618063464707779530, guid: 923594d9f42b4c9449d76c8eb7071628, type: 3}
+      propertyPath: m_RaysPerDirection
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7618063464707779530, guid: 923594d9f42b4c9449d76c8eb7071628, type: 3}
+      propertyPath: m_EndVerticalOffset
+      value: -8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7618063464707779530, guid: 923594d9f42b4c9449d76c8eb7071628, type: 3}
       propertyPath: m_DetectableTags.Array.size
       value: 4
       objectReference: {fileID: 0}
@@ -117,7 +129,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7758017568073918775, guid: 923594d9f42b4c9449d76c8eb7071628, type: 3}
       propertyPath: Size
-      value: 7
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7758017568073918775, guid: 923594d9f42b4c9449d76c8eb7071628, type: 3}
       propertyPath: Size2ShipCount
@@ -133,11 +145,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7758017568073918775, guid: 923594d9f42b4c9449d76c8eb7071628, type: 3}
       propertyPath: Size5ShipCount
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7758017568073918775, guid: 923594d9f42b4c9449d76c8eb7071628, type: 3}
       propertyPath: Size6ShipCount
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 923594d9f42b4c9449d76c8eb7071628, type: 3}
