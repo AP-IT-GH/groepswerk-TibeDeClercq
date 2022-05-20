@@ -29,8 +29,8 @@ public class Zeeslag : MonoBehaviour
     [SerializeField] private ObservationGrid player2Grid;
     [SerializeField] private GenerateField player1FieldGenerator;
     [SerializeField] private GenerateField player2FieldGenerator;
-    [SerializeField] private float player1ShootCooldown = 3;
-    [SerializeField] private float player2ShootCooldown = 3;
+    public float player1ShootCooldown = 3;
+    public float player2ShootCooldown = 3;
 
     private bool _gameStarted;
     private bool _player1Shot;

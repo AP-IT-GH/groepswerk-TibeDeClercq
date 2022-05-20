@@ -20,7 +20,7 @@ public class ObservationGrid : MonoBehaviour
     public Zeeslag game;
     public Players player = Players.Player1;
 
-    private ObservationCube[,] grid;
+    public ObservationCube[,] grid;
     private bool cubeIsPlane = false;
 
     void Start()
@@ -84,26 +84,38 @@ public class ObservationGrid : MonoBehaviour
                     case 'W':
                         if (grid[x, y].gameObject.tag != "S")
                         {
-                            grid[x, y].state = CubeState.Water;
-                            grid[x, y].Renderer.material = waterMaterial;
+                            if (game.Player1CanShoot)
+                            {
+                                grid[x, y].state = CubeState.Water;
+                                if (player != Players.Player1)
+                                {
+                                    grid[x, y].Renderer.material = waterMaterial;
+                                }
+                            }                            
                             grid[x, y].gameObject.tag = "W";
                         }                        
                         break;
                     case 'H':
-                        grid[x, y].state = CubeState.Hit;
-                        grid[x, y].Renderer.material = hitMaterial;
+                        if (game.Player1CanShoot)
+                        {
+                            grid[x, y].state = CubeState.Hit;
+                            grid[x, y].Renderer.material = hitMaterial;
+                        }                            
                         grid[x, y].gameObject.tag = "H";
                         break;
                     case 'M':
-                        grid[x, y].state = CubeState.Miss;
-                        grid[x, y].Renderer.material = missMaterial;
+                        if (game.Player1CanShoot)
+                        {
+                            grid[x, y].state = CubeState.Miss;
+                            grid[x, y].Renderer.material = missMaterial;
+                        }                        
                         grid[x, y].gameObject.tag = "M";
                         break;
-                    default:
-                        grid[x, y].state = CubeState.Water;
-                        grid[x, y].Renderer.material = waterMaterial;
-                        grid[x, y].gameObject.tag = "W";
-                        break;
+                    //default:
+                    //    grid[x, y].state = CubeState.Water;
+                    //    grid[x, y].Renderer.material = waterMaterial;
+                    //    grid[x, y].gameObject.tag = "W";
+                    //    break;
                 }
             }
         }

@@ -14,6 +14,16 @@ public class ObservationCube : MonoBehaviour
     public CubeState state = CubeState.Water;
     public bool Selected = false;
     public Renderer Renderer;
+    public float OutlineSize = 1.1f;
+    public Material TransparentWaterMaterial;
+    public Color OutlineColor = Color.white;
+    public float PulsateSpeed = 1f;
+
+    private float TargetAlpha = 1f;
+    private float minAplha = 0.3f;
+    private float maxAplha = 1f;
+
+    private bool isFiring = false;
 
     private void Start()
     {
@@ -23,21 +33,38 @@ public class ObservationCube : MonoBehaviour
     private void Update()
     {
         TempSelect(); // TEMP
+
+        if (isFiring)
+        {
+            var color = Renderer.material.color;
+            color.a = Mathf.MoveTowards(color.a, TargetAlpha, Time.deltaTime * PulsateSpeed);
+            if (color.a >= maxAplha)
+            {
+                color.a = maxAplha;
+                TargetAlpha = minAplha;
+            }
+            else if (color.a <= minAplha)
+            {
+                color.a = minAplha;
+                TargetAlpha = maxAplha;
+            }
+            Renderer.material.color = color;
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "Finger")
+        {
+            Select();
+        }
     }
 
     private void TempSelect()
     {
         if (Selected) // TEMP
         {
-            switch (observationGrid.player)
-            {
-                case Players.Player1:
-                    observationGrid.game.Player1Shoot(coordinates);
-                    break;
-                case Players.Player2:
-                    observationGrid.game.Player2Shoot(coordinates);
-                    break;
-            }
+            Select();
         }
     }
 
@@ -49,6 +76,10 @@ public class ObservationCube : MonoBehaviour
                 if (state == CubeState.Water && observationGrid.game.Player1CanShoot)
                 {
                     observationGrid.game.Player1Shoot(coordinates);
+                    Renderer.material = TransparentWaterMaterial;
+                    RemoveOutline();
+                    isFiring = true;                 
+                    StartCoroutine(Cooldown());
                 }
                 break;
             case Players.Player2:
@@ -57,11 +88,23 @@ public class ObservationCube : MonoBehaviour
         }
     }
 
-    private void OnTriggerStay(Collider other)
+    public void CreateOutline()
     {
-        if (other.gameObject.tag == "Finger")
+        if (!isFiring && state == CubeState.Water)
         {
-            Select();
-        }
+            Renderer.materials[1].SetColor("_OutlineColor", OutlineColor);
+            Renderer.materials[1].SetFloat("_ScaleFactor", OutlineSize);
+        }        
+    }
+
+    public void RemoveOutline()
+    {
+        Renderer.materials[1].SetFloat("_ScaleFactor", 0);
+    }
+
+    private IEnumerator Cooldown()
+    {
+        yield return new WaitForSeconds(observationGrid.game.player1ShootCooldown);
+        isFiring = false;
     }
 }

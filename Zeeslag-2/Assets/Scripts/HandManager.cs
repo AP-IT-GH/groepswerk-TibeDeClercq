@@ -17,6 +17,9 @@ public class HandManager : MonoBehaviour
     private OVRHand _leftHand;
     private OVRHand _rightHand;
 
+    private XRRayInteractor _leftRayInteractor;
+    private XRRayInteractor _rightRayInteractor;
+
     private XRInteractorLineVisual _leftRay;
     private XRInteractorLineVisual _rightRay;
 
@@ -47,6 +50,9 @@ public class HandManager : MonoBehaviour
 
         _leftRay = leftHandAnchor.GetComponent<XRInteractorLineVisual>();
         _rightRay = rightHandAnchor.GetComponent<XRInteractorLineVisual>();
+
+        _leftRayInteractor = leftHandAnchor.GetComponent<XRRayInteractor>();
+        _rightRayInteractor = rightHandAnchor.GetComponent<XRRayInteractor>();
 
         InstantiateColliders();
     }
@@ -80,11 +86,15 @@ public class HandManager : MonoBehaviour
         {
             _leftRay.enabled = false;
             _rightRay.enabled = false;
+            _leftRayInteractor.enabled = false;
+            _rightRayInteractor.enabled = false;
         }
         else
         {
             _leftRay.enabled = true;
             _rightRay.enabled = true;
+            _leftRayInteractor.enabled = true;
+            _rightRayInteractor.enabled = true;
         }
     }
 

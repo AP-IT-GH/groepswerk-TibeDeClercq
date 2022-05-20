@@ -315,6 +315,10 @@ MonoBehaviour:
   state: 0
   Selected: 0
   Renderer: {fileID: 0}
+  OutlineSize: 1.1
+  TransparentWaterMaterial: {fileID: 0}
+  OutlineColor: {r: 1, g: 1, b: 1, a: 1}
+  PulsateSpeed: 1
 --- !u!65 &468600183
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1321,22 +1325,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1974073890, guid: b51502e9a1176ea4f8a1e8f99d3092c0, type: 3}
-      propertyPath: m_IsKinematic
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 640593062370085892, guid: b51502e9a1176ea4f8a1e8f99d3092c0, type: 3}
-      propertyPath: m_Materials.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 640593062370085892, guid: b51502e9a1176ea4f8a1e8f99d3092c0, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 923bf28c6aebc884abcf23a2a67996ba, type: 2}
-    - target: {fileID: 640593062370085892, guid: b51502e9a1176ea4f8a1e8f99d3092c0, type: 3}
-      propertyPath: m_Materials.Array.data[1]
-      value: 
-      objectReference: {fileID: 2100000, guid: fb734a520ea3c0c4a913c1118631acc8, type: 2}
     - target: {fileID: 640593062370086137, guid: b51502e9a1176ea4f8a1e8f99d3092c0, type: 3}
       propertyPath: m_InteractionManager
       value: 
