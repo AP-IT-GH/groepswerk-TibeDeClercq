@@ -65,7 +65,7 @@ environment_parameters:
           behavior: CurriculumAgent
           signal_smoothing: true
           min_lesson_length: 100
-          threshold: 0.6
+          threshold: 0.56
         value: 9.0
       - name: Size10Field
         value: 10.0

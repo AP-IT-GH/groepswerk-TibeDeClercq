@@ -33,16 +33,9 @@ public class Agent_Evert : Agent
         transform.localPosition = new Vector3(0,transform.localPosition.y,0);
         chosenCoordinates = new Vector2(0, 0);
 
-        if (firstStart)
-        {
-            firstStart = false;
-        }
-        else
-        {
-            SetFieldVariables();
-            Game.Restart();
-            Debug.Log("Agent Restarted Game");
-        }
+        SetFieldVariables();
+        Game.Restart();
+        Debug.Log("Agent Restarted Game");
     }
 
     public override void CollectObservations(VectorSensor sensor) //called after episode begin
@@ -118,9 +111,38 @@ public class Agent_Evert : Agent
                 Game.FieldPlayer1.Size6ShipCount = 0;
                 break;
             case 6:
+                Game.FieldPlayer1.Size2ShipCount = 1;
+                Game.FieldPlayer1.Size3ShipCount = 1;
+                Game.FieldPlayer1.Size4ShipCount = 1;
                 Game.FieldPlayer1.Size5ShipCount = 1;
+                Game.FieldPlayer1.Size6ShipCount = 0;
+                break;
+            case 7:
+                Game.FieldPlayer1.Size2ShipCount = 1;
+                Game.FieldPlayer1.Size3ShipCount = 1;
+                Game.FieldPlayer1.Size4ShipCount = 1;
+                Game.FieldPlayer1.Size5ShipCount = 1;
+                Game.FieldPlayer1.Size6ShipCount = 0;
                 break;
             case 8:
+                Game.FieldPlayer1.Size2ShipCount = 1;
+                Game.FieldPlayer1.Size3ShipCount = 1;
+                Game.FieldPlayer1.Size4ShipCount = 1;
+                Game.FieldPlayer1.Size5ShipCount = 1;
+                Game.FieldPlayer1.Size6ShipCount = 1;
+                break;
+            case 9:
+                Game.FieldPlayer1.Size2ShipCount = 1;
+                Game.FieldPlayer1.Size3ShipCount = 1;
+                Game.FieldPlayer1.Size4ShipCount = 1;
+                Game.FieldPlayer1.Size5ShipCount = 1;
+                Game.FieldPlayer1.Size6ShipCount = 1;
+                break;
+            case 10:
+                Game.FieldPlayer1.Size2ShipCount = 1;
+                Game.FieldPlayer1.Size3ShipCount = 1;
+                Game.FieldPlayer1.Size4ShipCount = 1;
+                Game.FieldPlayer1.Size5ShipCount = 1;
                 Game.FieldPlayer1.Size6ShipCount = 1;
                 break;
         }
