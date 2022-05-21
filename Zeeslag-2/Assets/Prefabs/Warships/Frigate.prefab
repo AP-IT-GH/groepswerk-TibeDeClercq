@@ -430,7 +430,7 @@ MonoBehaviour:
   cannons:
   - {fileID: 8576220011281861424}
   - {fileID: 8198306047385467396}
-  - {fileID: 8198306047385467396}
+  - {fileID: 1758629890728580031}
   orientation: 0
   startCoordinates: {x: 0, y: 0}
   coordinates:

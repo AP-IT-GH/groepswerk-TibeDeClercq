@@ -9,8 +9,11 @@ public class Cannon : MonoBehaviour
 
     }
 
-    public void Shoot(Vector3 target)
+    public void Shoot(Vector3 target, bool missed = false)
     {
+        //if (missed) projectile.gameObject.tag = "MissBullet"
+        //if (!missed) projectile.gameObject.tag = "HitBullet"
+
         Debug.Log($"Firing at {target}");
     }
 }

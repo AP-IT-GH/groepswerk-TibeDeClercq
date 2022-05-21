@@ -151,7 +151,7 @@ MonoBehaviour:
   player2FieldGenerator: {fileID: 0}
   player1BattleController: {fileID: 0}
   player2BattleController: {fileID: 0}
-  player1ShootCooldown: 3
+  player1ShootCooldown: 1.5
   player2ShootCooldown: 3
   Player1CanShoot: 0
   Player2CanShoot: 0

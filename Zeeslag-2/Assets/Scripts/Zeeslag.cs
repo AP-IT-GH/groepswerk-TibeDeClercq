@@ -31,21 +31,23 @@ public class Zeeslag : MonoBehaviour
     [SerializeField] private GenerateField player2FieldGenerator;
     [SerializeField] private BattleController player1BattleController;
     [SerializeField] private BattleController player2BattleController;
+    [SerializeField] private int player1MultishotCount = 1;
+    [SerializeField] private int player2MultishotCount = 1;
     public float player1ShootCooldown = 3;
     public float player2ShootCooldown = 3;
 
     private bool _gameStarted;
     private bool _player1Shot;
-    private bool _player2Shot;
-    public bool Player1CanShoot;
-    public bool Player2CanShoot;
+    private bool _player2Shot;    
 
     public Field FieldPlayer1;
     public Field FieldPlayer2;
 
-    public GameState GameState;
-    public Winner winner;
-    public bool GameRestarted = true;
+    [HideInInspector] public bool Player1CanShoot;
+    [HideInInspector] public bool Player2CanShoot;
+    [HideInInspector] public GameState GameState;
+    [HideInInspector] public Winner winner;
+    [HideInInspector] public bool GameRestarted = true;
 
     private void Start()
     {
@@ -103,7 +105,7 @@ public class Zeeslag : MonoBehaviour
         {
             Debug.Log("Player 1 Shooting");
             char result = this.FieldPlayer2.Shoot(coords);
-            player1BattleController.Shoot(coords);
+            player1BattleController.Shoot(coords, player1MultishotCount);
             this._player1Shot = true;
             UpdateGameState();
             StartCoroutine(Player1Wait());
@@ -124,7 +126,7 @@ public class Zeeslag : MonoBehaviour
         {
             Debug.Log("Player 2 Shooting");
             char result = this.FieldPlayer1.Shoot(coords);
-            player2BattleController.Shoot(coords);
+            player2BattleController.Shoot(coords, player2MultishotCount);
             this._player2Shot = true;
             UpdateGameState();
             StartCoroutine(Player2Wait());

@@ -7,6 +7,7 @@ public class BattleController : MonoBehaviour
     public Zeeslag game;
     public GameObject otherPlayerField;
     public bool isPlayer;
+    [SerializeField] float multiShotDelay = 0.2f;
     [HideInInspector] public List<ShipBehavior> ships;
     [HideInInspector] public List<ShipBehavior> otherPlayerShips;
 
@@ -34,6 +35,11 @@ public class BattleController : MonoBehaviour
     }
 
     public void Shoot(Vector2 coords, int shotCount = 1)
+    {
+        StartCoroutine(ShootTimed(coords, shotCount));      
+    }
+
+    private IEnumerator ShootTimed(Vector3 coords, int shotCount)
     {
         //Option to shoot from multiple ships, default is 1
         for (int i = 0; i < shotCount; i++)
@@ -105,7 +111,7 @@ public class BattleController : MonoBehaviour
             Cannon shootingCannon = validCannons[Random.Range(0, validCannons.Count)];
 
             //Fire
-            if (targetShip != null) 
+            if (targetShip != null)
             {
                 shootingCannon.Shoot(targetShip.parts[targetShip.coordinates.IndexOf(coords)].position);
             }
@@ -114,6 +120,9 @@ public class BattleController : MonoBehaviour
                 Vector3 offset = new Vector3(-(enemyField.field.Size / 2) * enemyField.spacing, enemyField.startPosition.position.y, (-(enemyField.field.Size / 2) * enemyField.spacing) + enemyField.offsetZ);
                 shootingCannon.Shoot(new Vector3(coords.x * enemyField.spacing, 0, coords.y * enemyField.spacing) + offset);
             }
-        }        
+
+            //wait to shoot again (only used when shotCount > 1)
+            yield return new WaitForSeconds(multiShotDelay);
+        }
     }
 }

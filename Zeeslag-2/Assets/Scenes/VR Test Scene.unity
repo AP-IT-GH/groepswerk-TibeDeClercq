@@ -1594,13 +1594,13 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1840674107}
     - target: {fileID: 1471384967092075819, guid: 13c11d7c4200e024abedccb3d9396ab5, type: 3}
-      propertyPath: player1ShootCooldown
-      value: 1.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 1471384967092075819, guid: 13c11d7c4200e024abedccb3d9396ab5, type: 3}
       propertyPath: player1FieldGenerator
       value: 
       objectReference: {fileID: 1345573335318221663}
+    - target: {fileID: 1471384967092075819, guid: 13c11d7c4200e024abedccb3d9396ab5, type: 3}
+      propertyPath: player1MultishotCount
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1471384967092075819, guid: 13c11d7c4200e024abedccb3d9396ab5, type: 3}
       propertyPath: player2FieldGenerator
       value: 

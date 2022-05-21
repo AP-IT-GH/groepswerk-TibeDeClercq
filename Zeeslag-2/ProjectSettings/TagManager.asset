@@ -10,6 +10,8 @@ TagManager:
   - Marker
   - S
   - Finger
+  - HitBullet
+  - MissBullet
   layers:
   - Default
   - TransparentFX
