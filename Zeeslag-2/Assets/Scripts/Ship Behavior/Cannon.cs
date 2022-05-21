@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class Cannon : MonoBehaviour
 {
-    public void RotateTowardsEnemy(float yAngle)
+    public void RotateTowardsTarget(float yAngle, float xAngle)
     {
 
     }
 
-    public void Shoot()
+    public void Shoot(Vector3 target)
     {
-
+        Debug.Log($"Firing at {target}");
     }
 }

@@ -63,7 +63,8 @@ public class GenerateField : MonoBehaviour
     {
         GameObject newShip = Instantiate(shipPrefab, new Vector3(ship.PositionStart.x * spacing, shipHeight, ship.PositionStart.y * spacing), Quaternion.identity, startPosition);
         ShipBehavior behavior = newShip.GetComponent<ShipBehavior>();
-        behavior.coordinates = ship.PositionStart;
+        behavior.startCoordinates = ship.PositionStart;
+        behavior.coordinates = ship.ShipCoords;        
         behavior.orientation = ship.Orientation;
 
         if (ship.Orientation == Orientation.Horizontal)

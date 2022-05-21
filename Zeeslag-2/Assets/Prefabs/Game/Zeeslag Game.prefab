@@ -143,10 +143,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7a954bf0a1933e4a8287d1f8d53daaf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player1CheatMode: 0
+  player2CheatMode: 0
   player1Grid: {fileID: 0}
   player2Grid: {fileID: 0}
   player1FieldGenerator: {fileID: 0}
   player2FieldGenerator: {fileID: 0}
+  player1BattleController: {fileID: 0}
+  player2BattleController: {fileID: 0}
   player1ShootCooldown: 3
   player2ShootCooldown: 3
   Player1CanShoot: 0

@@ -29,6 +29,8 @@ public class Zeeslag : MonoBehaviour
     [SerializeField] private ObservationGrid player2Grid;
     [SerializeField] private GenerateField player1FieldGenerator;
     [SerializeField] private GenerateField player2FieldGenerator;
+    [SerializeField] private BattleController player1BattleController;
+    [SerializeField] private BattleController player2BattleController;
     public float player1ShootCooldown = 3;
     public float player2ShootCooldown = 3;
 
@@ -101,6 +103,7 @@ public class Zeeslag : MonoBehaviour
         {
             Debug.Log("Player 1 Shooting");
             char result = this.FieldPlayer2.Shoot(coords);
+            player1BattleController.Shoot(coords);
             this._player1Shot = true;
             UpdateGameState();
             StartCoroutine(Player1Wait());
@@ -121,6 +124,7 @@ public class Zeeslag : MonoBehaviour
         {
             Debug.Log("Player 2 Shooting");
             char result = this.FieldPlayer1.Shoot(coords);
+            player2BattleController.Shoot(coords);
             this._player2Shot = true;
             UpdateGameState();
             StartCoroutine(Player2Wait());

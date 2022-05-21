@@ -9,17 +9,18 @@ public class ShipBehavior : MonoBehaviour
     public bool standingOn = false;
     public List<Cannon> cannons;
     public Orientation orientation;
-    public Vector2 coordinates;
+    public Vector2 startCoordinates;
+    public List<Vector2> coordinates;
+    public List<Transform> parts = new List<Transform>();
 
     private float startPosition;
     private float offset;
     private float direction = 1;
-    
-    //orentation, coordinates etcc
 
     void Start()
     {
         RandomizePosition();
+        SetupParts();         
     }
 
     void Update()
@@ -32,6 +33,14 @@ public class ShipBehavior : MonoBehaviour
         if (!standingOn)
         {
             transform.position = new Vector3(transform.position.x, (startPosition + Mathf.Sin(Time.time * bobSpeed) * offset * direction) * bobHeight, transform.position.z);
+        }
+    }
+
+    private void SetupParts()
+    {
+        for (int i = 0; i < gameObject.transform.GetChild(2).transform.childCount; i++)
+        {
+            parts.Add(gameObject.transform.GetChild(2).transform.GetChild(i).transform);
         }
     }
 
