@@ -27,13 +27,11 @@ public class HandManager : MonoBehaviour
     private OVRSkeleton _rightHandSkeleton;
 
     private GameObject _leftIndex;
-    private GameObject _leftThumb;
     private GameObject _leftMiddle;
     private GameObject _leftRing;
     private GameObject _leftPinky;
 
     private GameObject _rightIndex;
-    private GameObject _rightThumb;
     private GameObject _rightMiddle;
     private GameObject _rightRing;
     private GameObject _rightPinky;
@@ -74,13 +72,11 @@ public class HandManager : MonoBehaviour
     private void InstantiateColliders()
     {
         _leftIndex = Instantiate(fingerCollider, transform);
-        _leftThumb = Instantiate(fingerCollider, transform);
         _leftMiddle = Instantiate(fingerCollider, transform);
         _leftRing = Instantiate(fingerCollider, transform);
         _leftPinky = Instantiate(fingerCollider, transform);
 
         _rightIndex = Instantiate(fingerCollider, transform);
-        _rightThumb = Instantiate(fingerCollider, transform);
         _rightMiddle = Instantiate(fingerCollider, transform);
         _rightRing = Instantiate(fingerCollider, transform);
         _rightPinky = Instantiate(fingerCollider, transform);
@@ -111,13 +107,11 @@ public class HandManager : MonoBehaviour
         if (handsActive)
         {
             //Set fingertip position
-            _leftThumb.transform.position = _leftHandSkeleton.Bones[19].Transform.position;
             _leftIndex.transform.position = _leftHandSkeleton.Bones[20].Transform.position;
             _leftMiddle.transform.position = _leftHandSkeleton.Bones[21].Transform.position;
             _leftRing.transform.position = _leftHandSkeleton.Bones[22].Transform.position;
             _leftPinky.transform.position = _leftHandSkeleton.Bones[23].Transform.position;
 
-            _rightThumb.transform.position = _rightHandSkeleton.Bones[19].Transform.position;
             _rightIndex.transform.position = _rightHandSkeleton.Bones[20].Transform.position;
             _rightMiddle.transform.position = _rightHandSkeleton.Bones[21].Transform.position;
             _rightRing.transform.position = _rightHandSkeleton.Bones[22].Transform.position;
@@ -135,13 +129,11 @@ public class HandManager : MonoBehaviour
             RaycastHit hit;
             List<string> validTags = new List<string>() { "W", "H", "M" };
 
-            if (Physics.Raycast(_leftThumb.transform.position, _leftThumb.transform.TransformDirection(Vector3.forward), out hit, 0.2f)) { if (validTags.Contains(hit.collider.gameObject.tag)) hits.Add(hit); }
             if (Physics.Raycast(_leftIndex.transform.position, _leftIndex.transform.TransformDirection(Vector3.forward), out hit, 0.2f)) { if (validTags.Contains(hit.collider.gameObject.tag)) hits.Add(hit); }
             if (Physics.Raycast(_leftMiddle.transform.position, _leftMiddle.transform.TransformDirection(Vector3.forward), out hit, 0.2f)) { if (validTags.Contains(hit.collider.gameObject.tag)) hits.Add(hit); }
             if (Physics.Raycast(_leftRing.transform.position, _leftRing.transform.TransformDirection(Vector3.forward), out hit, 0.2f)) { if (validTags.Contains(hit.collider.gameObject.tag)) hits.Add(hit); }
             if (Physics.Raycast(_leftPinky.transform.position, _leftPinky.transform.TransformDirection(Vector3.forward), out hit, 0.2f)) { if (validTags.Contains(hit.collider.gameObject.tag)) hits.Add(hit); }
 
-            if (Physics.Raycast(_rightThumb.transform.position, _rightThumb.transform.TransformDirection(Vector3.forward), out hit, 0.2f)) { if (validTags.Contains(hit.collider.gameObject.tag)) hits.Add(hit); }
             if (Physics.Raycast(_rightIndex.transform.position, _rightIndex.transform.TransformDirection(Vector3.forward), out hit, 0.2f)) { if (validTags.Contains(hit.collider.gameObject.tag)) hits.Add(hit); }
             if (Physics.Raycast(_rightMiddle.transform.position, _rightMiddle.transform.TransformDirection(Vector3.forward), out hit, 0.2f)) { if (validTags.Contains(hit.collider.gameObject.tag)) hits.Add(hit); }
             if (Physics.Raycast(_rightRing.transform.position, _rightRing.transform.TransformDirection(Vector3.forward), out hit, 0.2f)) { if (validTags.Contains(hit.collider.gameObject.tag)) hits.Add(hit); }

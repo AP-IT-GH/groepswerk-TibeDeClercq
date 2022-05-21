@@ -12,6 +12,8 @@ TagManager:
   - Finger
   - HitBullet
   - MissBullet
+  - Ship
+  - Water
   layers:
   - Default
   - TransparentFX

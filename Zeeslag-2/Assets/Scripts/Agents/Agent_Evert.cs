@@ -7,6 +7,8 @@ using Unity.MLAgents.Actuators;
 
 public class Agent_Evert : Agent
 {
+    public bool Paused = true;
+
     public Zeeslag Game;
     public Vector2 chosenCoordinates;
     public char shotResult;
@@ -16,6 +18,7 @@ public class Agent_Evert : Agent
     private int missedCount;
     private int fieldTilesCount;
     private int stepCount;
+    //private bool firstStart = true;
 
     private void Start()
     {
@@ -26,15 +29,19 @@ public class Agent_Evert : Agent
     {
         stepCount = 0;
         fieldTilesCount = Game.FieldPlayer1.Size * Game.FieldPlayer1.Size;
+        transform.localPosition = new Vector3(0, transform.localPosition.y, 0);
         missedCount = 0;
         shotResult = new char();
         shotCoords = new List<Vector2>();
-        transform.localPosition = new Vector3(0,transform.localPosition.y,0);
         chosenCoordinates = new Vector2(0, 0);
 
-        SetFieldVariables();
-        Game.Restart();
-        Debug.Log("Agent Restarted Game");
+        //if (!firstStart)
+        //{
+        //    SetFieldVariables();
+        //    Game.Restart();
+        //    Debug.Log("Agent Restarted Game");
+        //    firstStart = false;
+        //}        
     }
 
     public override void CollectObservations(VectorSensor sensor) //called after episode begin
@@ -54,7 +61,6 @@ public class Agent_Evert : Agent
 
     public override void OnActionReceived(ActionBuffers actionBuffers) //called last
     {
-        Debug.Log("Action taken");
         stepCount++;
 
         //try to fire
@@ -85,6 +91,7 @@ public class Agent_Evert : Agent
             {
                 Debug.Log("Agent lost the game");
             }
+            Paused = true;
             EndEpisode();
         }
 
@@ -154,7 +161,7 @@ public class Agent_Evert : Agent
 
     private void TryMove(IDiscreteActionMask actionMask)
     {
-        if (transform.localPosition.x >= Game.FieldPlayer1.Size - 1)
+        if (transform.localPosition.x >= Game.FieldPlayer1.Size - 1 || Paused)
         {
             actionMask.SetActionEnabled(0, 2, false);
         }
@@ -163,7 +170,7 @@ public class Agent_Evert : Agent
             actionMask.SetActionEnabled(0, 2, true);
         }
 
-        if (transform.localPosition.x <= 0)
+        if (transform.localPosition.x <= 0 || Paused)
         {
             actionMask.SetActionEnabled(0, 0, false);
         }
@@ -172,7 +179,7 @@ public class Agent_Evert : Agent
             actionMask.SetActionEnabled(0, 0, true);
         }
 
-        if (transform.localPosition.z >= Game.FieldPlayer1.Size - 1)
+        if (transform.localPosition.z >= Game.FieldPlayer1.Size - 1 || Paused)
         {
             actionMask.SetActionEnabled(1, 2, false);
         }
@@ -181,7 +188,7 @@ public class Agent_Evert : Agent
             actionMask.SetActionEnabled(1, 2, true);
         }
 
-        if (transform.localPosition.z <= 0)
+        if (transform.localPosition.z <= 0 || Paused)
         {
             actionMask.SetActionEnabled(1, 0, false);
         }
@@ -193,7 +200,7 @@ public class Agent_Evert : Agent
 
     private void TryShoot(IDiscreteActionMask actionMask)
     {
-        if (Game.Player2CanShoot == false || shotCoords.Contains(chosenCoordinates) || Game.GameRestarted == false || transform.localPosition.x < 0 || transform.localPosition.y > Game.FieldPlayer1.Size-1 || transform.localPosition.z < 0 || transform.localPosition.z > Game.FieldPlayer1.Size-1)
+        if (Game.Player2CanShoot == false || shotCoords.Contains(chosenCoordinates) || Game.GameRestarted == false || transform.localPosition.x < 0 || transform.localPosition.y > Game.FieldPlayer1.Size-1 || transform.localPosition.z < 0 || transform.localPosition.z > Game.FieldPlayer1.Size-1 || Paused)
         {
             actionMask.SetActionEnabled(2, 1, false);
         }

@@ -13,7 +13,5 @@ public class Cannon : MonoBehaviour
     {
         //if (missed) projectile.gameObject.tag = "MissBullet"
         //if (!missed) projectile.gameObject.tag = "HitBullet"
-
-        Debug.Log($"Firing at {target}");
     }
 }

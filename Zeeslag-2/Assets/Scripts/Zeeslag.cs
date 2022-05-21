@@ -11,6 +11,7 @@ using UnityEngine;
 public enum GameState
 {
     InProgress,
+    Paused,
     Completed
 }
 
@@ -23,8 +24,13 @@ public enum Winner
 
 public class Zeeslag : MonoBehaviour
 {
+    [SerializeField] private bool play = false; //TEMP
+    [SerializeField] private bool pause = false; //TEMP
+    [SerializeField] private bool restart = false; //TEMP
+
     [SerializeField] private bool player1CheatMode = false;
     [SerializeField] private bool player2CheatMode = false;
+    [SerializeField] private Agent_Evert agent;
     [SerializeField] private ObservationGrid player1Grid;
     [SerializeField] private ObservationGrid player2Grid;
     [SerializeField] private GenerateField player1FieldGenerator;
@@ -36,7 +42,6 @@ public class Zeeslag : MonoBehaviour
     public float player1ShootCooldown = 3;
     public float player2ShootCooldown = 3;
 
-    private bool _gameStarted;
     private bool _player1Shot;
     private bool _player2Shot;    
 
@@ -51,19 +56,60 @@ public class Zeeslag : MonoBehaviour
 
     private void Start()
     {
-        //this._gameStarted = false;
         this._player1Shot = false;
         this._player2Shot = false;
         this.Player1CanShoot = true;
         this.Player2CanShoot = true;
         this.winner = Winner.None;
-        this.GameState = GameState.InProgress;
+        this.GameState = GameState.Paused;
+    }
+
+    private void Update() //TEMP
+    {
+        if (restart)
+        {
+            Restart();
+            restart = false;
+        }
+
+        if (play)
+        {
+            play = false;
+            Play();
+        }
+
+        if (pause)
+        {
+            pause = false;
+            Pause();
+        }
+    }
+
+    public void Play()
+    {
+        if (GameState == GameState.Paused)
+        {
+            this.GameState = GameState.InProgress;
+            this.agent.Paused = false;
+        }        
+    }
+
+    public void Pause()
+    {
+        if (GameState == GameState.InProgress)
+        {
+            this.GameState = GameState.Paused;
+            this.agent.Paused = true;
+        }        
     }
 
     public void Restart()
     {
-        GameRestarted = false;
-        StartCoroutine(StartRestart());
+        if (GameState == GameState.Paused || GameState == GameState.Completed)
+        {
+            GameRestarted = false;
+            StartCoroutine(StartRestart());
+        }           
     }
 
     public IEnumerator StartRestart()
@@ -76,6 +122,10 @@ public class Zeeslag : MonoBehaviour
         player1Grid.ResetGrid();
         player1FieldGenerator.ResetField();
         player2FieldGenerator.ResetField();
+        agent.gameObject.SetActive(false);
+        agent.gameObject.SetActive(true);
+        GameState = GameState.InProgress;
+        agent.Paused = false;
     }
     private IEnumerator Player1Wait()
     {
@@ -137,8 +187,8 @@ public class Zeeslag : MonoBehaviour
             }
             if(result == 'S')
             {
-                OVRInput.SetControllerVibration(0.5f, 0.8f, OVRInput.Controller.LTouch);
-                OVRInput.SetControllerVibration(0.5f, 0.8f, OVRInput.Controller.RTouch);
+                OVRInput.SetControllerVibration(0.8f, 0.8f, OVRInput.Controller.LTouch);
+                OVRInput.SetControllerVibration(0.8f, 0.8f, OVRInput.Controller.RTouch);
             }
 
             return result;

@@ -68,6 +68,7 @@ public class ObservationGrid : MonoBehaviour
         {
             Destroy(child.gameObject);
         }
+        start.rotation = Quaternion.identity;
         cube.SetActive(true);
 
         Start();

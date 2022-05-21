@@ -73,7 +73,7 @@ public class ObservationCube : MonoBehaviour
         switch (observationGrid.player)
         {
             case Players.Player1:
-                if (state == CubeState.Water && observationGrid.game.Player1CanShoot)
+                if (state == CubeState.Water && observationGrid.game.Player1CanShoot && observationGrid.game.GameState == GameState.InProgress)
                 {
                     observationGrid.game.Player1Shoot(coordinates);
                     Renderer.material = TransparentWaterMaterial;
