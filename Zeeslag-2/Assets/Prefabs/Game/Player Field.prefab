@@ -100,5 +100,6 @@ MonoBehaviour:
   game: {fileID: 0}
   otherPlayerField: {fileID: 0}
   isPlayer: 1
+  multiShotDelay: 0.2
   ships: []
   otherPlayerShips: []

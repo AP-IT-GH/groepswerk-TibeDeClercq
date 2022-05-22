@@ -122,7 +122,7 @@ public class BattleController : MonoBehaviour
             }
 
             //wait to shoot again (only used when shotCount > 1)
-            yield return new WaitForSeconds(multiShotDelay);
+            yield return new WaitForSeconds(Random.Range(0.1f, multiShotDelay));
         }
     }
 }
