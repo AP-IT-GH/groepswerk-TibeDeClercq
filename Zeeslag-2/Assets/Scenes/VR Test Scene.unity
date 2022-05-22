@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.54789186, g: 0.8541358, b: 0.92391616, a: 1}
+  m_IndirectSpecularColor: {r: 0.54825336, g: 0.8553342, b: 0.92253053, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1288,6 +1288,10 @@ PrefabInstance:
       value: Zeeslag Game
       objectReference: {fileID: 0}
     - target: {fileID: 1471384967092075819, guid: 13c11d7c4200e024abedccb3d9396ab5, type: 3}
+      propertyPath: play
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1471384967092075819, guid: 13c11d7c4200e024abedccb3d9396ab5, type: 3}
       propertyPath: agent
       value: 
       objectReference: {fileID: 3785848845400340357}
@@ -1848,6 +1852,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2600758373347271275, guid: 4c050237cc5b52c45aada8b1b391aacb, type: 3}
+      propertyPath: m_Mass
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2600758373347271275, guid: 4c050237cc5b52c45aada8b1b391aacb, type: 3}
+      propertyPath: m_UseGravity
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2600758373347271278, guid: 4c050237cc5b52c45aada8b1b391aacb, type: 3}
       propertyPath: m_Name
       value: Bullet
