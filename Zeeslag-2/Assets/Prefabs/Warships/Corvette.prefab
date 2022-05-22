@@ -256,6 +256,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66bf5dfd23c066549a10884af8d4ff6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sinkSpeed: 1
+  sinkRotateSpeed: 8
   bobSpeed: 0.5
   bobHeight: 0.5
   standingOn: 0
@@ -268,6 +270,7 @@ MonoBehaviour:
   - {x: -0.0000008973775, y: 8.73e-43}
   - {x: 0, y: 0}
   parts: []
+  sinking: 0
 --- !u!1 &1345887407032708
 GameObject:
   m_ObjectHideFlags: 0

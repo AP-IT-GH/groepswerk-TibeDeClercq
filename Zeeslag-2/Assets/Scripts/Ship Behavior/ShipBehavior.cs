@@ -4,20 +4,25 @@ using UnityEngine;
 
 public class ShipBehavior : MonoBehaviour
 {
-    public float bobSpeed = 0.5f;
-    public float bobHeight = 1;
+    [SerializeField] private float sinkSpeed = 1f;
+    [SerializeField] private float sinkRotateSpeed = 10f;
+    [SerializeField] private float bobSpeed = 0.5f;
+    [SerializeField] private float bobHeight = 1;
+
     public bool standingOn = false;
     public List<Cannon> cannons;
     public Orientation orientation;
     public Vector2 startCoordinates;
     public List<Vector2> coordinates;
     public List<Transform> parts = new List<Transform>();
+    public int Health;
 
     private float startPosition;
     private float offset;
     private float direction = 1;
+    public bool sinking = false;
 
-    void Start()
+    public void Start()
     {
         RandomizePosition();
         SetupParts();         
@@ -26,6 +31,10 @@ public class ShipBehavior : MonoBehaviour
     void Update()
     {
         Bob();
+        if (sinking)
+        {
+            Sink();
+        }
     }
 
     public void Bob()
@@ -36,12 +45,26 @@ public class ShipBehavior : MonoBehaviour
         }
     }
 
+    public void Sink()
+    {
+        sinking = true;
+        if (transform.eulerAngles.z > 250)
+        {
+            transform.Rotate(new Vector3(0, 0, -Time.deltaTime * sinkRotateSpeed));
+        }
+        else
+        {
+            sinking = false;
+        }
+    }
+
     private void SetupParts()
     {
         for (int i = 0; i < gameObject.transform.GetChild(2).transform.childCount; i++)
         {
             parts.Add(gameObject.transform.GetChild(2).transform.GetChild(i).transform);
         }
+        Health = parts.Count;
     }
 
     public void RandomizePosition()

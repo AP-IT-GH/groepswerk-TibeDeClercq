@@ -24,6 +24,7 @@ public class GenerateField : MonoBehaviour
         {
             Destroy(ship.gameObject);
         }
+        startPosition.position = Vector3.zero;
         Start();
     }
 
@@ -57,6 +58,7 @@ public class GenerateField : MonoBehaviour
             }
         }
         startPosition.position = new Vector3(-(field.Size / 2) * spacing, startPosition.position.y, (-(field.Size / 2) * spacing) + offsetZ);
+        Debug.Log($"setting transform position to {startPosition.position}");
     }
 
     private void InstantiateShip(GameObject shipPrefab, Ship ship)
@@ -71,6 +73,8 @@ public class GenerateField : MonoBehaviour
         {
             newShip.transform.localRotation = Quaternion.Euler(0, 90, 0);            
         }
+
+        newShip.transform.Rotate(new Vector3(0,0,-0.1f));
     }
 }
 

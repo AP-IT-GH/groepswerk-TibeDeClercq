@@ -122,6 +122,10 @@ public class Zeeslag : MonoBehaviour
         player1Grid.ResetGrid();
         player1FieldGenerator.ResetField();
         player2FieldGenerator.ResetField();
+        yield return new WaitForSeconds(0.7f);
+        player1BattleController.Start();
+        player2BattleController.Start();
+        yield return new WaitForSeconds(0.7f);
         agent.gameObject.SetActive(false);
         agent.gameObject.SetActive(true);
         GameState = GameState.InProgress;
@@ -183,6 +187,7 @@ public class Zeeslag : MonoBehaviour
 
             if (player2CheatMode && result == 'S')
             {
+                Debug.Log("revealing ship");
                 player2Grid.RevealShip(coords);
             }
             if(result == 'S')

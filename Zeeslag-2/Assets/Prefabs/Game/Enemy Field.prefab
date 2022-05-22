@@ -101,5 +101,7 @@ MonoBehaviour:
   otherPlayerField: {fileID: 0}
   isPlayer: 0
   multiShotDelay: 0.5
+  cannonShootCount: 1
+  otherPlayerBattleController: {fileID: 0}
   ships: []
   otherPlayerShips: []

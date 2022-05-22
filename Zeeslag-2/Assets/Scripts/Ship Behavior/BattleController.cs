@@ -8,12 +8,14 @@ public class BattleController : MonoBehaviour
     public GameObject otherPlayerField;
     public bool isPlayer;
     [SerializeField] float multiShotDelay = 0.2f;
+    [SerializeField] int cannonShootCount = 1;
+    [SerializeField] private BattleController otherPlayerBattleController;
     [HideInInspector] public List<ShipBehavior> ships;
     [HideInInspector] public List<ShipBehavior> otherPlayerShips;
 
     private GenerateField enemyField;
 
-    void Start()
+    public void Start()
     {
         StartCoroutine(LateStart());
         enemyField = otherPlayerField.transform.parent.GetComponent<GenerateField>();
@@ -21,7 +23,9 @@ public class BattleController : MonoBehaviour
 
     private IEnumerator LateStart()
     {
-        yield return new WaitForSeconds(0.7f);
+        ships.Clear();
+        otherPlayerShips.Clear();
+        yield return new WaitForSeconds(0.7f);        
 
         for (int i = 0; i < transform.childCount; i++)
         {
@@ -36,7 +40,10 @@ public class BattleController : MonoBehaviour
 
     public void Shoot(Vector2 coords, int shotCount = 1)
     {
-        StartCoroutine(ShootTimed(coords, shotCount));      
+        if (game.GameState == GameState.InProgress)
+        {
+            StartCoroutine(ShootTimed(coords, shotCount));
+        }
     }
 
     private IEnumerator ShootTimed(Vector3 coords, int shotCount)
@@ -107,21 +114,49 @@ public class BattleController : MonoBehaviour
                 }
             }
 
-            //Pick a random cannon to shoot
-            Cannon shootingCannon = validCannons[Random.Range(0, validCannons.Count)];
-
-            //Fire
-            if (targetShip != null)
+            int shots = 0;
+            //Shoot from x amount of cannons
+            if (cannonShootCount > validCannons.Count)
             {
-                shootingCannon.Shoot(targetShip.parts[targetShip.coordinates.IndexOf(coords)].position);
+                shots = validCannons.Count;
             }
             else
             {
-                Vector3 offset = new Vector3(-(enemyField.field.Size / 2) * enemyField.spacing, enemyField.startPosition.position.y, (-(enemyField.field.Size / 2) * enemyField.spacing) + enemyField.offsetZ);
-                shootingCannon.Shoot(new Vector3(coords.x * enemyField.spacing, 0, coords.y * enemyField.spacing) + offset, true);
+                shots = cannonShootCount;
             }
 
-            //wait to shoot again (only used when shotCount > 1)
+            for (int j = 0; j < shots; j++)
+            {
+                //Pick a random cannon to shoot
+                Cannon shootingCannon = validCannons[Random.Range(0, validCannons.Count)];
+
+                //Fire
+                if (targetShip != null)
+                {
+                    shootingCannon.Shoot(targetShip.parts[targetShip.coordinates.IndexOf(coords)].position);                    
+                }
+                else
+                {
+                    Vector3 offset = new Vector3(-(enemyField.field.Size / 2) * enemyField.spacing, enemyField.startPosition.position.y, (-(enemyField.field.Size / 2) * enemyField.spacing) + enemyField.offsetZ);
+                    shootingCannon.Shoot(new Vector3(coords.x * enemyField.spacing, 0, coords.y * enemyField.spacing) + offset, true);
+                }
+                //Wait until another cannon can shoot
+                yield return new WaitForSeconds(Random.Range(0.1f, multiShotDelay));
+            }   
+            
+            if (targetShip != null && targetShip.Health != 0)
+            {
+                //If target ship has no more health (ship sunk), remove it from the list of ships
+                targetShip.Health--;
+                if (targetShip.Health == 0)
+                {
+                    targetShip.Sink();
+                    otherPlayerShips.Remove(targetShip);                    
+                    otherPlayerBattleController.ships.Remove(targetShip);
+                }
+            }
+
+            //Wait to shoot again (only used when shotCount > 1)
             yield return new WaitForSeconds(Random.Range(0.1f, multiShotDelay));
         }
     }
