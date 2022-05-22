@@ -21,6 +21,11 @@ public class BattleController : MonoBehaviour
         enemyField = otherPlayerField.transform.parent.GetComponent<GenerateField>();
     }
 
+    private void Update()
+    {
+        CheckHealth();
+    }
+
     private IEnumerator LateStart()
     {
         ships.Clear();
@@ -144,20 +149,32 @@ public class BattleController : MonoBehaviour
                 yield return new WaitForSeconds(Random.Range(0.1f, multiShotDelay));
             }   
             
-            if (targetShip != null && targetShip.Health != 0)
-            {
-                //If target ship has no more health (ship sunk), remove it from the list of ships
-                targetShip.Health--;
-                if (targetShip.Health == 0)
-                {
-                    targetShip.Sink();
-                    otherPlayerShips.Remove(targetShip);                    
-                    otherPlayerBattleController.ships.Remove(targetShip);
-                }
-            }
+            //if (targetShip != null && targetShip.Health != 0)
+            //{
+            //    //If target ship has no more health (ship sunk), remove it from the list of ships
+            //    //targetShip.Health--;
+
+            //    if (targetShip.Health == 0)
+            //    {
+            //        otherPlayerShips.Remove(targetShip);                    
+            //        otherPlayerBattleController.ships.Remove(targetShip);
+            //    }
+            //}
 
             //Wait to shoot again (only used when shotCount > 1)
             yield return new WaitForSeconds(Random.Range(0.1f, multiShotDelay));
+        }
+    }
+
+    private void CheckHealth()
+    {
+        foreach (ShipBehavior ship in otherPlayerBattleController.ships)
+        {
+            if (ship.Health <= 0)
+            {
+                otherPlayerShips.Remove(ship);
+                otherPlayerBattleController.ships.Remove(ship);
+            }
         }
     }
 }

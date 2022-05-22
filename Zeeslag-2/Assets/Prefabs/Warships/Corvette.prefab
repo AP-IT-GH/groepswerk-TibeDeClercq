@@ -260,7 +260,7 @@ MonoBehaviour:
   sinkSpeed: 1
   sinkRotateSpeed: 8
   bobSpeed: 0.5
-  bobHeight: 0.5
+  bobHeight: 0.1
   standingOn: 0
   cannons:
   - {fileID: 2910285941273433111}
@@ -271,7 +271,7 @@ MonoBehaviour:
   - {x: -0.0000008973775, y: 8.73e-43}
   - {x: 0, y: 0}
   parts: []
-  sinking: 0
+  Health: 0
 --- !u!1 &1345887407032708
 GameObject:
   m_ObjectHideFlags: 0
@@ -744,7 +744,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6159807979835596139}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 2.76, z: -9.09}
+  m_LocalPosition: {x: -0, y: 1.41, z: -9.09}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 7662752383194739451}
@@ -804,7 +804,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8499880119666708816}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0, y: 3.938, z: 9.11}
+  m_LocalPosition: {x: -0, y: 2.92, z: 9.11}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 7662752383194739451}

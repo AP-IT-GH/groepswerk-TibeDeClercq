@@ -20,7 +20,8 @@ public class ShipBehavior : MonoBehaviour
     private float startPosition;
     private float offset;
     private float direction = 1;
-    public bool sinking = false;
+    private bool sinking = false;
+    private bool canLoseHealth = true;
 
     public void Start()
     {
@@ -56,6 +57,34 @@ public class ShipBehavior : MonoBehaviour
         {
             sinking = false;
         }
+    }
+
+    public void Damage()
+    {
+        if (canLoseHealth)
+        {
+            canLoseHealth = false;
+
+            if (transform.parent.name == "Player Warships")
+            {
+                OVRInput.SetControllerVibration(0.1f, 0.8f, OVRInput.Controller.Active);
+            }
+            //OVRInput.SetControllerVibration(0.8f, 0.8f, OVRInput.Controller.RTouch);
+
+            Health--;
+            Debug.Log($"{this}'s Health = {Health}");
+            if (Health <= 0)
+            {
+                Sink();
+            }
+            StartCoroutine(DamageCooldown());
+        }
+    }
+
+    private IEnumerator DamageCooldown()
+    {
+        yield return new WaitForSeconds(0.02f);
+        canLoseHealth = true;
     }
 
     private void SetupParts()
