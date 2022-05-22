@@ -118,7 +118,7 @@ public class BattleController : MonoBehaviour
             else
             {
                 Vector3 offset = new Vector3(-(enemyField.field.Size / 2) * enemyField.spacing, enemyField.startPosition.position.y, (-(enemyField.field.Size / 2) * enemyField.spacing) + enemyField.offsetZ);
-                shootingCannon.Shoot(new Vector3(coords.x * enemyField.spacing, 0, coords.y * enemyField.spacing) + offset);
+                shootingCannon.Shoot(new Vector3(coords.x * enemyField.spacing, 0, coords.y * enemyField.spacing) + offset, true);
             }
 
             //wait to shoot again (only used when shotCount > 1)

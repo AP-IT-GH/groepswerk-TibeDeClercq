@@ -4,9 +4,12 @@ using UnityEngine;
 public class Cannon : MonoBehaviour
 {
     private List<AudioClip> shootSounds;
+    private Transform turret;
+
     private void Start()
     {
         shootSounds = GameObject.Find("AudioHelper").GetComponent<AudioHelper>().ShootSounds;
+        turret = transform.GetChild(0);
     }
 
     public void RotateTowardsTarget(float yAngle, float xAngle)
