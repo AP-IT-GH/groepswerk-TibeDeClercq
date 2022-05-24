@@ -24,6 +24,7 @@ public class ObservationCube : MonoBehaviour
     private float maxAplha = 1f;
 
     private bool isFiring = false;
+    private bool rotate = false;
 
     private void Start()
     {
@@ -49,6 +50,11 @@ public class ObservationCube : MonoBehaviour
                 TargetAlpha = maxAplha;
             }
             Renderer.material.color = color;
+        }
+
+        if (rotate)
+        {
+            observationGrid.game.player1BattleController.RotateAllCannons();
         }
     }
 
@@ -82,10 +88,23 @@ public class ObservationCube : MonoBehaviour
                     StartCoroutine(Cooldown());
                 }
                 break;
-            case Players.Player2:
+            case Players.Player2:                
                 observationGrid.game.Player2Shoot(coordinates);
                 break;
         }
+    }
+
+    public void RotateTowardsTarget()
+    {
+        observationGrid.game.player1BattleController.GetAllValidCannons();
+        observationGrid.game.player1BattleController.GetTarget(coordinates);
+
+        rotate = true;
+    }
+
+    public void StopRotate()
+    {
+        rotate = false;
     }
 
     public void CreateOutline()

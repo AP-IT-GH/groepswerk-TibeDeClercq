@@ -35,7 +35,7 @@ public class Zeeslag : MonoBehaviour
     [SerializeField] private ObservationGrid player2Grid;
     [SerializeField] private GenerateField player1FieldGenerator;
     [SerializeField] private GenerateField player2FieldGenerator;
-    [SerializeField] private BattleController player1BattleController;
+    [SerializeField] public BattleController player1BattleController;
     [SerializeField] private BattleController player2BattleController;
     [SerializeField] private int player1MultishotCount = 1;
     [SerializeField] private int player2MultishotCount = 1;

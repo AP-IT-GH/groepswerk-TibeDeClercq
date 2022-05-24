@@ -36,6 +36,10 @@ public class Projectile : MonoBehaviour
 
         if (lifeSpan > 20 && name == "Bullet(Clone)" || transform.position.y < -10)
         {
+            Instantiate(explosion, target + new Vector3(0, explosionYOffset, 0), Quaternion.identity);
+            AudioPlayer audioPlayer = Instantiate(GameObject.Find("AudioPlayer"), transform.position, Quaternion.identity).GetComponent<AudioPlayer>();
+            audioPlayer.Play(explosionSounds[Random.Range(0, explosionSounds.Count)]);
+
             Destroy(gameObject);
         }
 

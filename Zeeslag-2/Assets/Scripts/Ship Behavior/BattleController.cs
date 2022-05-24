@@ -14,11 +14,13 @@ public class BattleController : MonoBehaviour
     [HideInInspector] public List<ShipBehavior> otherPlayerShips;
 
     private GenerateField enemyField;
+    private List<Cannon> allValidCannons;
+    private Vector3 currentTarget;
 
     public void Start()
     {
         StartCoroutine(LateStart());
-        enemyField = otherPlayerField.transform.parent.GetComponent<GenerateField>();
+        enemyField = otherPlayerField.transform.parent.GetComponent<GenerateField>();        
     }
 
     private void Update()
@@ -40,6 +42,23 @@ public class BattleController : MonoBehaviour
         for (int i = 0; i < otherPlayerField.transform.childCount; i++)
         {
             otherPlayerShips.Add(otherPlayerField.transform.GetChild(i).GetComponent<ShipBehavior>());
+        }
+
+        CorrectEnemyCannons();
+    }
+
+    private void CorrectEnemyCannons()
+    {
+        if (!isPlayer)
+        {
+            foreach (ShipBehavior ship in otherPlayerShips)
+            {
+                foreach(Cannon cannon in ship.cannons)
+                {
+                    cannon.CorrectCannon();
+                }
+            }
+
         }
     }
 
@@ -148,21 +167,82 @@ public class BattleController : MonoBehaviour
                 //Wait until another cannon can shoot
                 yield return new WaitForSeconds(Random.Range(0.1f, multiShotDelay));
             }   
-            
-            //if (targetShip != null && targetShip.Health != 0)
-            //{
-            //    //If target ship has no more health (ship sunk), remove it from the list of ships
-            //    //targetShip.Health--;
-
-            //    if (targetShip.Health == 0)
-            //    {
-            //        otherPlayerShips.Remove(targetShip);                    
-            //        otherPlayerBattleController.ships.Remove(targetShip);
-            //    }
-            //}
-
-            //Wait to shoot again (only used when shotCount > 1)
             yield return new WaitForSeconds(Random.Range(0.1f, multiShotDelay));
+        }
+    }
+
+    public void RotateAllCannons()
+    {
+        foreach (Cannon cannon in allValidCannons)
+        {
+            cannon.HoverRotate(currentTarget);
+        }
+    }
+
+    public void GetTarget(Vector2 coords)
+    {
+        foreach (ShipBehavior ship in otherPlayerShips)
+        {
+            if (ship.coordinates.Contains(coords))
+            {
+                currentTarget = ship.startCoordinates;
+                break;
+            }
+        }
+    }
+
+    public void GetAllValidCannons()
+    {
+        allValidCannons = new List<Cannon>();
+        foreach (ShipBehavior ship in ships)
+        {
+            //Add all valid cannons if the shooting ship to list
+            if (isPlayer)
+            {
+                if (ship.orientation == Orientation.Vertical)
+                {
+                    foreach (Cannon cannon in ship.cannons)
+                    {
+                        if (cannon is FrontCannon)
+                        {
+                            allValidCannons.Add(cannon);
+                        }
+                    }
+                }
+                else
+                {
+                    foreach (Cannon cannon in ship.cannons)
+                    {
+                        if (cannon is FrontCannon || cannon is BackCannon || cannon is LeftCannon)
+                        {
+                            allValidCannons.Add(cannon);
+                        }
+                    }
+                }
+            }
+            else
+            {
+                if (ship.orientation == Orientation.Vertical)
+                {
+                    foreach (Cannon cannon in ship.cannons)
+                    {
+                        if (cannon is BackCannon)
+                        {
+                            allValidCannons.Add(cannon);
+                        }
+                    }
+                }
+                else
+                {
+                    foreach (Cannon cannon in ship.cannons)
+                    {
+                        if (cannon is FrontCannon || cannon is BackCannon || cannon is RightCannon)
+                        {
+                            allValidCannons.Add(cannon);
+                        }
+                    }
+                }
+            }
         }
     }
 
