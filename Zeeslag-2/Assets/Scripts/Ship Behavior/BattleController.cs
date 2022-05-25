@@ -161,16 +161,23 @@ public class BattleController : MonoBehaviour
             cannon.HoverRotate(currentTarget);
         }
     }
-
+     
     public void GetTarget(Vector2 coords)
     {
+        bool found = false;
         foreach (ShipBehavior ship in otherPlayerShips)
         {
             if (ship.coordinates.Contains(coords))
             {
-                currentTarget = ship.startCoordinates;
+                currentTarget = ship.transform.position;
+                found = true;
                 break;
             }
+        }
+        if (!found)
+        {
+            Vector3 offset = new Vector3(-(enemyField.field.Size / 2) * enemyField.spacing, enemyField.startPosition.position.y, (-(enemyField.field.Size / 2) * enemyField.spacing) + enemyField.offsetZ);
+            currentTarget = new Vector3(coords.x * enemyField.spacing, 0, coords.y * enemyField.spacing) + offset;
         }
     }
 

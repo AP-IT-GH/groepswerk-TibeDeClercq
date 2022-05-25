@@ -1305,7 +1305,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1471384967092075819, guid: 13c11d7c4200e024abedccb3d9396ab5, type: 3}
       propertyPath: play
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1471384967092075819, guid: 13c11d7c4200e024abedccb3d9396ab5, type: 3}
       propertyPath: agent

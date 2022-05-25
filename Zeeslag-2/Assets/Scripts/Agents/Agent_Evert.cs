@@ -83,13 +83,8 @@ public class Agent_Evert : Agent
         {
             if (Game.winner == Winner.Player2)
             {
-                Debug.Log("Agent won the game");
                 float waterTileCount = fieldTilesCount - Game.FieldPlayer1.GetShipPartCount();
                 AddReward((waterTileCount - missedCount) / waterTileCount); // 1.0 would be the theorethical max score: never missed
-            }
-            else if (Game.winner == Winner.Player1)
-            {
-                Debug.Log("Agent lost the game");
             }
             Paused = true;
             EndEpisode();

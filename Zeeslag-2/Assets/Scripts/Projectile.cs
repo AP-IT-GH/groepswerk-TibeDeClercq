@@ -36,10 +36,16 @@ public class Projectile : MonoBehaviour
 
         if (lifeSpan > 20 && name == "Bullet(Clone)" || transform.position.y < -10)
         {
-            Instantiate(explosion, target + new Vector3(0, explosionYOffset, 0), Quaternion.identity);
+            if (!isPlayer)
+            {
+                Instantiate(explosion, target + new Vector3(0, explosionYOffset, 0), Quaternion.identity);
+            }            
             AudioPlayer audioPlayer = Instantiate(GameObject.Find("AudioPlayer"), transform.position, Quaternion.identity).GetComponent<AudioPlayer>();
             audioPlayer.Play(explosionSounds[Random.Range(0, explosionSounds.Count)]);
 
+            //Keep smoke trail and destroy projectile
+            gameObject.transform.GetChild(2).GetComponent<ParticleSystem>().Stop();
+            gameObject.transform.GetChild(2).parent = null;
             Destroy(gameObject);
         }
 
@@ -92,7 +98,7 @@ public class Projectile : MonoBehaviour
         //Instantiate explosion when hitting a ship
         if (other.tag == "Ship" && tag == "HitBullet" && lifeSpan > 2f && target.Health > 0)
         {   
-            if (target.transform.parent.name == "Player Warships")
+            if (!isPlayer)
             {
                 Instantiate(explosion, transform.position + new Vector3(0, explosionYOffset, 0), Quaternion.identity, other.transform);
                 AudioPlayer audioPlayer = Instantiate(GameObject.Find("AudioPlayer"), transform.position, Quaternion.identity).GetComponent<AudioPlayer>();
@@ -102,16 +108,25 @@ public class Projectile : MonoBehaviour
             //Reduce ships health
             target.Damage();
 
+            //Keep smoke trail and destroy projectile
+            gameObject.transform.GetChild(2).GetComponent<ParticleSystem>().Stop();
+            gameObject.transform.GetChild(2).parent = null;
             Destroy(gameObject);
         }
 
         //Instantiate splash when hitting water
         if (other.tag == "Water" && tag == "MissBullet" && lifeSpan > 2f)
         {
-            Instantiate(splash, transform.position + new Vector3(0, splashYOffset, 0), Quaternion.identity, other.transform);
+            if (!isPlayer)
+            {
+                Instantiate(splash, transform.position + new Vector3(0, splashYOffset, 0), Quaternion.identity, other.transform);
+            }
             AudioPlayer audioPlayer = Instantiate(GameObject.Find("AudioPlayer"), transform.position, Quaternion.identity).GetComponent<AudioPlayer>();
             audioPlayer.Play(splashSounds[Random.Range(0, splashSounds.Count)]);
 
+            //Keep smoke trail and destroy projectile
+            gameObject.transform.GetChild(2).GetComponent<ParticleSystem>().Stop();
+            gameObject.transform.GetChild(2).parent = null;
             Destroy(gameObject);
         }
     }

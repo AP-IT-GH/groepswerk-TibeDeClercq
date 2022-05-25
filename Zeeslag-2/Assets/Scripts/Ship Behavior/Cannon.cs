@@ -41,13 +41,15 @@ public class Cannon : MonoBehaviour
 
     public void HoverRotate(Vector3 target)
     {
+        rotatedown = false;
+
         var lookPos = target - transform.position;
         lookPos.y = 0;
         var rotation = Quaternion.LookRotation(lookPos);
 
         transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * 2);
                 
-        rotation *= Quaternion.Euler(10, 0, 0);
+        rotation *= Quaternion.Euler(-15, 0, 0);
         turret.rotation = Quaternion.Slerp(turret.rotation, rotation, Time.deltaTime);
     }
 
@@ -60,7 +62,7 @@ public class Cannon : MonoBehaviour
         var rotation = Quaternion.LookRotation(lookPos);
 
         rotation = Quaternion.LookRotation(lookPos);
-        rotation *= Quaternion.Euler(-20, 0, 0);
+        rotation *= Quaternion.Euler(10, 0, 0);
         turret.rotation = Quaternion.Slerp(turret.rotation, rotation, Time.deltaTime);
 
         if (turret.rotation.x >= rotation.x)
@@ -78,7 +80,7 @@ public class Cannon : MonoBehaviour
         }
         else
         {
-            return Instantiate(bullet, ShotPoint.position, Quaternion.Euler(90, 0, 180));
+            return Instantiate(bullet, ShotPoint.position + new Vector3(0,0,0), Quaternion.Euler(90, 0, 180));
         }
     }
 
