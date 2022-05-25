@@ -58,7 +58,7 @@ public class GenerateField : MonoBehaviour
             }
         }
         startPosition.position = new Vector3(-(field.Size / 2) * spacing, startPosition.position.y, (-(field.Size / 2) * spacing) + offsetZ);
-        Debug.Log($"setting transform position to {startPosition.position}");
+        Debug.Log($"setting transform position to {startPosition.position}");        
     }
 
     private void InstantiateShip(GameObject shipPrefab, Ship ship)
@@ -75,6 +75,15 @@ public class GenerateField : MonoBehaviour
         }
 
         newShip.transform.Rotate(new Vector3(0,0,-0.1f));
+
+        if (startPosition.name == "Enemy Warships")
+        {
+            MeshRenderer[] renderers = newShip.GetComponentsInChildren<MeshRenderer>();
+            foreach (MeshRenderer renderer in renderers)
+            {
+                renderer.enabled = false;
+            }
+        }
     }
 }
 

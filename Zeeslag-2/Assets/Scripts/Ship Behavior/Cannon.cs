@@ -14,6 +14,8 @@ public class Cannon : MonoBehaviour
     private bool inPosition = false;
     private CannonHelper cannonHelper;
     private bool rotatedown = false;
+    private bool isPlayer = false;
+    private ShipBehavior ship;
 
 
     private void Start()
@@ -24,6 +26,8 @@ public class Cannon : MonoBehaviour
         bullet = cannonHelper.bullet;
         turret = transform.GetChild(0);
         ShotPoint = transform.GetChild(1);
+        ship = transform.GetComponentInParent<ShipBehavior>();
+        isPlayer = ship.transform.parent.name == "Player Warships";
     }
 
 
@@ -33,32 +37,7 @@ public class Cannon : MonoBehaviour
         {
             RotateDown(this.target);
         }
-
-        //RotateTowardsTarget(this.target);
-
-        //if (inPosition)
-        //{
-        //    FireBullet(this.target, this.missed);
-        //    inPosition = false;
-        //}
     }
-
-    //public void RotateTowardsTarget(Vector3 target)
-    //{
-    //    var lookPos = target - transform.position;
-    //    lookPos.y = 0;
-    //    var rotation = Quaternion.LookRotation(lookPos);
-
-    //    transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * 2);
-
-    //    if (transform.rotation == rotation)
-    //    {
-    //        //Debug.Log("Cannon reached rotation");
-    //        //inPosition = true;
-    //        enabled = false;
-    //    }
-    //    inPosition = true;
-    //}
 
     public void HoverRotate(Vector3 target)
     {
@@ -91,46 +70,42 @@ public class Cannon : MonoBehaviour
         yield return new WaitForSeconds(1.5f);
     }
 
-    public void CorrectCannon()
+    public GameObject InstantiateProjectile()
     {
-        var lookPos = new Vector3(0,0,-700) - transform.position;
-        lookPos.y = 0;
-        var rotation = Quaternion.LookRotation(lookPos);
-
-        transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * 2);
-
-        rotation *= Quaternion.Euler(10, 0, 0);
-        turret.rotation = rotation;
-        Debug.Log(turret.rotation);
+        if (isPlayer)
+        {
+            return Instantiate(bullet, ShotPoint.position, Quaternion.Euler(90, 0, 0));
+        }
+        else
+        {
+            return Instantiate(bullet, ShotPoint.position, Quaternion.Euler(90, 0, 180));
+        }
     }
 
     public void FireBullet(Vector3 target, bool missed)
     {
-        //enabled = false;
- 
-        //double distancex = target.x - transform.position.x;
-        //double distancez = target.z - transform.position.z;
-        //double sqh = distancex * distancex + distancez * distancez;
-        //var distance = System.Math.Sqrt(sqh);
-        //BlastPower = (float)System.Math.Sqrt(distance * Physics.gravity.magnitude);
-        GameObject projectile = Instantiate(bullet, ShotPoint.position, ShotPoint.rotation * Quaternion.Euler(45, 0, 0));
-        projectile.GetComponent<Projectile>().target = target;
-        projectile.GetComponent<Projectile>().isPlayer = transform.GetComponentInParent<ShipBehavior>().transform.parent.name == "Player Warships";
-        projectile.GetComponent<Projectile>().Launch();
-        //projectile.GetComponent<Rigidbody>().velocity = ShotPoint.transform.up * BlastPower;
+        //Instantiate the projectile
+        GameObject projectileObj = InstantiateProjectile();
+        Projectile projectile = projectileObj.GetComponent<Projectile>();
+
+        //Assign variables and launch
+        projectile.target = target;
+        projectile.isPlayer = isPlayer;
+        projectile.Launch();
 
         //Assign correct tag to bullet
-        projectile.tag = missed ? "MissBullet" : "HitBullet";
+        projectileObj.tag = missed ? "MissBullet" : "HitBullet";
 
         //Play shoot audio
         AudioPlayer audioPlayer = Instantiate(GameObject.Find("AudioPlayer"), transform.position, Quaternion.identity).GetComponent<AudioPlayer>();
         audioPlayer.Play(shootSounds[Random.Range(0, shootSounds.Count)]);
 
-        //Instantiate particles
-        Instantiate(cannonHelper.shootParticles, ShotPoint.position, Quaternion.identity);
-
-        //rotate cannons down 
-
+        //Instantiate particles if player is shooting
+        if (isPlayer)
+        {
+            Instantiate(cannonHelper.shootParticles, ShotPoint.position, Quaternion.identity);
+            RotateDown(target);
+        }
     }
 
     public void Shoot(Vector3 target, bool missed = false)

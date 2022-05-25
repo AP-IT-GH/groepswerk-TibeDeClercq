@@ -43,23 +43,6 @@ public class BattleController : MonoBehaviour
         {
             otherPlayerShips.Add(otherPlayerField.transform.GetChild(i).GetComponent<ShipBehavior>());
         }
-
-        CorrectEnemyCannons();
-    }
-
-    private void CorrectEnemyCannons()
-    {
-        if (!isPlayer)
-        {
-            foreach (ShipBehavior ship in otherPlayerShips)
-            {
-                foreach(Cannon cannon in ship.cannons)
-                {
-                    cannon.CorrectCannon();
-                }
-            }
-
-        }
     }
 
     public void Shoot(Vector2 coords, int shotCount = 1)

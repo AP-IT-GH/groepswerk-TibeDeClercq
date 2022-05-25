@@ -90,6 +90,7 @@ public class Zeeslag : MonoBehaviour
         if (GameState == GameState.Paused)
         {
             this.GameState = GameState.InProgress;
+            Time.timeScale = 1;
             this.agent.Paused = false;
         }        
     }
@@ -99,6 +100,7 @@ public class Zeeslag : MonoBehaviour
         if (GameState == GameState.InProgress)
         {
             this.GameState = GameState.Paused;
+            Time.timeScale = 0;
             this.agent.Paused = true;
         }        
     }
@@ -108,6 +110,7 @@ public class Zeeslag : MonoBehaviour
         if (GameState == GameState.Paused || GameState == GameState.Completed)
         {
             GameRestarted = false;
+            Time.timeScale = 1;
             StartCoroutine(StartRestart());
         }           
     }
@@ -200,9 +203,7 @@ public class Zeeslag : MonoBehaviour
     {
         if(GetHitCount(FieldPlayer1) == FieldPlayer1.GetShipPartCount())
         {
-            winner = Winner.Player2;
-            GameState = GameState.Completed;
-            Debug.Log("Player 2 wins the game");
+            StartCoroutine(DelayedEnd());
         }
         else if(GetHitCount(FieldPlayer2) == FieldPlayer2.GetShipPartCount())
         {
@@ -210,6 +211,14 @@ public class Zeeslag : MonoBehaviour
             GameState = GameState.Completed;
             Debug.Log("Player 1 wins the game");
         }
+    }
+
+    private IEnumerator DelayedEnd()
+    {
+        yield return new WaitForSeconds(10);
+        winner = Winner.Player2;
+        GameState = GameState.Completed;
+        Debug.Log("Player 2 wins the game");
     }
 
     private int GetHitCount(Field field)
