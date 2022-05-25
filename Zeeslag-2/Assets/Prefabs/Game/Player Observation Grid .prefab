@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 640593062370085893}
   - component: {fileID: 640593062370085890}
   - component: {fileID: 640593062370086137}
+  - component: {fileID: 1974073890}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -51,7 +52,7 @@ MeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 640593062370085891}
   m_Enabled: 1
-  m_CastShadows: 1
+  m_CastShadows: 0
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
   m_MotionVectors: 1
@@ -62,7 +63,8 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 923bf28c6aebc884abcf23a2a67996ba, type: 2}
+  - {fileID: 2100000, guid: fb734a520ea3c0c4a913c1118631acc8, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -109,10 +111,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6fd828243465a2242983f40e29307ef4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isPlane: 0
   coordinates: {x: 0, y: 0}
   observationGrid: {fileID: 640593062529778718}
   state: 0
   Selected: 0
+  Renderer: {fileID: 640593062370085892}
+  OutlineSize: 1.15
+  TransparentWaterMaterial: {fileID: 2100000, guid: f68ae992da734194ba6bea8eb38c952e, type: 2}
+  OutlineColor: {r: 1, g: 1, b: 1, a: 1}
+  PulsateSpeed: 0.8
 --- !u!114 &640593062370086137
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -142,10 +150,58 @@ MonoBehaviour:
       m_Calls: []
   m_HoverEntered:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 640593062370085890}
+        m_TargetAssemblyTypeName: ObservationCube, Assembly-CSharp
+        m_MethodName: CreateOutline
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 640593062370085890}
+        m_TargetAssemblyTypeName: ObservationCube, Assembly-CSharp
+        m_MethodName: RotateTowardsTarget
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_HoverExited:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 640593062370085890}
+        m_TargetAssemblyTypeName: ObservationCube, Assembly-CSharp
+        m_MethodName: RemoveOutline
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 640593062370085890}
+        m_TargetAssemblyTypeName: ObservationCube, Assembly-CSharp
+        m_MethodName: StopRotate
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_FirstSelectEntered:
     m_PersistentCalls:
       m_Calls: []
@@ -203,6 +259,22 @@ MonoBehaviour:
   m_OnDeactivate:
     m_PersistentCalls:
       m_Calls: []
+--- !u!54 &1974073890
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 640593062370085891}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &640593062529778719
 GameObject:
   m_ObjectHideFlags: 0
@@ -253,6 +325,10 @@ MonoBehaviour:
   spacing: 0.01
   rotationX: -66
   playerFieldToObserve: {fileID: 0}
+  waterMaterial: {fileID: 2100000, guid: 923bf28c6aebc884abcf23a2a67996ba, type: 2}
+  hitMaterial: {fileID: 2100000, guid: cc56eb51385377947a503c76967bd598, type: 2}
+  missMaterial: {fileID: 2100000, guid: 9b8e1d909bea5c54ca926b1263114fa9, type: 2}
+  cheatMaterial: {fileID: 2100000, guid: 98ed10694f7689840a8bb820e3e7c766, type: 2}
   game: {fileID: 0}
   player: 0
 --- !u!1 &640593064347496564

@@ -10,10 +10,13 @@ public enum FieldValue{
 }
 
 public class Field : MonoBehaviour
-{
+{    
     public int Size;
-    public int SmallShipCount; //size 2
-    public int BigShipCount; //size 4
+    public int Size2ShipCount; 
+    public int Size3ShipCount;
+    public int Size4ShipCount;
+    public int Size5ShipCount;
+    public int Size6ShipCount;
 
     public char[,] Values;
     public char[,] DiscoveredValues; //given to other player
@@ -23,7 +26,7 @@ public class Field : MonoBehaviour
     private void Awake()
     {
         //Debug.Log("Starting a field");
-        GenerateShips();
+        GenerateShipss();
         CreateField();
         PrintField();
     }
@@ -33,53 +36,39 @@ public class Field : MonoBehaviour
         Awake();
     }
 
-    private void GenerateShips()
+    private void GenerateShipss()
     {
         this.Ships = new List<Ship>();
 
-        this.GenerateSmallShips();
-        this.GenerateBigShips();
+        this.GenerateShips(2, Size2ShipCount);
+        this.GenerateShips(3, Size3ShipCount);
+        this.GenerateShips(4, Size4ShipCount);
+        this.GenerateShips(5, Size5ShipCount);
+        this.GenerateShips(6, Size6ShipCount);
     }
 
-    private void GenerateSmallShips()
+    public int GetShipPartCount()
     {
-        for (int i = 0; i < this.SmallShipCount; i++)
+        return Size2ShipCount * 2 + Size3ShipCount * 3 + Size4ShipCount * 4 + Size5ShipCount * 5 + Size6ShipCount * 6;
+    }
+
+
+    private void GenerateShips(int shipSize, int shipcount)
+    {
+        for (int i = 0; i < shipcount; i++)
         {
-            Ship ship = new Ship(2, this.Size);
+            Ship ship = new Ship(shipSize, this.Size);
             bool inField = this.InField(ship);
             bool overlap = this.Overlap(ship);
 
             while (!inField || overlap)
             {
-                ship = new Ship(2, this.Size);
+                ship = new Ship(shipSize, this.Size);
                 inField = this.InField(ship);
                 overlap = this.Overlap(ship);
             }
 
             this.Ships.Add(ship);
-
-            //Debug.Log($"SmallShip: Start: {ship.PositionStart.x},{ship.PositionStart.y} End: {ship.PositionEnd.x},{ship.PositionEnd.y}");
-        }
-    }
-
-    private void GenerateBigShips()
-    {
-        for (int i = 0; i < this.BigShipCount; i++)
-        {
-            Ship ship = new Ship(4, this.Size);
-            bool inField = this.InField(ship);
-            bool overlap = this.Overlap(ship);
-
-            while (!inField || overlap)
-            {
-                ship = new Ship(4, this.Size);
-                inField = this.InField(ship);
-                overlap = this.Overlap(ship);
-            }
-
-            this.Ships.Add(ship);
-
-            //Debug.Log($"BigShip: Start: {ship.PositionStart.x},{ship.PositionStart.y} End: {ship.PositionEnd.x},{ship.PositionEnd.y}");
         }
     }
 

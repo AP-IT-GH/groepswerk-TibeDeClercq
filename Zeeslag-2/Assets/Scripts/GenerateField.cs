@@ -24,6 +24,7 @@ public class GenerateField : MonoBehaviour
         {
             Destroy(ship.gameObject);
         }
+        startPosition.position = Vector3.zero;
         Start();
     }
 
@@ -57,17 +58,31 @@ public class GenerateField : MonoBehaviour
             }
         }
         startPosition.position = new Vector3(-(field.Size / 2) * spacing, startPosition.position.y, (-(field.Size / 2) * spacing) + offsetZ);
+        Debug.Log($"setting transform position to {startPosition.position}");        
     }
 
     private void InstantiateShip(GameObject shipPrefab, Ship ship)
     {
+        GameObject newShip = Instantiate(shipPrefab, new Vector3(ship.PositionStart.x * spacing, shipHeight, ship.PositionStart.y * spacing), Quaternion.identity, startPosition);
+        ShipBehavior behavior = newShip.GetComponent<ShipBehavior>();
+        behavior.startCoordinates = ship.PositionStart;
+        behavior.coordinates = ship.ShipCoords;        
+        behavior.orientation = ship.Orientation;
+
         if (ship.Orientation == Orientation.Horizontal)
         {
-            Instantiate(shipPrefab, new Vector3(ship.PositionStart.x * spacing, shipHeight, ship.PositionStart.y * spacing), Quaternion.Euler(0, 90, 0), startPosition);
+            newShip.transform.localRotation = Quaternion.Euler(0, 90, 0);            
         }
-        else
+
+        newShip.transform.Rotate(new Vector3(0,0,-0.1f));
+
+        if (startPosition.name == "Enemy Warships")
         {
-            Instantiate(shipPrefab, new Vector3(ship.PositionStart.x * spacing, shipHeight, ship.PositionStart.y * spacing), Quaternion.identity, startPosition);
+            MeshRenderer[] renderers = newShip.GetComponentsInChildren<MeshRenderer>();
+            foreach (MeshRenderer renderer in renderers)
+            {
+                renderer.enabled = false;
+            }
         }
     }
 }

@@ -8,6 +8,12 @@ TagManager:
   - W
   - M
   - Marker
+  - S
+  - Finger
+  - HitBullet
+  - MissBullet
+  - Ship
+  - Water
   layers:
   - Default
   - TransparentFX

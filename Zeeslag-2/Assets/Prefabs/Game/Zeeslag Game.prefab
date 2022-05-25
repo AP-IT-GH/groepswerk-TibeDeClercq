@@ -44,9 +44,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Size: 10
-  SmallShipCount: 2
-  BigShipCount: 4
-  Ships: []
+  Size2ShipCount: 1
+  Size3ShipCount: 1
+  Size4ShipCount: 1
+  Size5ShipCount: 1
+  Size6ShipCount: 1
 --- !u!1 &1471384966503502190
 GameObject:
   m_ObjectHideFlags: 0
@@ -90,10 +92,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52cd550de0c7e844fb13fa925523f0ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Size: 10
-  SmallShipCount: 2
-  BigShipCount: 4
-  Ships: []
+  Size: 5
+  Size2ShipCount: 1
+  Size3ShipCount: 1
+  Size4ShipCount: 1
+  Size5ShipCount: 0
+  Size6ShipCount: 0
 --- !u!1 &1471384967092075818
 GameObject:
   m_ObjectHideFlags: 0
@@ -139,13 +143,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7a954bf0a1933e4a8287d1f8d53daaf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  play: 0
+  pause: 0
+  restart: 0
+  player1CheatMode: 0
+  player2CheatMode: 1
+  agent: {fileID: 0}
   player1Grid: {fileID: 0}
   player2Grid: {fileID: 0}
   player1FieldGenerator: {fileID: 0}
   player2FieldGenerator: {fileID: 0}
-  Player1CanShoot: 0
-  Player2CanShoot: 0
+  player1BattleController: {fileID: 0}
+  player2BattleController: {fileID: 0}
+  player1MultishotCount: 1
+  player2MultishotCount: 1
+  player1ShootCooldown: 1.5
+  player2ShootCooldown: 3
   FieldPlayer1: {fileID: 1471384965287369787}
   FieldPlayer2: {fileID: 1471384966503502184}
+  Player1CanShoot: 0
+  Player2CanShoot: 0
   GameState: 0
   winner: 0
+  GameRestarted: 1

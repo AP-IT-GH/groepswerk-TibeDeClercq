@@ -11,6 +11,7 @@ using UnityEngine;
 public enum GameState
 {
     InProgress,
+    Paused,
     Completed
 }
 
@@ -23,41 +24,95 @@ public enum Winner
 
 public class Zeeslag : MonoBehaviour
 {
-    [SerializeField] ObservationGrid player1Grid;
-    [SerializeField] ObservationGrid player2Grid;
-    [SerializeField] GenerateField player1FieldGenerator;
-    [SerializeField] GenerateField player2FieldGenerator;
-    [SerializeField] float player1ShootCooldown = 3;
-    [SerializeField] float player2ShootCooldown = 3;
+    [SerializeField] private bool play = false; //TEMP
+    [SerializeField] private bool pause = false; //TEMP
+    [SerializeField] private bool restart = false; //TEMP
 
-    private bool _gameStarted;
+    [SerializeField] private bool player1CheatMode = false;
+    [SerializeField] private bool player2CheatMode = false;
+    [SerializeField] private Agent_Evert agent;
+    [SerializeField] private ObservationGrid player1Grid;
+    [SerializeField] private ObservationGrid player2Grid;
+    [SerializeField] private GenerateField player1FieldGenerator;
+    [SerializeField] private GenerateField player2FieldGenerator;
+    [SerializeField] public BattleController player1BattleController;
+    [SerializeField] private BattleController player2BattleController;
+    [SerializeField] private int player1MultishotCount = 1;
+    [SerializeField] private int player2MultishotCount = 1;
+    public float player1ShootCooldown = 3;
+    public float player2ShootCooldown = 3;
+
     private bool _player1Shot;
-    private bool _player2Shot;
-    public bool Player1CanShoot;
-    public bool Player2CanShoot;
+    private bool _player2Shot;    
 
     public Field FieldPlayer1;
     public Field FieldPlayer2;
 
-    public GameState GameState;
-    public Winner winner;
-    public bool GameRestarted = true;
+    [HideInInspector] public bool Player1CanShoot;
+    [HideInInspector] public bool Player2CanShoot;
+    [HideInInspector] public GameState GameState;
+    [HideInInspector] public Winner winner;
+    [HideInInspector] public bool GameRestarted = true;
 
     private void Start()
     {
-        //this._gameStarted = false;
         this._player1Shot = false;
         this._player2Shot = false;
         this.Player1CanShoot = true;
         this.Player2CanShoot = true;
         this.winner = Winner.None;
-        this.GameState = GameState.InProgress;
+        this.GameState = GameState.Paused;
+    }
+
+    private void Update() //TEMP
+    {
+        if (restart)
+        {
+            Restart();
+            restart = false;
+        }
+
+        if (play)
+        {
+            play = false;
+            Play();
+        }
+
+        if (pause)
+        {
+            pause = false;
+            Pause();
+        }
+    }
+
+    public void Play()
+    {
+        if (GameState == GameState.Paused)
+        {
+            this.GameState = GameState.InProgress;
+            Time.timeScale = 1;
+            this.agent.Paused = false;
+        }        
+    }
+
+    public void Pause()
+    {
+        if (GameState == GameState.InProgress)
+        {
+            this.GameState = GameState.Paused;
+            Time.timeScale = 0;
+            this.agent.Paused = true;
+        }        
     }
 
     public void Restart()
     {
-        GameRestarted = false;
-        StartCoroutine(StartRestart());
+        if (GameState == GameState.Paused || GameState == GameState.Completed)
+        {
+            GameRestarted = false;
+            Time.timeScale = 1;
+            StartCoroutine(StartRestart());
+        }           
     }
 
     public IEnumerator StartRestart()
@@ -70,44 +125,15 @@ public class Zeeslag : MonoBehaviour
         player1Grid.ResetGrid();
         player1FieldGenerator.ResetField();
         player2FieldGenerator.ResetField();
+        yield return new WaitForSeconds(0.7f);
+        player1BattleController.Start();
+        player2BattleController.Start();
+        yield return new WaitForSeconds(0.7f);
+        agent.gameObject.SetActive(false);
+        agent.gameObject.SetActive(true);
+        GameState = GameState.InProgress;
+        agent.Paused = false;
     }
-    //private void FixedUpdate()
-    //{
-    //    if (!this._gameStarted)
-    //    {
-    //        this._gameStarted = true;
-    //        //StartCoroutine(this.GameLogic());
-    //    }
-    //}
-
-    //private IEnumerator GameLogic()
-    //{
-    //    while (this._gameStarted)
-    //    {
-    //        while (this.GameState == GameState.Player1Turn)
-    //        {
-    //            Debug.Log("Player1Turn");
-    //            if (this._player1Shot)
-    //            {
-    //                this._player1Shot = false;
-    //                this.GameState = GameState.Player2Turn;
-    //                yield return new WaitForSeconds(2);
-    //            }
-    //        }
-
-    //        while (this.GameState == GameState.Player2Turn)
-    //        {
-    //            Debug.Log("Player2Turn");
-    //            if (this._player2Shot)
-    //            {
-    //                this._player2Shot = false;
-    //                this.GameState = GameState.Player1Turn;
-    //                yield return new WaitForSeconds(2);
-    //            }
-    //        }
-    //    }
-    //}
-
     private IEnumerator Player1Wait()
     {
         if (this._player1Shot)
@@ -136,13 +162,19 @@ public class Zeeslag : MonoBehaviour
         {
             Debug.Log("Player 1 Shooting");
             char result = this.FieldPlayer2.Shoot(coords);
+            player1BattleController.Shoot(coords, player1MultishotCount);
             this._player1Shot = true;
             UpdateGameState();
             StartCoroutine(Player1Wait());
 
+            if (player1CheatMode && result == 'S')
+            {
+                player1Grid.RevealShip(coords);
+            }
+
             return result;
         }
-        return 'E'; //error player must wait, not used for agent
+        return 'W';
     }
 
     public char Player2Shoot(Vector2 coords)
@@ -151,27 +183,42 @@ public class Zeeslag : MonoBehaviour
         {
             Debug.Log("Player 2 Shooting");
             char result = this.FieldPlayer1.Shoot(coords);
+            player2BattleController.Shoot(coords, player2MultishotCount);
             this._player2Shot = true;
             UpdateGameState();
             StartCoroutine(Player2Wait());
 
+            if (player2CheatMode && result == 'S')
+            {
+                Debug.Log("revealing ship");
+                player2Grid.RevealShip(coords);
+            }
+
             return result;
         }
-        return 'E'; //error player must wait, not used for agent
+        return 'W'; 
     }
 
     private void UpdateGameState()
     {
-        if(GetHitCount(FieldPlayer1) == (FieldPlayer1.BigShipCount * 4) + (FieldPlayer1.SmallShipCount * 2))
+        if(GetHitCount(FieldPlayer1) == FieldPlayer1.GetShipPartCount())
         {
-            winner = Winner.Player2;
-            GameState = GameState.Completed;
+            StartCoroutine(DelayedEnd());
         }
-        else if(GetHitCount(FieldPlayer2) == (FieldPlayer2.BigShipCount * 4) + (FieldPlayer2.SmallShipCount * 2))
+        else if(GetHitCount(FieldPlayer2) == FieldPlayer2.GetShipPartCount())
         {
             winner = Winner.Player1;
             GameState = GameState.Completed;
+            Debug.Log("Player 1 wins the game");
         }
+    }
+
+    private IEnumerator DelayedEnd()
+    {
+        yield return new WaitForSeconds(10);
+        winner = Winner.Player2;
+        GameState = GameState.Completed;
+        Debug.Log("Player 2 wins the game");
     }
 
     private int GetHitCount(Field field)
@@ -189,31 +236,4 @@ public class Zeeslag : MonoBehaviour
         }
         return hitcount;
     }
-
-    //public bool Player1Shoot(Vector2 coords)
-    //{
-    //    Debug.Log("Player 1 Shooting");
-    //    if(this.GameState == GameState.Player1Turn)
-    //    {
-    //        bool result = this.FieldPlayer2.Shoot(coords);
-    //        if (result)
-    //        {
-    //            this._player1Shot = true;
-    //            return true;
-    //        }
-    //    }
-    //    return false;
-    //}
-
-    //public bool Player2Shoot(Vector2 coords)
-    //{
-    //    Debug.Log("Player 2 Shooting");
-    //    bool result = this.FieldPlayer1.Shoot(coords);
-    //    if (result)
-    //    {
-    //        this._player2Shot = true;
-    //        return true;
-    //    }
-    //    return false;
-    //}
 }

@@ -98,5 +98,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   game: {fileID: 0}
+  otherPlayerField: {fileID: 0}
   isPlayer: 1
+  multiShotDelay: 0.2
+  cannonShootCount: 1
+  otherPlayerBattleController: {fileID: 0}
   ships: []
+  otherPlayerShips: []

@@ -1,0 +1,29 @@
+{
+    "AgentEvert": {
+        "checkpoints": [
+            {
+                "steps": 386117,
+                "file_path": "results\\AgentEvert\\AgentEvert\\AgentEvert-386117.onnx",
+                "reward": 76.28571428571429,
+                "creation_time": 1652344954.501321,
+                "auxillary_file_paths": [
+                    "results\\AgentEvert\\AgentEvert\\AgentEvert-386117.pt"
+                ]
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 386117,
+            "file_path": "results\\AgentEvert\\AgentEvert.onnx",
+            "reward": 76.28571428571429,
+            "creation_time": 1652344954.501321,
+            "auxillary_file_paths": [
+                "results\\AgentEvert\\AgentEvert\\AgentEvert-386117.pt"
+            ]
+        }
+    },
+    "metadata": {
+        "stats_format_version": "0.3.0",
+        "mlagents_version": "0.28.0",
+        "torch_version": "1.7.1+cu110"
+    }
+}
