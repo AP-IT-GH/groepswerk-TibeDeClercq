@@ -31,6 +31,7 @@ public class Zeeslag : MonoBehaviour
     [SerializeField] private bool player1CheatMode = false;
     [SerializeField] private bool player2CheatMode = false;
     [SerializeField] private Agent_Evert agent;
+    [SerializeField] private MenuManager menuManager;
     [SerializeField] private ObservationGrid player1Grid;
     [SerializeField] private ObservationGrid player2Grid;
     [SerializeField] private GenerateField player1FieldGenerator;
@@ -53,6 +54,8 @@ public class Zeeslag : MonoBehaviour
     [HideInInspector] public GameState GameState;
     [HideInInspector] public Winner winner;
     [HideInInspector] public bool GameRestarted = true;
+
+    private bool allShipsDestroyed = false;
 
     private void Start()
     {
@@ -118,6 +121,7 @@ public class Zeeslag : MonoBehaviour
     public IEnumerator StartRestart()
     {
         Start();
+        ClearBullets();
         FieldPlayer1.ResetField();
         FieldPlayer2.ResetField();
         yield return new WaitForSeconds(0.5f);
@@ -134,6 +138,17 @@ public class Zeeslag : MonoBehaviour
         GameState = GameState.InProgress;
         agent.Paused = false;
     }
+
+    private void ClearBullets()
+    {
+        Projectile[] projectiles = FindObjectsOfType<Projectile>();
+        foreach(Projectile projectile in projectiles)
+        {
+            Destroy(projectile.gameObject);
+        }
+
+    }
+
     private IEnumerator Player1Wait()
     {
         if (this._player1Shot)
@@ -201,7 +216,24 @@ public class Zeeslag : MonoBehaviour
 
     private void UpdateGameState()
     {
-        if(GetHitCount(FieldPlayer1) == FieldPlayer1.GetShipPartCount())
+        allShipsDestroyed = true;
+        foreach (ShipBehavior ship in player1FieldGenerator.ships)
+        {
+            if (ship.Health > 0)
+            {
+                allShipsDestroyed = false;
+                break;
+            }
+        }
+
+        if (allShipsDestroyed)
+        {
+            winner = Winner.Player2;
+            GameState = GameState.Completed;
+            menuManager.gameOverCanvas.SetActive(true);
+            Debug.Log("Player 2 wins the game");
+        }
+        else if(GetHitCount(FieldPlayer1) == FieldPlayer1.GetShipPartCount())
         {
             StartCoroutine(DelayedEnd());
         }
@@ -209,6 +241,7 @@ public class Zeeslag : MonoBehaviour
         {
             winner = Winner.Player1;
             GameState = GameState.Completed;
+            menuManager.victoryCanvas.SetActive(true);
             Debug.Log("Player 1 wins the game");
         }
     }
@@ -216,9 +249,13 @@ public class Zeeslag : MonoBehaviour
     private IEnumerator DelayedEnd()
     {
         yield return new WaitForSeconds(10);
-        winner = Winner.Player2;
-        GameState = GameState.Completed;
-        Debug.Log("Player 2 wins the game");
+        if (!allShipsDestroyed)
+        {
+            winner = Winner.Player2;
+            GameState = GameState.Completed;
+            menuManager.gameOverCanvas.SetActive(true);
+            Debug.Log("Player 2 wins the game");
+        }        
     }
 
     private int GetHitCount(Field field)

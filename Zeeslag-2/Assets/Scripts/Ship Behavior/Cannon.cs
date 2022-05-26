@@ -27,7 +27,7 @@ public class Cannon : MonoBehaviour
         turret = transform.GetChild(0);
         ShotPoint = transform.GetChild(1);
         ship = transform.GetComponentInParent<ShipBehavior>();
-        isPlayer = ship.transform.parent.name == "Player Warships";
+        isPlayer = ship.transform.parent.name == "Player Warships" || ship.transform.parent.name == "Battleship_player";
     }
 
 
@@ -39,7 +39,7 @@ public class Cannon : MonoBehaviour
         }
     }
 
-    public void HoverRotate(Vector3 target)
+    public void HoverRotate(Vector3 target, float angle)
     {
         rotatedown = false;
 
@@ -49,7 +49,7 @@ public class Cannon : MonoBehaviour
 
         transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * 2);
                 
-        rotation *= Quaternion.Euler(-15, 0, 0);
+        rotation *= Quaternion.Euler(angle, 0, 0);
         turret.rotation = Quaternion.Slerp(turret.rotation, rotation, Time.deltaTime);
     }
 

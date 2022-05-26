@@ -11,11 +11,12 @@ public class GenerateField : MonoBehaviour
     public float offsetZ = 0;
 
     public GameObject battleShip, destroyer, frigate, cruiser, corvette;
+    [HideInInspector] public List<ShipBehavior> ships;
 
     void Start()
     {
+        ships = new List<ShipBehavior>();
         GenerateShips();
-        AssignRandomShip();
     }
 
     public void ResetField()
@@ -26,12 +27,6 @@ public class GenerateField : MonoBehaviour
         }
         startPosition.position = Vector3.zero;
         Start();
-    }
-
-    private void AssignRandomShip()
-    {
-        //property pls
-        //GameObject.Find("Warships").transform.GetChild(Random.Range(0, field.Ships.Count)).GetComponent<ShipBehavior>().standingOn = true;
     }
 
     private void GenerateShips()
@@ -57,8 +52,7 @@ public class GenerateField : MonoBehaviour
                     break;
             }
         }
-        startPosition.position = new Vector3(-(field.Size / 2) * spacing, startPosition.position.y, (-(field.Size / 2) * spacing) + offsetZ);
-        Debug.Log($"setting transform position to {startPosition.position}");        
+        startPosition.position = new Vector3(-(field.Size / 2) * spacing, startPosition.position.y, (-(field.Size / 2) * spacing) + offsetZ);          
     }
 
     private void InstantiateShip(GameObject shipPrefab, Ship ship)
@@ -84,6 +78,8 @@ public class GenerateField : MonoBehaviour
                 renderer.enabled = false;
             }
         }
+
+        ships.Add(behavior);
     }
 }
 

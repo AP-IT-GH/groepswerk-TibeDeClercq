@@ -9,6 +9,7 @@ public class BattleController : MonoBehaviour
     public bool isPlayer;
     [SerializeField] float multiShotDelay = 0.2f;
     [SerializeField] int cannonShootCount = 1;
+    [SerializeField] List<Cannon> playerStaticShipCannons;
     [SerializeField] private BattleController otherPlayerBattleController;
     [HideInInspector] public List<ShipBehavior> ships;
     [HideInInspector] public List<ShipBehavior> otherPlayerShips;
@@ -96,6 +97,11 @@ public class BattleController : MonoBehaviour
                         }
                     }
                 }
+
+                foreach (Cannon cannon in playerStaticShipCannons)
+                {
+                    validCannons.Add(cannon);
+                }
             }
             else
             {
@@ -158,7 +164,9 @@ public class BattleController : MonoBehaviour
     {
         foreach (Cannon cannon in allValidCannons)
         {
-            cannon.HoverRotate(currentTarget);
+            float height = currentTarget.z + (enemyField.field.Size / 2 * enemyField.spacing) - enemyField.offsetZ;
+            float angle = (height - 0) / (270 - 0) * (-30 - -5) + -5;
+            cannon.HoverRotate(currentTarget, angle);
         }
     }
      
@@ -234,6 +242,13 @@ public class BattleController : MonoBehaviour
                 }
             }
         }
+        if (isPlayer)
+        {
+            foreach (Cannon cannon in playerStaticShipCannons)
+            {
+                allValidCannons.Add(cannon);
+            }
+        }
     }
 
     private void CheckHealth()
@@ -244,6 +259,7 @@ public class BattleController : MonoBehaviour
             {
                 otherPlayerShips.Remove(ship);
                 otherPlayerBattleController.ships.Remove(ship);
+                break;
             }
         }
     }

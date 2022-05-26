@@ -343,6 +343,42 @@ PrefabInstance:
       propertyPath: m_Name
       value: ParticleSystem_Fire_Sphere_Small
       objectReference: {fileID: 0}
+    - target: {fileID: 8139561280023611883, guid: 331603f5712f246f38f10789333c617e, type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.key1.b
+      value: 0.08891065
+      objectReference: {fileID: 0}
+    - target: {fileID: 8139561280023611883, guid: 331603f5712f246f38f10789333c617e, type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.key1.g
+      value: 0.28518075
+      objectReference: {fileID: 0}
+    - target: {fileID: 8139561280023611883, guid: 331603f5712f246f38f10789333c617e, type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.key1.r
+      value: 0.509434
+      objectReference: {fileID: 0}
+    - target: {fileID: 8139561280023611883, guid: 331603f5712f246f38f10789333c617e, type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.key2.b
+      value: 0.07115523
+      objectReference: {fileID: 0}
+    - target: {fileID: 8139561280023611883, guid: 331603f5712f246f38f10789333c617e, type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.key2.g
+      value: 0.14559796
+      objectReference: {fileID: 0}
+    - target: {fileID: 8139561280023611883, guid: 331603f5712f246f38f10789333c617e, type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.key2.r
+      value: 0.38679248
+      objectReference: {fileID: 0}
+    - target: {fileID: 8139561280023611883, guid: 331603f5712f246f38f10789333c617e, type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.key3.b
+      value: 0.054378778
+      objectReference: {fileID: 0}
+    - target: {fileID: 8139561280023611883, guid: 331603f5712f246f38f10789333c617e, type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.key3.g
+      value: 0.062009893
+      objectReference: {fileID: 0}
+    - target: {fileID: 8139561280023611883, guid: 331603f5712f246f38f10789333c617e, type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.key3.r
+      value: 0.24528301
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 331603f5712f246f38f10789333c617e, type: 3}
 --- !u!4 &9090832027283055798 stripped

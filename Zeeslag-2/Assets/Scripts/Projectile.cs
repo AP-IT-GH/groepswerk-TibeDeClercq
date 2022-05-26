@@ -34,11 +34,21 @@ public class Projectile : MonoBehaviour
     {
         lifeSpan += Time.deltaTime;
 
-        if (lifeSpan > 20 && name == "Bullet(Clone)" || transform.position.y < -10)
+        if (lifeSpan > 20 && name == "Bullet(Clone)" || transform.position.y < -1)
         {
             if (!isPlayer)
             {
-                Instantiate(explosion, target + new Vector3(0, explosionYOffset, 0), Quaternion.identity);
+                Collider[] hits = Physics.OverlapSphere(target, 4.0f);
+                foreach (Collider hit in hits)
+                {
+                    ShipBehavior ship;
+                    if (hit.gameObject.TryGetComponent(out ship))
+                    {
+                        ship.Damage();
+                        Instantiate(explosion, target + new Vector3(0, explosionYOffset, 0), Quaternion.identity, ship.transform);
+                        break;
+                    }
+                }
             }            
             AudioPlayer audioPlayer = Instantiate(GameObject.Find("AudioPlayer"), transform.position, Quaternion.identity).GetComponent<AudioPlayer>();
             audioPlayer.Play(explosionSounds[Random.Range(0, explosionSounds.Count)]);
@@ -100,7 +110,7 @@ public class Projectile : MonoBehaviour
         {   
             if (!isPlayer)
             {
-                Instantiate(explosion, transform.position + new Vector3(0, explosionYOffset, 0), Quaternion.identity, other.transform);
+                Instantiate(explosion, transform.position + new Vector3(0, explosionYOffset, -3), Quaternion.identity, other.transform);
                 AudioPlayer audioPlayer = Instantiate(GameObject.Find("AudioPlayer"), transform.position, Quaternion.identity).GetComponent<AudioPlayer>();
                 audioPlayer.Play(explosionSounds[Random.Range(0, explosionSounds.Count)]);
             }            
@@ -109,8 +119,11 @@ public class Projectile : MonoBehaviour
             target.Damage();
 
             //Keep smoke trail and destroy projectile
-            gameObject.transform.GetChild(2).GetComponent<ParticleSystem>().Stop();
-            gameObject.transform.GetChild(2).parent = null;
+            if (gameObject.transform.childCount > 2)
+            {
+                gameObject.transform.GetChild(2).GetComponent<ParticleSystem>().Stop();
+                gameObject.transform.GetChild(2).parent = null;
+            }            
             Destroy(gameObject);
         }
 

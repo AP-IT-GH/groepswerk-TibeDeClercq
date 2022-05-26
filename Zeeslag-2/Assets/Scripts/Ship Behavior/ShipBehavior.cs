@@ -89,26 +89,32 @@ public class ShipBehavior : MonoBehaviour
 
     private void SetupParts()
     {
-        for (int i = 0; i < gameObject.transform.GetChild(2).transform.childCount; i++)
+        if (gameObject.transform.childCount > 2)
         {
-            parts.Add(gameObject.transform.GetChild(2).transform.GetChild(i).transform);
-        }
-        Health = parts.Count;
+            for (int i = 0; i < gameObject.transform.GetChild(2).transform.childCount; i++)
+            {
+                parts.Add(gameObject.transform.GetChild(2).transform.GetChild(i).transform);
+            }
+            Health = parts.Count;
+        }        
     }
 
     public void RandomizePosition()
     {
-        transform.position = new Vector3(transform.position.x, Random.Range(0f,1f), transform.position.z);
-        offset = Random.Range(0.5f,1f);
-        startPosition = transform.position.y;
+        if (!standingOn)
+        {
+            transform.position = new Vector3(transform.position.x, Random.Range(0f, 1f), transform.position.z);
+            offset = Random.Range(0.5f, 1f);
+            startPosition = transform.position.y;
 
-        if (Random.Range(0f, 1f) > 0.5F)
-        {
-            direction = 1;
-        }
-        else
-        {
-            direction = -1;
-        }
+            if (Random.Range(0f, 1f) > 0.5F)
+            {
+                direction = 1;
+            }
+            else
+            {
+                direction = -1;
+            }
+        }        
     }
 }

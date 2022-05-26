@@ -109,7 +109,7 @@ public class ObservationCube : MonoBehaviour
 
     public void CreateOutline()
     {
-        if (!isFiring && state == CubeState.Water)
+        if (!isFiring && state == CubeState.Water && observationGrid.game.GameState == GameState.InProgress)
         {
             Renderer.materials[1].SetColor("_OutlineColor", OutlineColor);
             Renderer.materials[1].SetFloat("_ScaleFactor", OutlineSize);

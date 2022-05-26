@@ -13,7 +13,7 @@ Material:
   m_LightmapFlags: 2
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: 3000
+  m_CustomRenderQueue: 3002
   stringTagMap:
     RenderType: Transparent
   disabledShaderPasses:
@@ -90,7 +90,7 @@ Material:
     - _Mode: 2
     - _OcclusionStrength: 1
     - _Parallax: 0.02
-    - _QueueOffset: 0
+    - _QueueOffset: 2
     - _ReceiveShadows: 1
     - _Smoothness: 0
     - _SmoothnessTextureChannel: 0
@@ -103,11 +103,11 @@ Material:
     - _UVSec: 0
     - _ZWrite: 0
     m_Colors:
-    - _BaseColor: {r: 0.3019608, g: 0.3019608, b: 0.3019608, a: 1}
+    - _BaseColor: {r: 0.16037738, g: 0.16037738, b: 0.16037738, a: 1}
     - _BaseColorAddSubDiff: {r: 0, g: 0, b: 0, a: 0}
     - _CameraFadeParams: {r: 0, g: Infinity, b: 0, a: 0}
     - _Color: {r: 0.3019608, g: 0.3019608, b: 0.3019608, a: 1}
-    - _EmissionColor: {r: 0.21568628, g: 0.21568628, b: 0.21568628, a: 1}
+    - _EmissionColor: {r: 0.122641504, g: 0.122641504, b: 0.122641504, a: 1}
     - _SoftParticleFadeParams: {r: 0, g: 2, b: 0, a: 0}
   m_BuildTextureStacks: []
 --- !u!114 &2751340587407188942
