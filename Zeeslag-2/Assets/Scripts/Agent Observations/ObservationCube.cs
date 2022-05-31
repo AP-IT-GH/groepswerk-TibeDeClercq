@@ -123,7 +123,7 @@ public class ObservationCube : MonoBehaviour
 
     private IEnumerator Cooldown()
     {
-        yield return new WaitForSeconds(observationGrid.game.player1ShootCooldown);
+        yield return observationGrid.game.waitplayer1;
         isFiring = false;
     }
 }

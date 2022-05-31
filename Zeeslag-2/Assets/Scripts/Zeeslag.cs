@@ -57,8 +57,17 @@ public class Zeeslag : MonoBehaviour
 
     private bool allShipsDestroyed = false;
 
+    private WaitForSeconds wait05 = new WaitForSeconds(0.5f);
+    private WaitForSeconds wait07 = new WaitForSeconds(0.7f);
+    private WaitForSeconds wait10 = new WaitForSeconds(10f);
+    public WaitForSeconds waitplayer1;
+    private WaitForSeconds waitplayer2;
+
     private void Start()
     {
+        waitplayer1 = new WaitForSeconds(player1ShootCooldown);
+        waitplayer2 = new WaitForSeconds(player2ShootCooldown);
+
         this._player1Shot = false;
         this._player2Shot = false;
         this.Player1CanShoot = true;
@@ -124,15 +133,15 @@ public class Zeeslag : MonoBehaviour
         ClearBullets();
         FieldPlayer1.ResetField();
         FieldPlayer2.ResetField();
-        yield return new WaitForSeconds(0.5f);
+        yield return wait05;
         player2Grid.ResetGrid();
         player1Grid.ResetGrid();
         player1FieldGenerator.ResetField();
         player2FieldGenerator.ResetField();
-        yield return new WaitForSeconds(0.7f);
+        yield return wait07;
         player1BattleController.Start();
         player2BattleController.Start();
-        yield return new WaitForSeconds(0.7f);
+        yield return wait07;
         agent.gameObject.SetActive(false);
         agent.gameObject.SetActive(true);
         GameState = GameState.InProgress;
@@ -155,7 +164,7 @@ public class Zeeslag : MonoBehaviour
         {
             this._player1Shot = false;
             this.Player1CanShoot = false;
-            yield return new WaitForSeconds(player1ShootCooldown);
+            yield return waitplayer1;
             this.Player1CanShoot = true;
         }
     }
@@ -166,7 +175,7 @@ public class Zeeslag : MonoBehaviour
         {
             this._player1Shot = false;
             this.Player2CanShoot = false;
-            yield return new WaitForSeconds(player2ShootCooldown);
+            yield return waitplayer2;
             this.Player2CanShoot = true;
         }
     }
@@ -248,7 +257,7 @@ public class Zeeslag : MonoBehaviour
 
     private IEnumerator DelayedEnd()
     {
-        yield return new WaitForSeconds(10);
+        yield return wait10;
         if (!allShipsDestroyed)
         {
             winner = Winner.Player2;

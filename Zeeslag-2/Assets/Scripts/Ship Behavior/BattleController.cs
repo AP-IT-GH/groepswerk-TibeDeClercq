@@ -18,6 +18,8 @@ public class BattleController : MonoBehaviour
     private List<Cannon> allValidCannons;
     private Vector3 currentTarget;
 
+    private WaitForSeconds wait07 = new WaitForSeconds(0.7f);
+
     public void Start()
     {
         StartCoroutine(LateStart());
@@ -33,7 +35,7 @@ public class BattleController : MonoBehaviour
     {
         ships.Clear();
         otherPlayerShips.Clear();
-        yield return new WaitForSeconds(0.7f);        
+        yield return wait07;
 
         for (int i = 0; i < transform.childCount; i++)
         {

@@ -17,6 +17,8 @@ public class Cannon : MonoBehaviour
     private bool isPlayer = false;
     private ShipBehavior ship;
 
+    private WaitForSeconds wait015 = new WaitForSeconds(1.5f);
+
 
     private void Start()
     {
@@ -69,7 +71,7 @@ public class Cannon : MonoBehaviour
         {
             rotatedown = false;
         }
-        yield return new WaitForSeconds(1.5f);
+        yield return wait015;
     }
 
     public GameObject InstantiateProjectile()

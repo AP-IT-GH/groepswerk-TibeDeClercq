@@ -136,7 +136,7 @@ MonoBehaviour:
   - {x: -0.0000008973775, y: 8.73e-43}
   - {x: 0, y: 0}
   parts: []
-  sinking: 0
+  Health: 0
 --- !u!1 &1063994187883712
 GameObject:
   m_ObjectHideFlags: 0
