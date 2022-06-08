@@ -3,7 +3,7 @@
 <b> 2ITSOF2 2021 - 2022 | Evert Bekaert, Tibe De Clercq, Ruben Vorsselmans, Bjorn Felix, Jeroen Roelant </b>
 
 Wij maken een VR versie van het bordspel "Zeeslag". Je bent in de controlekamer van een oorlogsschip en speelt tegen ML Agent. Deze schepen worden willekeurig geplaatst op het veld.
-Voor jou krijg je een holografisch speelveld te zien. Dit is grid is van je tegenspeler. Hierop kan je oftewel wijzen met je vingers (hand tracking) of gebruik maken van de controllers om een vak aan te duiden op het grid. Je zal hier dan op schieten. We werken niet turn-based maar eerder met een schiet-cooldown.
+Voor jou krijg je een holografisch speelveld te zien. Dit is het grid van je tegenspeler. Hierop kan je oftewel wijzen met je vingers (hand tracking) of gebruik maken van de controllers om een vak aan te duiden op het grid. Je zal hier dan op schieten. We werken niet turn-based maar eerder met een schiet-cooldown.
 
 ## Samenvatting
 
@@ -25,22 +25,22 @@ Voor dit project gebruiken wij Unity versie 2020.3.24f1. De plugins die gebruikt
 
 ## Verloop van het spel
 
-Zowel de speler als de agent kunnen schieten wanneer ze willen. Na elk schot is er wel een cooldown van x aantal seconden voordat er weer geschoten mag worden. De eerste speler dat al de schepen van de tegenstander raakt wint.
+Zowel de speler als de agent kunnen schieten wanneer ze willen. Na elk schot is er wel een cooldown van x aantal seconden voordat er weer geschoten mag worden. De eerste speler dat al de schepen van zijn tegenstander raakt wint.
 Je speelbord zal visueel aantonen of je schot raak is. Blauw is ongekende waters, wit is een gemist schot en rood is een raak schot.
 Wanneer het spel is afgelopen krijgt de speler de keuze om opnieuw te spelen. De schepen op de speelvelden worden dan opnieuw random gegenereerd.
 
 ## Observaties, mogelijke acties en beloningen
 
-De tegenstander in het spel is een ML Agent die werd getrained aan de hand van reinforcement learning. De agent maakt gebruik van rays om observaties te maken. De agent maakt gebruik van zijn vorig schot om naar de schepen te zoeken. De aantal gimiste schoten worden ook bijgehouden. Deze worden ook gebruikt bij het berekenen van de reward.
+De tegenstander in het spel is een ML Agent die werd getraind aan de hand van reinforcement learning. De agent maakt gebruik van rays om observaties te maken en gaat ook het resultaat van zijn vorig schot gebruiken om naar de schepen te zoeken. De aantal gemiste schoten worden ook bijgehouden. Deze worden ook gebruikt bij het berekenen van de reward.
 
 | Aties                                         | Beloning (floats)                                                       |
 | -------------------------------| ------------------------------------------------------|
 | StepCount onder 2000 *     |                            -1                                                   |
 | Game winnen                         | (watertileCount-missedcount)/waterTileCount |
 
-- In de OnActionReceived wordt gecontroleerd of de game completed is. Indien dit waar is en de agent de winaar is krijgt de agent een reward afhankelijk van zijn "precisie".
+- In de OnActionReceived wordt gecontroleerd of de game voltooid is. Indien dit klopt en de agent de winnaar is krijgt deze een reward afhankelijk van zijn "precisie".
 Deze reward kan maximaal 1.0 zijn in geval dat de agent nooit gemist heeft.
-- Elke keer dat de OnActionReceived methode wordt uitgevoerd wordt de stepcount verhoogd. Wanneer de Stepcount meer dan 2000 is zal de agent een reward van -1f krijgen en zal de episode beindigd worden. Dit zorgt er voor dat de agent niet stopt met schieten.
+- Elke keer dat de OnActionReceived methode wordt uitgevoerd wordt de stepcount verhoogd. Wanneer de Stepcount meer dan 2000 bedraagt zal de agent een reward van -1f krijgen en zal de episode beëindigd worden. Dit zorgt er voor dat de agent niet stopt met schieten.
 
 ## Objecten
 
@@ -63,7 +63,8 @@ Het project is opgebouwd uit verschillende core componenten. <br>
 
 ## One pager
 
-````
+### Originele one pager
+
 Je zit in de wapenkamer van een oorlogsschip. Er zijn twee holografische borden in de kamer. Een hiervan toont jouw schepen terwijl het andere bord het veld van de vijand voorstelt. Hierop moet je een coördinaat aanduiden waar je een artillerieaanval op wil uitvoeren. We werken met cooldowns van 3-5 seconden na elk schot, tegenover de originele turn-based manier van spelen. We denken dat dit het leuker en spannender zou maken. Het schip dat als eerste de vloot van de tegenstander vernietigt, wint het spel.
 
 De werking hiervan is als volgt. Het zeeslag spel speelt zich niet af in de 3d omgeving, maar eerder in de game manager, waar velden worden voorgesteld als 2-dimensionale char arrays. Daarop kan jij je schepen zetten.
@@ -73,10 +74,11 @@ De vijand zal in dit geval de ML agent zijn. Deze zal leren om patronen te herke
 De omgeving waar de speler zich bevind is het interieur van een oorlogsschip.
 
 Op het einde van het spel zal je een scherm te zien met de uitslag, het aantal schoten en de tijd die van het spel.
-````
 
-Het project bleef grotendeels het concept dat we hebben gebruikt in de one pager volgen, met uitzondering van de boten die de speler zelf plaatst. Deze worden nu random geplaatst wanneer je het spel start. 
-Verder werd het systeem van beloningen aangeast. De agent wordt nu beloond/bestraft op basis van het aantal gemiste schoten.
+### Onze reflectie van de one pager
+
+Het project bleef grotendeels het concept volgen dat we hebben gebruikt in de one pager, met uitzondering van de boten die de speler zelf plaatst. Deze worden nu random geplaatst wanneer je het spel start. 
+Verder werd het systeem van beloningen aangepast. De agent wordt nu beloond/bestraft op basis van het aantal gemiste schoten.
 De implementatie van het overzichtscherm dat je te zien krijgt na het spel is ook aangepast.
 
 ## Resultaten
@@ -111,7 +113,7 @@ Ons project is een VR variant van het bekende bordspel zeeslag waarin je tegenst
 
 ### Overzicht resultaten
 
-De training is succesvol verlopen met behulp van curriculum training. Zonder curriculum training liep de agent vast bij te grote velden. Door de agent in stappen te laten training liep hij niet meer vast omdat de moeilijkheid in kleine stappen verhoogt.
+De training is succesvol verlopen met behulp van curriculum training. Zonder curriculum training liep de agent vast bij te grote velden. Door de agent in stappen te laten trainen liep hij niet meer vast omdat de moeilijkheid in kleine stappen verhoogt.
 
 ### Persoonlijke visie resultaten
 
@@ -119,8 +121,8 @@ Zoals eerder gezegd is de training succesvol verlopen. Wij vinden dat onze aanpa
 
 ### Verbetering naar toekomst
 
-- Overzicht scherm op het einde van het spel met o.a. aantal schoten etc
-- Moeilijkheid setting die verschillende niveaus van getrainde agents gebruiken
+- Overzicht scherm op het einde van het spel met o.a. aantal schoten etc.
+- Moeilijkheid setting die verschillende niveaus van getrainde agents gebruikt
 - Mooie effecten wanneer je wint/verliest (regenboog/nuke)
 
 ## Bronvermelding
