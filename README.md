@@ -20,7 +20,7 @@ In dit document wordt uitgelegd welke stappen er werden gedaan om dit project te
 
 ## Installatie
 
-Voor dit project gebruiken wij Unity versie 2020.3.24f1. De plugins die gebruikt worden zijn als volgt:
+Voor dit project gebruiken wij Unity versie 2020.3.24f1. De plugins die gebruikt worden zijn als volgt: <br>
 ![plugins](/img/Picture1.png "List van plugins")
 
 ## Verloop van het spel
@@ -44,7 +44,7 @@ Deze reward kan maximaal 1.0 zijn in geval dat de agent nooit gemist heeft.
 
 ## Objecten
 
-Het project is opgebouwd uit verschillende core componenten.
+Het project is opgebouwd uit verschillende core componenten. <br>
 ![Game Objecten](/img/gameObjects.png "List van game objecten")
 
 - Fields: Dit zijn de velden (Grids) dat alle schepen van een speler bevat. Er zijn dus twee fields, van jou en van de tegenspeler.
