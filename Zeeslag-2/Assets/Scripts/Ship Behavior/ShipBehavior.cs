@@ -72,7 +72,7 @@ public class ShipBehavior : MonoBehaviour
             //OVRInput.SetControllerVibration(0.8f, 0.8f, OVRInput.Controller.RTouch);
 
             Health--;
-            Debug.Log($"{this}'s Health = {Health}");
+            //Debug.Log($"{this}'s Health = {Health}");
             if (Health <= 0)
             {
                 Sink();

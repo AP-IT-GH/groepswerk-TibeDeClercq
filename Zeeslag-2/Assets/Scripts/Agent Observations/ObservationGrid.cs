@@ -28,11 +28,6 @@ public class ObservationGrid : MonoBehaviour
         GenerateGrid();
     }
 
-    private void Update()
-    {
-        UpdateGrid();
-    }
-
     private void GenerateGrid()
     {
         cubeIsPlane = cube.GetComponent<ObservationCube>().isPlane;
@@ -74,7 +69,7 @@ public class ObservationGrid : MonoBehaviour
         Start();
     }
 
-    private void UpdateGrid()
+    public void UpdateGrid()
     {
         for (int x = 0; x < playerFieldToObserve.DiscoveredValues.GetLength(0); x++)
         {
@@ -85,7 +80,7 @@ public class ObservationGrid : MonoBehaviour
                     case 'W':
                         if (grid[x, y].gameObject.tag != "S")
                         {
-                            if (game.Player1CanShoot)
+                            if (game.Player1CanShoot && grid[x, y].state != CubeState.Water)
                             {
                                 grid[x, y].state = CubeState.Water;
                                 if (player != Players.Player1)
@@ -112,11 +107,6 @@ public class ObservationGrid : MonoBehaviour
                         }                        
                         grid[x, y].gameObject.tag = "M";
                         break;
-                    //default:
-                    //    grid[x, y].state = CubeState.Water;
-                    //    grid[x, y].Renderer.material = waterMaterial;
-                    //    grid[x, y].gameObject.tag = "W";
-                    //    break;
                 }
             }
         }

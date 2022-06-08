@@ -2707,8 +2707,8 @@ GameObject:
   - component: {fileID: 4084037660503964}
   - component: {fileID: 33000963977026716}
   - component: {fileID: 23691176581414648}
-  - component: {fileID: 64536545008364172}
   - component: {fileID: 1342081345}
+  - component: {fileID: 8161228375995428554}
   m_Layer: 0
   m_Name: Battleship
   m_TagString: Ship
@@ -2785,20 +2785,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &64536545008364172
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1813258765252098}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300024, guid: 46cd524120389ad418423045618d2621, type: 3}
 --- !u!114 &1342081345
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2840,6 +2826,19 @@ MonoBehaviour:
   - {x: 0, y: 0}
   parts: []
   Health: 0
+--- !u!65 &8161228375995428554
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1813258765252098}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 34.42771, y: 4.3, z: 166.89534}
+  m_Center: {x: 0, y: 9.39, z: 0.57}
 --- !u!1 &1831865685939244
 GameObject:
   m_ObjectHideFlags: 0

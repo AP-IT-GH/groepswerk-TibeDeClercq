@@ -321,8 +321,8 @@ GameObject:
   - component: {fileID: 4703804435602058}
   - component: {fileID: 33188658318582658}
   - component: {fileID: 23707506778621868}
-  - component: {fileID: 64097604951717208}
   - component: {fileID: 213391827622861758}
+  - component: {fileID: 7932720990717592950}
   m_Layer: 0
   m_Name: Frigate
   m_TagString: Ship
@@ -399,20 +399,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &64097604951717208
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1257255175192470}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300030, guid: 46cd524120389ad418423045618d2621, type: 3}
 --- !u!114 &213391827622861758
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -441,6 +427,19 @@ MonoBehaviour:
   - {x: 0, y: 0}
   parts: []
   Health: 0
+--- !u!65 &7932720990717592950
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1257255175192470}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 8.889999, y: 3.3, z: 84.9306}
+  m_Center: {x: 0, y: 7.1, z: 0.9339371}
 --- !u!1 &1302286245233652
 GameObject:
   m_ObjectHideFlags: 0

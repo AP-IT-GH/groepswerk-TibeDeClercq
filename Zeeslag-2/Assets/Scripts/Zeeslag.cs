@@ -40,6 +40,7 @@ public class Zeeslag : MonoBehaviour
     [SerializeField] private BattleController player2BattleController;
     [SerializeField] private int player1MultishotCount = 1;
     [SerializeField] private int player2MultishotCount = 1;
+
     public float player1ShootCooldown = 3;
     public float player2ShootCooldown = 3;
 
@@ -184,10 +185,11 @@ public class Zeeslag : MonoBehaviour
     {        
         if (this.Player1CanShoot)
         {
-            Debug.Log("Player 1 Shooting");
+            //Debug.Log("Player 1 Shooting");
             char result = this.FieldPlayer2.Shoot(coords);
             player1BattleController.Shoot(coords, player1MultishotCount);
             this._player1Shot = true;
+            player1Grid.UpdateGrid();
             UpdateGameState();
             StartCoroutine(Player1Wait());
 
@@ -205,16 +207,17 @@ public class Zeeslag : MonoBehaviour
     {
         if (this.Player2CanShoot)
         {
-            Debug.Log("Player 2 Shooting");
+            //Debug.Log("Player 2 Shooting");
             char result = this.FieldPlayer1.Shoot(coords);
             player2BattleController.Shoot(coords, player2MultishotCount);
             this._player2Shot = true;
+            player2Grid.UpdateGrid();
             UpdateGameState();
             StartCoroutine(Player2Wait());
 
             if (player2CheatMode && result == 'S')
             {
-                Debug.Log("revealing ship");
+                //Debug.Log("revealing ship");
                 player2Grid.RevealShip(coords);
             }
 
@@ -240,7 +243,7 @@ public class Zeeslag : MonoBehaviour
             winner = Winner.Player2;
             GameState = GameState.Completed;
             menuManager.gameOverCanvas.SetActive(true);
-            Debug.Log("Player 2 wins the game");
+            //Debug.Log("Player 2 wins the game");
         }
         else if(GetHitCount(FieldPlayer1) == FieldPlayer1.GetShipPartCount())
         {
@@ -251,7 +254,7 @@ public class Zeeslag : MonoBehaviour
             winner = Winner.Player1;
             GameState = GameState.Completed;
             menuManager.victoryCanvas.SetActive(true);
-            Debug.Log("Player 1 wins the game");
+            //Debug.Log("Player 1 wins the game");
         }
     }
 
@@ -263,7 +266,7 @@ public class Zeeslag : MonoBehaviour
             winner = Winner.Player2;
             GameState = GameState.Completed;
             menuManager.gameOverCanvas.SetActive(true);
-            Debug.Log("Player 2 wins the game");
+            //Debug.Log("Player 2 wins the game");
         }        
     }
 

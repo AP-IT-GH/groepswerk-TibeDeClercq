@@ -24,6 +24,7 @@ public class ObservationCube : MonoBehaviour
     private float maxAplha = 1f;
 
     private bool isFiring = false;
+    private bool changedMaterial = false;
     private bool rotate = false;
 
     private void Start()
@@ -50,6 +51,11 @@ public class ObservationCube : MonoBehaviour
                 TargetAlpha = maxAplha;
             }
             Renderer.material.color = color;
+        }
+        else if (!changedMaterial)
+        {
+            observationGrid.UpdateGrid();
+            changedMaterial = true;
         }
 
         if (rotate)
@@ -84,7 +90,8 @@ public class ObservationCube : MonoBehaviour
                     observationGrid.game.Player1Shoot(coordinates);
                     Renderer.material = TransparentWaterMaterial;
                     RemoveOutline();
-                    isFiring = true;                 
+                    isFiring = true;
+                    changedMaterial = false;
                     StartCoroutine(Cooldown());
                 }
                 break;

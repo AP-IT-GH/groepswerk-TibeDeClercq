@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 4412613268411976}
   - component: {fileID: 33995632954652046}
   - component: {fileID: 23248618128248286}
-  - component: {fileID: 64146703819460646}
   - component: {fileID: 8509270920146867934}
+  - component: {fileID: 1308873498225905133}
   m_Layer: 0
   m_Name: Cruiser
   m_TagString: Ship
@@ -89,20 +89,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &64146703819460646
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1042197431107668}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300026, guid: 46cd524120389ad418423045618d2621, type: 3}
 --- !u!114 &8509270920146867934
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -137,6 +123,19 @@ MonoBehaviour:
   - {x: 0, y: 0}
   parts: []
   Health: 0
+--- !u!65 &1308873498225905133
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1042197431107668}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 15.787307, y: 3, z: 122.93082}
+  m_Center: {x: 0, y: 11.7, z: 2.7222366}
 --- !u!1 &1063994187883712
 GameObject:
   m_ObjectHideFlags: 0

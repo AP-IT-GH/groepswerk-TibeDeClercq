@@ -378,8 +378,8 @@ GameObject:
   - component: {fileID: 4618546184181590}
   - component: {fileID: 33216202951023868}
   - component: {fileID: 23137177680154494}
-  - component: {fileID: 64733126321154782}
   - component: {fileID: 6032331381761904002}
+  - component: {fileID: 331256212554473996}
   m_Layer: 0
   m_Name: Destroyer
   m_TagString: Ship
@@ -456,20 +456,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &64733126321154782
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1171684472522874}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300028, guid: 46cd524120389ad418423045618d2621, type: 3}
 --- !u!114 &6032331381761904002
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -499,6 +485,19 @@ MonoBehaviour:
   - {x: 0, y: 0}
   parts: []
   Health: 0
+--- !u!65 &331256212554473996
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1171684472522874}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 13.541029, y: 6.2, z: 109.57822}
+  m_Center: {x: 0, y: 7.39, z: 5.5766087}
 --- !u!1 &1220600251093792
 GameObject:
   m_ObjectHideFlags: 0

@@ -63,6 +63,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.size
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6961855260871964906, guid: cd684bf5e14ff40bd9fde69f0ad12184, type: 3}
+      propertyPath: InitialModule.maxNumParticles
+      value: 200
+      objectReference: {fileID: 0}
     - target: {fileID: 7497043390333546108, guid: cd684bf5e14ff40bd9fde69f0ad12184, type: 3}
       propertyPath: m_Materials.Array.size
       value: 1
@@ -70,6 +74,10 @@ PrefabInstance:
     - target: {fileID: 8019633877795833347, guid: cd684bf5e14ff40bd9fde69f0ad12184, type: 3}
       propertyPath: m_Name
       value: Shell Trail
+      objectReference: {fileID: 0}
+    - target: {fileID: 8175725937588309993, guid: cd684bf5e14ff40bd9fde69f0ad12184, type: 3}
+      propertyPath: InitialModule.maxNumParticles
+      value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 8175725937588309993, guid: cd684bf5e14ff40bd9fde69f0ad12184, type: 3}
       propertyPath: ColorModule.gradient.maxGradient.key1.b
