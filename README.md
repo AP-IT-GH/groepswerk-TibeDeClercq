@@ -1,6 +1,6 @@
 # Groepswerk: Zeeslag VR
 
-<b> 2ITSOF2 2021 - 2022 | Evert Bekaert, Tibe De Clercq, Ruben Vorsselmans, Bjorn Felix, Jeroen Roelant </b>
+**2ITSOF2 2021 - 2022 | Evert Bekaert, Tibe De Clercq, Ruben Vorsselmans, Bjorn Felix, Jeroen Roelant**
 
 Wij maken een VR versie van het bordspel "Zeeslag". Je bent in de controlekamer van een oorlogsschip en speelt tegen ML Agent. Deze schepen worden willekeurig geplaatst op het veld.
 Voor jou krijg je een holografisch speelveld te zien. Dit is het grid van je tegenspeler. Hierop kan je oftewel wijzen met je vingers (hand tracking) of gebruik maken van de controllers om een vak aan te duiden op het grid. Je zal hier dan op schieten. We werken niet turn-based maar eerder met een schiet-cooldown.
@@ -20,7 +20,7 @@ In dit document wordt uitgelegd welke stappen er werden gedaan om dit project te
 
 ## Installatie
 
-Voor dit project gebruiken wij Unity versie 2020.3.24f1. De plugins die gebruikt worden zijn als volgt: <br>
+Voor dit project gebruiken wij Unity versie 2020.3.24f1. De plugins die gebruikt worden zijn als volgt: \
 ![plugins](/img/Picture1.png "List van plugins")
 
 ## Verloop van het spel
@@ -44,7 +44,7 @@ Deze reward kan maximaal 1.0 zijn in geval dat de agent nooit gemist heeft.
 
 ## Objecten
 
-Het project is opgebouwd uit verschillende core componenten. <br>
+Het project is opgebouwd uit verschillende core componenten. \
 ![Game Objecten](/img/gameObjects.png "List van game objecten")
 
 - Fields: Dit zijn de velden (Grids) dat alle schepen van een speler bevat. Er zijn dus twee fields, van jou en van de tegenspeler.
@@ -77,7 +77,7 @@ Op het einde van het spel zal je een scherm te zien met de uitslag, het aantal s
 
 ### Onze reflectie van de one pager
 
-Het project bleef grotendeels het concept volgen dat we hebben gebruikt in de one pager, met uitzondering van de boten die de speler zelf plaatst. Deze worden nu random geplaatst wanneer je het spel start. 
+Het project bleef grotendeels het concept volgen dat we hebben gebruikt in de one pager, met uitzondering van de boten die de speler zelf plaatst. Deze worden nu random geplaatst wanneer je het spel start.
 Verder werd het systeem van beloningen aangepast. De agent wordt nu beloond/bestraft op basis van het aantal gemiste schoten.
 De implementatie van het overzichtscherm dat je te zien krijgt na het spel is ook aangepast.
 
@@ -127,18 +127,14 @@ Zoals eerder gezegd is de training succesvol verlopen. Wij vinden dat onze aanpa
 
 ## Bronvermelding
 
-<a id="1">[1]</a>
-Etredal (15/08/2021) <br>
-<a href="https://youtu.be/UllkvfMR96s">Volumetric Fog in Unity using Particles (Any Rendering Pipeline)</a>
+Volumetric Fog in Unity using Particles (Any Rendering Pipeline). (2021, 14 augustus). YouTube. Geraadpleegd op 3 mei 2022, van https://www.youtube.com/watch?v=UllkvfMR96s&feature=youtu.be
 
-<a id="2">[2]</a>
-Jeff Johnson (17/05/2022) <br>
-<a href="https://assetstore.unity.com/packages/vfx/particles/environment/rain-maker-2d-and-3d-rain-particle-system-for-unity-34938#description">Rain Maker - 2D and 3D Rain Particle System for Unity</a>
+Johnson, J. (2016, 29 januari). Rain Maker - 2D and 3D Rain Particle System for Unity. Unity Asset Store. Geraadpleegd op 8 juni 2022, van https://assetstore.unity.com/packages/vfx/particles/environment/rain-maker-2d-and-3d-rain-particle-system-for-unity-34938#description
 
-<a id="3">[3]</a>
-IgniteCoders (19/03/2021) <br>
-<a href="https://assetstore.unity.com/packages/2d/textures-materials/water/simple-water-shader-urp-191449">Simple Water Shader URP</a>
+IgniteCoders. (2021, 16 april). Simple Water Shader URP | 2D Water. Unity Asset Store. Geraadpleegd op 8 juni 2022, van https://assetstore.unity.com/packages/2d/textures-materials/water/simple-water-shader-urp-191449
 
-<a id="4">[4]</a>
-Oculus (31/05/2022) <br>
-<a href="https://assetstore.unity.com/packages/tools/integration/oculus-integration-82022">Oculus integration</a>
+Oculus. (2019, 16 oktober). Oculus Integration | Integration. Unity Asset Store. Geraadpleegd op 8 juni 2022, van https://assetstore.unity.com/packages/tools/integration/oculus-integration-82022
+
+Particle Systems - Fire | Fire & Explosions. (2022, 31 maart). Unity Asset Store. Geraadpleegd op 8 juni 2022, van https://assetstore.unity.com/packages/vfx/particles/fire-explosions/particle-systems-fire-168270
+
+Moreno, J. (2013, 2 april). War FX | VFX Particles. Unity Asset Store. Geraadpleegd op 8 juni 2022, van https://assetstore.unity.com/packages/vfx/particles/war-fx-5669
